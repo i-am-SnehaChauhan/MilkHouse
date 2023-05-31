@@ -17,8 +17,7 @@ const Features = () => {
                 <b>Modern dairy</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
 
@@ -28,8 +27,7 @@ const Features = () => {
                 <b>E-Cattle Cart</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
 
@@ -39,8 +37,7 @@ const Features = () => {
                 <b>Home Delivery Services</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
 
@@ -54,8 +51,7 @@ const Features = () => {
                 <b>Best Quality Products</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
 
@@ -65,8 +61,7 @@ const Features = () => {
                 <b>Healthy A-two Milk</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
 
@@ -76,8 +71,7 @@ const Features = () => {
                 <b>Nutritious Fooder</b>
                 </FeaturesH2>
                 <FeaturesP>
-                Consult with professional doctors and therapists regarding your
-                health.
+                
                 </FeaturesP>
             </FeaturesCard>
         </FeaturesWrapper>
