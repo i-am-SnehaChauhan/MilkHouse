@@ -1,11 +1,10 @@
-import React, { useEffect, useState }  from 'react'
+import React, {  useState }  from 'react'
 import {Nav, NavbarContainer, NavLogo, MobileIcon}from './NavbarElements.js'
 import {FaBars} from 'react-icons/fa'
 import {NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink} from './NavbarElements.js'
 
 const glassStyle = {
     background: "rgba(40, 30, 30, 0.3)",
-    // borderRadius: "16px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(7.1px)",
     webkitBackdropFilter: "blur(7.1px)",
@@ -13,10 +12,7 @@ const glassStyle = {
   }
 
 const Navbar = ({toggle}) => {
-      const [navbarBg, setNavbarBg] = useState(glassStyle);
-
-
-
+      const [navbarBg] = useState(glassStyle);
   return (
     <>
         <Nav style={navbarBg}>
