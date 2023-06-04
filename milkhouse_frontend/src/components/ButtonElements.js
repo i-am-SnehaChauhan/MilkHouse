@@ -11,10 +11,7 @@ export const Button = styled(Link)`
     outline: none;
     border: 2px solid #01BF71;
     box-shadow: 0 3px 0 black, 0px 3px 6px #fff;
-    // Issue #1: Type in cursor spelling was there earlier
-    // Issue #1 Fixed: Corrected the spelling of cursor.
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
