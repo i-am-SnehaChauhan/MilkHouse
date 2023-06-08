@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon1 from '../../image/svg-1.svg'
-import Icon2 from '../../image/svg-1.svg'
-import Icon3 from '../../image/svg-1.svg'
+import Icon2 from '../../image/svg-2.svg'
+import Icon3 from '../../image/svg-3.svg'
 import {ServicesContainer, ServicesH1, ServicesWrapper, ServicesCard, ServicesIcon, ServicesH2, ServicesP} from './ServicesElements'
 
 const Services = () => {
