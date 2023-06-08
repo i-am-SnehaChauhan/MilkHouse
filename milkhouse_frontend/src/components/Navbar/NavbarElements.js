@@ -38,6 +38,7 @@ export const NavLogo = styled(LinkR)`
 	font-size: 2rem;
 	display: flex;
 	align-items: center;
+	font-family: 'Roboto', sans-serif;
 	font-weight: bold;
 	padding: 1rem;
 	z-index: 10;
@@ -97,7 +98,7 @@ export const NavMenu = styled.ul`
 	font-weight: 600;
 	margin-right: 0;
 	@media screen and (max-width: 768px) {
-		display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+	    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
 		position: sticky;
 		flex-direction: column;
 		align-items: center;
@@ -121,38 +122,40 @@ export const NavMenu = styled.ul`
 export const NavItem = styled.li`
 	margin-top: -15px;
 `;
+
 export const NavLinks = styled(LinkS)`
-	text-color: white;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
 
-	&::after {
-		content: '';
-		width: 0%;
-		height: 5%;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		background-color: #28b86b;
-		transition: all 0.3s ease-in;
-	}
+    &::after {
+        content: '';
+        width: 0%;
+        height: 5%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #28b86b;
+        transition: all 0.3s ease-in;
+    }
 
-	&:hover:after {
-		width: 100%;
-	}
+    &:hover::after {
+        width: 100%;
+    }
 
-	&:hover {
-		color: #28b86b;
-	}
+    &:hover {
+        color: #28b86b;
+    }
 
-	&.active {
-		border-bottom: 3px solid #01bf71;
-	}
+    &.active {
+        border-bottom: 3px solid #01bf71;
+    }
 `;
+
 export const NavBtn = styled.nav`
 	display: flex;
 	align-items: center;

@@ -71,7 +71,7 @@ export const ServicesH1 = styled.h1`
     font-size: 2.5rem;
     color: #fff;
     margin-bottom: 64px;
-
+    font-family: 'Roboto', sans-serif;
     @media screen and (max-width: 480px){
         font-size: 2rem;
     }
@@ -82,15 +82,15 @@ export const ServicesH2 = styled.h2`
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 10px;
-    
+    font-family: 'Roboto', sans-serif;
 `;
 
 export const ServicesP = styled.p`
    font-size: 1.4rem;
    line-height: 1.6;
    margin-bottom: 20px;
-    text-align: center; 
-
+   text-align: center; 
+   font-family: 'Open Sans', sans-serif;
 `;
 
 
