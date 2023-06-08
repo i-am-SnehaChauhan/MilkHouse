@@ -73,12 +73,11 @@ export const HeroContent = motion(styled.div`
     `);
 
 export const HeroH1 = styled.h1`
-/* color: #fff;
-    font-size: 48px;
-    text-align: center; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
     margin-bottom: 34px;
-    font-size: 48px;
-    line-height: 1.1;
+    font-size: 3.6rem;
+    line-height: 1.2;
     font-weight: 600;
     color: white;
     @media screen and (max-width: 768px) {
@@ -91,10 +90,11 @@ export const HeroH1 = styled.h1`
 
 `;
 
-export const HeroP = styled.p`
-    margin-top: -10px;
+export const HeroP = styled.h2`
+    font-size: 2.4rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
-    font-size: 24px;
     text-align: center; 
     max-width: 600px;
 
@@ -113,6 +113,8 @@ export const HeroBtnWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
 
 `;
 

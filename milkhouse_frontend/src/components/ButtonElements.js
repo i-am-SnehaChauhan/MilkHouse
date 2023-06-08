@@ -11,6 +11,7 @@ export const Button = styled(Link)`
     outline: none;
     border: 2px solid #01BF71;
     box-shadow: 0 3px 0 black, 0px 3px 6px #fff;
+    font-family: 'Roboto', sans-serif;
     cursor: pointer;
     display: flex;
     justify-content: center;
