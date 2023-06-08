@@ -33,7 +33,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogo = styled(LinkR)`
-	color: white;
+	color: #ffffff;
 	cursor: pointer;
 	font-size: 2rem;
 	display: flex;
@@ -54,7 +54,7 @@ export const NavLogo = styled(LinkR)`
 		);
 		mask-size: 200%;
 		animation: shine 3s infinite;
-		color: #ffffff;
+		color: #000000;
 	}
 
 	@keyframes shine {
@@ -75,7 +75,7 @@ export const MobileIcon = styled.div`
 		display: block;
 		font-size: 1.8rem;
 		cursor: pointer;
-		 color: #fff;
+		 color: #ffffff;
 		color: var(--text-clr);
 		align-items: center;
 		display: flex;
@@ -88,6 +88,7 @@ export const MobileIcon = styled.div`
 
 
 export const NavMenu = styled.ul`
+	color: #ffffff;
 	display: flex;
 	gap: 30px;
 	align-items: center;
@@ -121,12 +122,13 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
 	margin-top: -15px;
+	color: #ffffff;
 `;
 
 export const NavLinks = styled(LinkS)`
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
+    ${'' /* text-decoration: none; */}
     display: flex;
     align-items: center;
     cursor: pointer;
