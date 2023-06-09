@@ -3,12 +3,14 @@ Internship project of Summer 2023.
 
 ### Deadline: 11-June-2023
 ## Monalika Patnaik
-* Make signUp page using Styled-Components.
-* Don't use Bootstrap now.
+- Blockers
+  - React toastify is used to give pop up alert same as JS but it's not working.
+  - Have to find another alternative to give alert to the users in signin page.
+- Remaining
+  - Storing the info provided by users in local storage or as in backend maybe.
 
 ## Mansi 
-* Make signIp page using Styled-Components.
-* Don't use Bootstrap now.
+- It's done!
 
 ## Sneha Chauhan
 * Starting Dashboard 
