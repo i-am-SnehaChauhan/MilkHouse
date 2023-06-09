@@ -10,7 +10,7 @@ Internship project of Summer 2023.
   - Storing the info provided by users in local storage or as in backend maybe.
 
 ## Mansi 
-- It's done!
+- Sign up page is done..again looking into backend and storing info all.
 
 ## Sneha Chauhan
 * Starting Dashboard 
