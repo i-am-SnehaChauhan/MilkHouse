@@ -1,126 +1,148 @@
 
-import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Image from '../../image/signup_img.avif';
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify';
-import { NavLink } from 'react-router-dom'
-import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
 	Container,
-	FormHead,
-	FormSection,
-	LeftData,
-	RightData,
-	FormP,
-	
+	Icons,
+	FormButton,
+	FormContent,
+	Form,
+	FormH1,
+	FormInput,
+	FormLabel,
+	FormWrap,
+	Text,
 } from './SigninElements';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+
 const SignIn = () => {
+	const navigate = useNavigate();
+	let authorizationToken;
+	const [passwordType, setPasswordType] = useState('password');
+	const [data, setData] = useState({});
+	const handleclick = (e) => {
+		e.preventDefault();
+		if (passwordType === 'text') {
+			setPasswordType('password');
+		} else {
+			setPasswordType('text');
+		}
+	};
 
-    const history = useNavigate();
+	const navigateToProfile = () => {
+		// 👇️ navigate to /contacts
+		navigate('/profile');
+	};
 
-    const [inpval, setInpval] = useState({
-        email: "",
-        password: ""
-    })
-
-    const [data, setData] = useState([]);
-    console.log(inpval);
-
-    const getdata = (e) => {
-        // console.log(e.target.value);
-
-
-        const { value, name } = e.target;
-        // console.log(value,name);
-
-
-        setInpval(() => {
-            return {
-                ...inpval,
-                [name]: value
-            }
-        })
-
-    }
-	const addData = (e) => {
-        e.preventDefault();
-
-        const getuserArr = localStorage.getItem("useryoutube");
-        console.log(getuserArr);
-
-        const { email, password } = inpval;
-        if (email === "") {
-            toast.error('email field is requred', {
-                position: "top-center",
-            });
-        } else if (!email.includes("@")) {
-            toast.error('plz enter valid email addres', {
-                position: "top-center",
-            });
-        } else if (password === "") {
-            toast.error('password field is requred', {
-                position: "top-center",
-            });
-        } else if (password.length < 5) {
-            toast.error('password length greater five', {
-                position: "top-center",
-            });
-        } else {
-
-            if (getuserArr && getuserArr.length) {
-                const userdata = JSON.parse(getuserArr);
-                const userlogin = userdata.filter((el, k) => {
-                    return el.email === email && el.password === password
-                });
-
-                if (userlogin.length === 0) {
-                    alert("invalid details")
-                } else {
-                    console.log("user login succesfulyy");
-
-                    localStorage.setItem("user_login", JSON.stringify(userlogin))
-
-                    history("/details")
-                }
-            }
-        }
-
-    }
-	
+	const sendPostRequest = async (e) => {
+		console.log('sendPostRequest is called!!!');
+		e.preventDefault();
+		const response = await fetch('http://localhost:8081/SignIn', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		const result = await response.json();
+		sessionStorage.removeItem('authorizationToken');
+		sessionStorage.removeItem('username');
+		const { jwtToken, username } = result;
+		authorizationToken = 'Bearer '.concat(jwtToken.toString());
+		sessionStorage.setItem('authorizationToken', authorizationToken);
+		sessionStorage.setItem('username', username);
+		navigateToProfile();
+	};
 	return (
 		<>
 			<Container>
-			<FormSection>
-				<LeftData>
-					<FormHead>Create Account</FormHead>
-					<Form>
-						
+				
+				{/* <br /> */}
 
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
-							<Form.Control type="email"name='email' onChange={getdata} placeholder="Enter email" />
-						</Form.Group>
+				<FormWrap>
+					<FormContent>
+						<Form onSubmit={sendPostRequest} action="#">
+							<FormH1>Sign in to your account</FormH1>
+							<FormLabel htmlFor="email">Email</FormLabel>
+							<FormInput
+								onChange={(e) => setData({ ...data, email: e.target.value })}
+								placeholder="email@example.com"
+								type="email"
+								id="email"
+								require
+							/>
+							<FormLabel
+								htmlFor="password"
+								style={{
+									display: 'flex',
+									flexDirection: 'column',
+									position: 'relative',
+								}}
+							>
+								Password
+								<FormInput
+									onChange={(e) =>
+										setData({ ...data, password: e.target.value })
+									}
+									placeholder="Must have at least 8 characters"
+									type={passwordType}
+									id="password"
+									require
+								/>
+								<button
+									onClick={handleclick}
+									style={{
+										width: 'fit-content',
+										position: 'absolute',
+										right: '0%',
+										top: '20%',
+										background: 'transparent',
+										border: 'none',
+										color: 'green',
+									}}
+								>
+									{passwordType === 'password' ? (
+										<i class="fa-solid fa-eye-slash" id="eye"></i>
+									) : (
+										<i class="fa-solid fa-eye" id="eye"></i>
+									)}
+								</button>
+							</FormLabel>
+							<form
+								style={{
+									display: 'flex',
+									position: 'relative',
+									left: '35%',
+									width: 'fit-content',
+									bottom: '185%',
+									fontSize: 'medium',
+									color: 'white',
+								}}
+							>
+								{/* <input type="checkbox" id="rememberMe" />
+								<br></br>
+								<label htmlFor="rememberMe">Remember me</label> */}
+							</form>
 
-						
-
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicPassword">
-							<Form.Control type="password" name='password' onChange={getdata} placeholder="Password" />
-						</Form.Group>
-						
-						<Button variant="primary" className="ml-5 col-lg-6" style={{background:"rgb(67,185,127)"}} onClick={addData} type="submit">
-							Submit
-						</Button>
-					</Form>
-					<FormP>Already have an Account <NavLink to="/signin"></NavLink> <span>Sign In</span></FormP>
-				</LeftData>
-				<RightData>
-					<div className="sign_img mt-3">
-						<img src={Image} style={{maxWidth:400}} alt=""/>
-					</div>
-				</RightData>
-			</FormSection>
-		</Container>
+							<FormButton type="submit">Continue</FormButton>
+							<NavLink
+								to="/signin/forgotPassword"
+								style={{
+									textAlign: 'center',
+									color: 'white',
+									marginTop: '10px',
+									textDecoration: 'none',
+								}}
+							>
+								Forgot Password ?
+							</NavLink>
+						</Form>
+					</FormContent>
+				</FormWrap>
+			</Container>
 		</>
 	);
 };
