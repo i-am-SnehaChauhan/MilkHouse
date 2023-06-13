@@ -17,7 +17,7 @@ const Footer = () => {
             </SocialLogo>
                 <FooterLinkItems className='about'>
                        <FooterLink to="/signin">About Us</FooterLink>
-                       <FooterLink to="/signin">Contact Us</FooterLink>
+                       <FooterLink to="/contact">Contact Us</FooterLink>
                        <FooterLink to="/signin">Our Farmers</FooterLink>
                        <FooterLink to="/signin">Services</FooterLink>
                        <FooterLink to="/signin">Testimonials</FooterLink>
