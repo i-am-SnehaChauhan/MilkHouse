@@ -18,6 +18,7 @@ background:var(--bg-clr);
 
 export const FormHead = styled.h3`
   text-align: center;
+  justify-content: center;
   padding: 3px;
   font-weight:bold;
   margin-bottom: 30px;
@@ -42,6 +43,9 @@ export const RightData = styled.div`
   margin-top: 3px;
 `
 export const FormP = styled.p`
-  margin-top: 3px;
+  margin-top: 5px;
+  text-align: match-parent;
+  align-items: center;
+
 `
 
