@@ -1,6 +1,11 @@
 import React from 'react'
 import {Container, Containertitle, FeaturesCard,FeaturesIcon, FeaturesH2, FeaturesP, FeaturesWrapper } from './FeatureElements'
-import Icon1 from "../../image/dairy.png";
+import Icon1 from "../../image/e-caatle.jpg";
+import Icon2 from "../../image/modern-dairy.jpg";
+import Icon3 from "../../image/home-delivery.jpg";
+import Icon4 from "../../image/dairy-products.jpg";
+import Icon5 from "../../image/a2-milk.jpg";
+import Icon6 from "../../image/fodder.jpg";
 
 const Features = () => {
   return (
@@ -12,7 +17,7 @@ const Features = () => {
 
         <FeaturesWrapper>
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
+                <FeaturesIcon src={Icon2} />
                 <FeaturesH2>
                 <b>Modern dairy</b>
                 </FeaturesH2>
@@ -32,7 +37,7 @@ const Features = () => {
             </FeaturesCard>
 
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
+                <FeaturesIcon src={Icon3} />
                 <FeaturesH2>
                 <b>Home Delivery Services</b>
                 </FeaturesH2>
@@ -46,7 +51,7 @@ const Features = () => {
 
         <FeaturesWrapper>
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
+                <FeaturesIcon src={Icon4} />
                 <FeaturesH2>
                 <b>Best Quality Products</b>
                 </FeaturesH2>
@@ -56,7 +61,7 @@ const Features = () => {
             </FeaturesCard>
 
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
+                <FeaturesIcon src={Icon5} />
                 <FeaturesH2>
                 <b>Healthy A-two Milk</b>
                 </FeaturesH2>
@@ -66,7 +71,7 @@ const Features = () => {
             </FeaturesCard>
 
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
+                <FeaturesIcon src={Icon6} />
                 <FeaturesH2>
                 <b>Nutritious Fooder</b>
                 </FeaturesH2>
