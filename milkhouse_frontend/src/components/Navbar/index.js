@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Nav, NavbarContainer, NavLogo, MobileIcon } from './NavbarElements.js';
 import { FaBars } from 'react-icons/fa';
 import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements.js';
+import { useNavigate } from "react-router-dom";
 
 const glassStyle = {
   background: "rgba(40, 30, 30, 0.3)",
@@ -13,6 +14,12 @@ const glassStyle = {
 
 const Navbar = ({ toggle }) => {
   const [navbarBg] = useState(glassStyle);
+
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
 
   return (
     <>
@@ -27,10 +34,12 @@ const Navbar = ({ toggle }) => {
               <NavLinks to="about">About</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="services">Services</NavLinks>
+              <NavLinks to="features">Services</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="contactus">Contact Us</NavLinks>
+              <NavLinks to="#" onClick={handleContactClick}>
+                Contact{" "}
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="Feedback">Feedback</NavLinks>

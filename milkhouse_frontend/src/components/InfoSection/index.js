@@ -1,6 +1,6 @@
 import React from 'react'
 import { InfoContainer, InfoWrapper, InfoRow, Column, TextWrapper, TopLine, Heading, Subtitle } from './InfoElements';
-const InfoSection = () => {
+const About = () => {
   return (
     <>
       <InfoContainer>
@@ -14,4 +14,4 @@ products that our farmers and cows proudly made on our farm.</Subtitle>
   )
 }
 
-export default InfoSection;
+export default About;

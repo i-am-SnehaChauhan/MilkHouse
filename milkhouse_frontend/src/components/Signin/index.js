@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Image from '../../image/76ew_xnfq_220720.jpg';
 import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -12,7 +14,7 @@ import {
 	FormSection,
 	LeftData,
 	RightData,
-	
+	FormP
 	
 } from './SigninElements';
 const SignIn = () => {
@@ -94,9 +96,7 @@ const SignIn = () => {
 			<FormSection>
 				<LeftData>
 					<FormHead>Login to your Account</FormHead>
-					<Form>
-						
-
+                    <Form>	
 						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
 							<Form.Control type="email"name='email' onChange={getdata} placeholder="Enter email" />
 						</Form.Group>
@@ -111,7 +111,7 @@ const SignIn = () => {
 							Submit
 						</Button>
 					</Form>
-
+                    <FormP>Don't have an Account?<span><NavLink to="/signup">Register Now</NavLink></span></FormP>
 				</LeftData>
 				<RightData>
 					<div className="sign_img mt-3">
