@@ -9,7 +9,7 @@ section
     align-items: center;
     /* height: 600px; */
     margin-top: 8rem ;
-    margin-bottom: 8rem;
+    /* margin-bottom: 8rem; */
     /* background-color: #095a55; */
 
 }
@@ -273,8 +273,7 @@ section::before
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
-        background: #fff38e;
+       
     }
 
     section::before
@@ -293,6 +292,7 @@ section::before
         width: 100%;
         height: auto;
         border-radius: 0px;
+        margin-top: 7rem;
     }
 
     .container .contactInfo
