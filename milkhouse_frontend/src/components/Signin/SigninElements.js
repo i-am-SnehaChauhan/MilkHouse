@@ -1,51 +1,57 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-height: 1200%;
-
-bottom: 0;
-left: 0;
-right: 0;
-top: 20;
-padding: 100px;
-padding-top: 130px;
-padding-bottom: 60px;
-z-index: 0;
-overflow: hidden;
-background:var(--bg-clr);
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  background: linear-gradient(to right, #9900ff, #cc80ff);
 `;
 
-export const FormHead = styled.h3`
+export const FormHead = styled.h1`
   text-align: center;
   justify-content: center;
-  padding: 3px;
-  font-weight:bold;
-  margin-bottom: 30px;
-  width: 100%;
+  align-items: center;
+  font-weight: 700;
+  margin-left: 80px;
+  margin-bottom: 20px;
   @media (min-width: 992px) {
-        width: 50%;
-      }
-`
+    width: 50%;
+  }
+`;
 
 export const FormSection = styled.section`
   display: flex;
-  justify-content: space-between;
-`
+  min-width: 400px;
+  height: fit-content;
+  width: fit-content;
+  margin: 0 auto;
+`;
 
 export const LeftData = styled.div`
-  width: 100%;
-  padding: 6px;
-`
+  min-width: 400px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  gap: 30px;
+`;
 
 export const RightData = styled.div`
   width: 100%;
-  margin-top: 3px;
-`
+  margin: 3px;
+  margin-left: 15px;
+  align-items: center;
+`;
 export const FormP = styled.p`
   margin-top: 5px;
   text-align: match-parent;
   align-items: center;
-
-`
-
+`;
