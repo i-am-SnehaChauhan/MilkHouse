@@ -29,6 +29,9 @@ export const FormSection = styled.section`
   height: fit-content;
   width: fit-content;
   margin: 0 auto;
+  @media (min-width:500px) {
+    display: row;
+  }
 `;
 
 export const LeftData = styled.div`
