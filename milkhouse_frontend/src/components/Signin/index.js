@@ -1,13 +1,12 @@
-
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Image from '../../image/76ew_xnfq_220720.jpg';
+import Image from '../../image/signin.png';
 import { useNavigate } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+
+
 import {
 	Container,
 	FormHead,
@@ -17,6 +16,8 @@ import {
 	FormP
 	
 } from './SigninElements';
+
+
 const SignIn = () => {
 
     const history = useNavigate();
@@ -52,42 +53,6 @@ const SignIn = () => {
         console.log(getuserArr);
 
         const { email, password } = inpval;
-        // if (email === "") {
-        //     toast.error('email field is requred', {
-        //         position: "top-center",
-        //     });
-        // } else if (!email.includes("@")) {
-        //     toast.error('plz enter valid email addres', {
-        //         position: "top-center",
-        //     });
-        // } else if (password === "") {
-        //     toast.error('password field is requred', {
-        //         position: "top-center",
-        //     });
-        // } else if (password.length < 5) {
-        //     toast.error('password length greater five', {
-        //         position: "top-center",
-        //     });
-        // } else {
-
-        //     if (getuserArr && getuserArr.length) {
-        //         const userdata = JSON.parse(getuserArr);
-        //         const userlogin = userdata.filter((el, k) => {
-        //             return el.email === email && el.password === password
-        //         });
-
-        //         if (userlogin.length === 0) {
-        //             alert("invalid details")
-        //         } else {
-        //             console.log("user login succesfulyy");
-
-        //             localStorage.setItem("user_login", JSON.stringify(userlogin))
-
-        //             history("/details")
-        //         }
-        //     }
-        // }
-
     }
 	
 	return (
@@ -95,21 +60,18 @@ const SignIn = () => {
 			<Container>
 			<FormSection>
 				<LeftData>
-					<FormHead>Login to your Account</FormHead>
+					<FormHead>Login</FormHead>
                     <Form>	
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
-							<Form.Control type="email"name='email' onChange={getdata} placeholder="Enter email" />
+						<Form.Group className="mb-3 " controlId="formBasicEmail">
+                        <label  class="form-label">Email address</label>
+							<Form.Control type="email" name='email' onChange={getdata} placeholder="Enter email" />
 						</Form.Group>
 
-						
-
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicPassword">
+						<Form.Group className="mb-3 " controlId="formBasicPassword">
+                        <label class="form-label">Password</label>
 							<Form.Control type="password" name='password' onChange={getdata} placeholder="Password" />
 						</Form.Group>
-						
-						<Button variant="primary" className="ml-5 col-lg-6" style={{background:"rgb(67,185,127)"}} onClick={addData} type="submit">
-							Submit
-						</Button>
+						<button class="btn btn-primary" type="button">Submit</button>
 					</Form>
                     <FormP>Don't have an Account?<span><NavLink to="/signup">Register Now</NavLink></span></FormP>
 				</LeftData>

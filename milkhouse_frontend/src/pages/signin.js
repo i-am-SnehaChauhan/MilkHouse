@@ -1,6 +1,5 @@
 import React from 'react'
 import SignIn from '../components/Signin';
-import Footer from '../components/Footer';
 import Navbar from '../components/Navbar'
 
 const SigninPage = () => {
@@ -8,7 +7,6 @@ const SigninPage = () => {
     <div>
         <Navbar/>
         <SignIn/>  
-        <Footer/> 
     </div>
   );
 };
