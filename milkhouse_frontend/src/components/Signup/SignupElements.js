@@ -345,7 +345,7 @@ export const Image = styled.img`
       transform: scale(1);
     }
     50% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     100% {
       transform: scale(1);
