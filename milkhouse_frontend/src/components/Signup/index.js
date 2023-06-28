@@ -18,6 +18,23 @@ import {
 	} from './SignupElements';
 
 const SignUp = () => {
+  const [data, setData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    countryCode: "",
+    contactNumber: "",
+    password: "",
+    confirmpassword: "",
+  });
+
+  const [error, setError] = useState("");
+
+  
+  const handleSubmission = () => {
+    console.log(data);
+  };
+
   return (
 	<>
 		<Container>
@@ -33,19 +50,25 @@ const SignUp = () => {
           <SignUpForm >
             <SignUph1>Create account</SignUph1>
             <FormInput
-            //   onChange={(e) => setData({ ...data, name: e.target.value })}
+              onChange={(e) => 
+                setData({ ...data, name: e.target.value })
+              }
               id="FullNameInput"
               type="text"
               placeholder="Full Name"
             ></FormInput>
             <FormInput
-            //   onChange={(e) => setData({ ...data, username: e.target.value })}
+              onChange={(e) => 
+                setData({ ...data, username: e.target.value })
+              }
               id="usernameInput"
               type="text"
               placeholder="Username"
             ></FormInput>
             <FormInput
-            //   onChange={(e) => setData({ ...data, email: e.target.value })}
+              onChange={(e) => 
+                setData({ ...data, email: e.target.value })
+              }
               id="emailInput"
               type="email"
               placeholder="Email"
@@ -53,17 +76,17 @@ const SignUp = () => {
             ></FormInput>
             <PhoneContainer>
               <FormInput
-                // onChange={(e) =>
-                //   setData({ ...data, countryCode: e.target.value })
-                // }
+                onChange={(e) =>
+                  setData({ ...data, countryCode: e.target.value })
+                }
                 id="CountryCode"
                 type="text"
                 placeholder="+XXX"
               ></FormInput>
               <FormInput
-                // onChange={(e) =>
-                //   setData({ ...data, contactNumber: e.target.value })
-                // }
+                onChange={(e) =>
+                  setData({ ...data, contactNumber: e.target.value })
+                }
                 id="ContactNumber"
                 type="text"
                 placeholder="Phone Number"
@@ -72,7 +95,9 @@ const SignUp = () => {
             </PhoneContainer>
             <PasswordContainer>
               <FormInput
-                // onChange={(e) => setData({ ...data, password: e.target.value })}
+                onChange={(e) => 
+                  setData({ ...data, password: e.target.value })
+                }
                 id="PasswordInput"
                 // type={passwordType}
                 placeholder="Password"
@@ -107,9 +132,9 @@ const SignUp = () => {
             </PasswordContainer>
             <PasswordContainer>
               <FormInput
-                // onChange={(e) =>
-                //   setData({ ...data, confirmpassword: e.target.value })
-                // }
+                onChange={(e) =>
+                  setData({ ...data, confirmpassword: e.target.value })
+                }
                 id="PasswordInput"
                 // type={passwordType}
                 placeholder="Confirm Password"
@@ -145,6 +170,7 @@ const SignUp = () => {
             {/* <Captcha message={setTrackState} trackState={trackState}/> */}
             <SignUpButton 
               type="submit"
+              onClick={handleSubmission}
             //   disabled={!trackState}
             //   style={{cursor:`${trackState ? "pointer": "not-allowed"}`}}
             >Sign Up</SignUpButton>
