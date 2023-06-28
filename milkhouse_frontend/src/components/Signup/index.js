@@ -27,9 +27,6 @@ const SignUp = () => {
     password: "",
     confirmpassword: "",
   });
-
-  const [error, setError] = useState("");
-
   
   const handleSubmission = () => {
     console.log(data);
@@ -170,7 +167,6 @@ const SignUp = () => {
             {/* <Captcha message={setTrackState} trackState={trackState}/> */}
             <SignUpButton 
               type="submit"
-              onClick={handleSubmission}
             //   disabled={!trackState}
             //   style={{cursor:`${trackState ? "pointer": "not-allowed"}`}}
             >Sign Up</SignUpButton>

@@ -338,7 +338,7 @@ export const SignUpButton = styled.button`
 export const Image = styled.img`
   height: auto;
   width: 90%;
-  animation: scale 1s ease-in-out infinite;
+  animation: scale 2.5s ease-in-out infinite;
 
   @keyframes scale {
     0% {
