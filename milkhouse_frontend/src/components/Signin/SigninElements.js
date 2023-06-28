@@ -319,9 +319,22 @@ export const PasswordContainer = styled.div`
   justify-content: center;
   width: 100%;
 `;
-
 export const Image = styled.img`
   width: 100%;
   height: fit-content;
   margin-bottom: 0px;
+
+  animation: moveUpDown 2s ease-in-out infinite;
+
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 `;
