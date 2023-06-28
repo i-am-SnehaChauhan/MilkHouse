@@ -1,16 +1,19 @@
-
 import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import { NavLink } from 'react-router-dom'
-import Image from '../../image/signup_img.avif';
+import Img from '../../image/signup.png';
 import {
-		Container,
-		FormHead,
-		FormSection,
-		LeftData,
-		RightData,
-		FormP,
+	Container,
+	FormContainer,
+	LeftContainer,
+	SignUpContainer,
+	SignUpForm,
+	LeftHeading,
+	LeftPara,
+	SignUph1,
+	FormInput,
+	PhoneContainer,
+	SignUpButton,
+	PasswordContainer,
+	Image
 		
 	} from './SignupElements';
 
@@ -18,39 +21,138 @@ const SignUp = () => {
   return (
 	<>
 		<Container>
-			<FormSection>
-				<LeftData>
-					<FormHead>Create Your Account</FormHead>
-					<Form>
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
-							<Form.Control type="text" placeholder="Enter your Name" />
-						</Form.Group>
-
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
-							<Form.Control type="email" placeholder="Enter email" />
-						</Form.Group>
-
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicEmail">
-							<Form.Control type="date"  />
-						</Form.Group>
-
-						<Form.Group className="mb-3 col-lg-9" controlId="formBasicPassword">
-							<Form.Control type="password" placeholder="Password" />
-						</Form.Group>
-						
-						<Button variant="primary" className="ml-5 col-lg-6" style={{background:"rgb(67,185,127)"}} type="submit">
-							Submit
-						</Button>
-					</Form>
-					<FormP>Already have an Account <span><NavLink to="/signin">SignIn</NavLink></span></FormP>
-				</LeftData>
-				<RightData>
-					<div className="sign_img mt-3">
-						<img src={Image} style={{maxWidth:400}} alt=""/>
-					</div>
-				</RightData>
-			</FormSection>
-		</Container>
+      <FormContainer>
+        <LeftContainer>
+          <LeftHeading>Welcome!</LeftHeading>
+          <LeftPara>
+            Sign up to be a part of the community, because UMatter.
+          </LeftPara>
+          <Image src={Img} alt="Sign Up Graphic"/>
+        </LeftContainer>
+        <SignUpContainer>
+          <SignUpForm >
+            <SignUph1>Create account</SignUph1>
+            <FormInput
+            //   onChange={(e) => setData({ ...data, name: e.target.value })}
+              id="FullNameInput"
+              type="text"
+              placeholder="Full Name"
+            ></FormInput>
+            <FormInput
+            //   onChange={(e) => setData({ ...data, username: e.target.value })}
+              id="usernameInput"
+              type="text"
+              placeholder="Username"
+            ></FormInput>
+            <FormInput
+            //   onChange={(e) => setData({ ...data, email: e.target.value })}
+              id="emailInput"
+              type="email"
+              placeholder="Email"
+              require
+            ></FormInput>
+            <PhoneContainer>
+              <FormInput
+                // onChange={(e) =>
+                //   setData({ ...data, countryCode: e.target.value })
+                // }
+                id="CountryCode"
+                type="text"
+                placeholder="+XXX"
+              ></FormInput>
+              <FormInput
+                // onChange={(e) =>
+                //   setData({ ...data, contactNumber: e.target.value })
+                // }
+                id="ContactNumber"
+                type="text"
+                placeholder="Phone Number"
+                maxLength={10}
+              ></FormInput>
+            </PhoneContainer>
+            <PasswordContainer>
+              <FormInput
+                // onChange={(e) => setData({ ...data, password: e.target.value })}
+                id="PasswordInput"
+                // type={passwordType}
+                placeholder="Password"
+              />
+              {/* {passwordType === "password" ? (
+                <i
+                  className="fa-solid fa-eye-slash"
+                  id="eye"
+                  style={{
+                    position: "absolute",
+                    top: "35%",
+                    right: "18%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleclick}
+                ></i>
+              ) : (
+                <i
+                  className="fa-solid fa-eye"
+                  id="eye"
+                  style={{
+                    position: "absolute",
+                    top: "35%",
+                    right: "18%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleclick}
+                ></i> */}
+              {/* )} */}
+            </PasswordContainer>
+            <PasswordContainer>
+              <FormInput
+                // onChange={(e) =>
+                //   setData({ ...data, confirmpassword: e.target.value })
+                // }
+                id="PasswordInput"
+                // type={passwordType}
+                placeholder="Confirm Password"
+              />
+              {/* {passwordType === "password" ? (
+                <i
+                  className="fa-solid fa-eye-slash"
+                  id="eye"
+                  style={{
+                    position: "absolute",
+                    top: "35%",
+                    right: "18%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleclick}
+                ></i>
+              ) : (
+                <i
+                  className="fa-solid fa-eye"
+                  id="eye"
+                  style={{
+                    position: "absolute",
+                    top: "35%",
+                    right: "18%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handleclick}
+                ></i>
+              )} */}
+            </PasswordContainer>
+            {/* <Captcha message={setTrackState} trackState={trackState}/> */}
+            <SignUpButton 
+              type="submit"
+            //   disabled={!trackState}
+            //   style={{cursor:`${trackState ? "pointer": "not-allowed"}`}}
+            >Sign Up</SignUpButton>
+			{/* {invalid && showInvalid()} */}
+          </SignUpForm>
+        </SignUpContainer>
+      </FormContainer>
+    </Container>
 	</>
   )
 }
