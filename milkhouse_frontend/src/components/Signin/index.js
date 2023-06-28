@@ -1,88 +1,132 @@
-import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Image from '../../image/signin.png';
-import { useNavigate } from 'react-router-dom'
-import { NavLink } from 'react-router-dom';
-
-
+import React, { useState } from "react";
+import Img from "../../image/signin.png";
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {
-	Container,
-	FormHead,
-	FormSection,
-	LeftData,
-	RightData,
-	FormP
-	
-} from './SigninElements';
-
+  NewContainer,
+  FormContainer,
+  SignInContainer,
+  RightContainer,
+  SignInForm,
+  SignInButton,
+  RightHeading,
+  RightPara,
+  SignInInput,
+  SignInLabel,
+  SignInh1,
+  CheckBox,
+  RememberMe,
+  ForgotPassword,
+  PasswordContainer,
+  Image
+} from "./SigninElements";
 
 const SignIn = () => {
+  const history = useNavigate();
 
-    const history = useNavigate();
+  const [inpval, setInpval] = useState({
+    email: "",
+    password: "",
+  });
 
-    const [inpval, setInpval] = useState({
-        email: "",
-        password: ""
-    })
+  const [data, setData] = useState([]);
+  console.log(inpval);
 
-    const [data, setData] = useState([]);
-    console.log(inpval);
+  const getdata = (e) => {
+    // console.log(e.target.value);
 
-    const getdata = (e) => {
-        // console.log(e.target.value);
+    const { value, name } = e.target;
+    // console.log(value,name);
 
+    setInpval(() => {
+      return {
+        ...inpval,
+        [name]: value,
+      };
+    });
+  };
+  const addData = (e) => {
+    e.preventDefault();
 
-        const { value, name } = e.target;
-        // console.log(value,name);
+    const getuserArr = localStorage.getItem("useryoutube");
+    console.log(getuserArr);
 
+    const { email, password } = inpval;
+  };
 
-        setInpval(() => {
-            return {
-                ...inpval,
-                [name]: value
-            }
-        })
+  return (
+    <>
+      <NewContainer>
+        <FormContainer>
+          <SignInContainer>
+            <SignInForm>
+              <SignInh1>Sign in</SignInh1>
+              <SignInLabel htmlFor="email">Email</SignInLabel>
+              <SignInInput
+                // onChange={(e) => setData({ ...data, email: e.target.value })}
+                type="email"
+                placeholder="you@example.com"
+                // id="email"
+                require
+              />
+              <SignInLabel htmlFor="password">Password</SignInLabel>
+              <PasswordContainer>
+                <SignInInput
+                //   onChange={(e) =>
+                //     setData({ ...data, password: e.target.value })
+                //   }
+                  placeholder="at least 8 characters"
+                  require
+                />
+                {/* {passwordType === "password" ? (
+                  <i
+                    className="fa-solid fa-eye-slash"
+                    id="eye"
+                    style={{
+                      position: "absolute",
+                      top: "35%",
+                      right: "18%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                    }}
+                  ></i>
+                ) : (
+                  <i
+                    className="fa-solid fa-eye"
+                    id="eye"
+                    style={{
+                      position: "absolute",
+                      top: "35%",
+                      right: "18%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleclick}
+                  ></i>
+                )} */}
+              </PasswordContainer>
+              <RememberMe>
+                <CheckBox type="checkbox" id="rememberMe" />
+                <label htmlFor="rememberMe">Remember me</label>
+              </RememberMe>
 
-    }
-	const addData = (e) => {
-        e.preventDefault();
-
-        const getuserArr = localStorage.getItem("useryoutube");
-        console.log(getuserArr);
-
-        const { email, password } = inpval;
-    }
-	
-	return (
-		<>
-			<Container>
-			<FormSection>
-				<LeftData>
-					<FormHead>Login</FormHead>
-                    <Form>	
-						<Form.Group className="mb-3 " controlId="formBasicEmail">
-                        <label  class="form-label">Email address</label>
-							<Form.Control type="email" name='email' onChange={getdata} placeholder="Enter email" />
-						</Form.Group>
-
-						<Form.Group className="mb-3 " controlId="formBasicPassword">
-                        <label class="form-label">Password</label>
-							<Form.Control type="password" name='password' onChange={getdata} placeholder="Password" />
-						</Form.Group>
-						<button class="btn btn-primary" type="button">Submit</button>
-					</Form>
-                    <FormP>Don't have an Account?<span><NavLink to="/signup">Register Now</NavLink></span></FormP>
-				</LeftData>
-				<RightData>
-					<div className="sign_img mt-3">
-						<img src={Image} style={{maxWidth:400}} alt=""/>
-					</div>
-				</RightData>
-			</FormSection>
-		</Container>
-		</>
-	);
+              <SignInButton type="submit">Sign In</SignInButton>
+              {/* {invalid && showInvalid()} */}
+              <NavLink to="/signin/forgotPassword">
+                <ForgotPassword>Forgot password?</ForgotPassword>
+              </NavLink>
+            </SignInForm>
+          </SignInContainer>
+          <RightContainer>
+            <RightHeading>Hello, Friend!</RightHeading>
+            <RightPara>Enter your details and let's get started.</RightPara>
+            <Image src={Img} alt="Image Description" />
+          </RightContainer>
+        </FormContainer>
+      </NewContainer>
+    </>
+  );
 };
 
 export default SignIn;
