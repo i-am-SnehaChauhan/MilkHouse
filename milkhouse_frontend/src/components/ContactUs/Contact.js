@@ -1,5 +1,8 @@
 import React from 'react';
 import './Contact.css';
+import phone from '../../image/call.png';
+import mail from '../../image/mail.png';
+import location from '../../image/location.png';
 
 const Contact = () => {
   return (
@@ -11,54 +14,35 @@ const Contact = () => {
             <ul className="info">
               <li>
                 <span>
-                  <img src="/images/location.png" alt="Location" />
+                  <img src={location} alt="Location" />
                 </span>
                 <span>
-                  184 Ippokratous Street
+                Indira Gandhi Delhi Technical University,
+
+
                   <br />
-                  Athens, Gr
+                  Kashmere Gate,New Delhi,
                   <br />
-                  11472
+                  110006
                 </span>
               </li>
               <li>
                 <span>
-                  <img src="/images/mail.png" alt="Email" />
+                  <img src={mail} alt="Email" />
                 </span>
                 <span>
-                  <a href="mailto:nassosanagn@gmail.com">nassosanagn@gmail.com</a>
+                  <a href="mailto:nassosanagn@gmail.com">agrotechiam354@gmail.com</a>
                 </span>
               </li>
               <li>
                 <span>
-                  <img src="/images/call.png" alt="Phone" />
+                  <img src={phone} alt="Phone" />
                 </span>
-                <span>702-279-3488</span>
+                <span>**********</span>
               </li>
             </ul>
           </div>
-          <ul className="sci">
-            <li>
-              <a href="https://www.facebook.com/nassosanagn/">
-                <img src="/images/1.png" alt="Facebook" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/nassosanagn_/?hl=el">
-                <img src="/images/3.png" alt="Instagram" />
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/nassosanagn">
-                <img src="/images/2.png" alt="Twitter" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/nassos-anagnostopoulos-2b9631196/">
-                <img src="/images/5.png" alt="LinkedIn" />
-              </a>
-            </li>
-          </ul>
+          
         </div>
         <div className="contactForm">
           <h2>Send a Message</h2>
