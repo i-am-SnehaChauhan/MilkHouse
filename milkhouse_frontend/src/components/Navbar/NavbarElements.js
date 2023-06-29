@@ -50,12 +50,12 @@ export const NavLogo = styled(LinkR)`
 		mask-image: linear-gradient(
 			-75deg,
 			rgba(0, 0, 0, 0.6) 30%,
-			#000 50%,
+			#01bf71 50%,
 			rgba(0, 0, 0, 0.6) 70%
 		);
 		mask-size: 200%;
 		animation: shine 3s infinite;
-		color: #000000;
+		color: #01bf71;
 	}
 
 	@keyframes shine {
@@ -151,7 +151,7 @@ export const NavLinks = styled(LinkS)`
     }
 
     &:hover {
-        color: #28b86b;
+        color: #01bf71;
     }
 
     &.active {
