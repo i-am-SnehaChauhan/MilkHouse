@@ -1,170 +1,4 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
-
-////////////// OLD UI ELEMENTS ///////////////////////// 
-
-// export const Container = styled.div`
-
-// bottom: 0;
-// left: 0;
-// right: 0;
-// top: 0;
-// z-index: 0;
-// overflow: hidden;
-// background:var(--bg-clr);
-// `;
-
-// export const FormWrap = styled.div`
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   margin:50px 0;
-
-//   @media screen and (max-width: 400px) {
-//     height: 100%; /* Change to a percentage-based height */
-//   }
-// `;
-
-// export const Icons = styled(Link)`
-//  margin-left: 35px;
-//  margin-top: 32px;
-//  text-decoration: none;
-//  color: #fff;
-//  font-weight: 700;
-//  font-size: 60px;
-
-//  @media screen and (max-width: 480px) {
-//     margin-left: 16px;
-//     margin-top: 8px;
-//  }
-// `;
-
-// export const FormContent = styled.div`
-// height: 100%;
-// display:flex;
-// flex-direction: column;
-// justify-content: center;
-
-//  @media screen and (max-width: 480px) {
-//     padding: 10px;
-//  }
-// `;
-// export const FormLabel = styled.label`
-//  margin-bottom: 8px;
-//  color: #fff;
-//  font-size: 1.1rem;
-//  font-weight: 600;
-//  cursor:pointer;
-// `;
-// export const Form = styled.form`
-//   background: linear-gradient(45deg, black,  rgb(1, 147, 86) , rgb(10, 201, 122));
-//   text-align:center;
-//   max-height:680px;
-//   max-width: 500px;
-//   height: 100%; /* Change to 100% to fill the available height */
-//   width: 100%;
-//   z-index: 4;
-//   margin:auto;
-//   margin-top:40px;
-//   border-radius: 10px;
-//   padding:20px;
-//   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.9);
-
-//   @media only screen and (max-width:550px){
-//     width:85%;
-//   }
-// `;
-
-// export const FormH1 = styled.label`
-//  margin-bottom: 10px;
-//  color: #fff;
-//  font-family:'League Spartan';
-//  font-size: 50px;
-//  font-weight: 400;
-//  text-align: center;
-
-// @media only screen and (max-width:550px){
-//   font-size:40px;
-// }
-//   @media only screen and (max-width:440px){
-//   font-size:30px;
-// }
-
-// `;
-
-// export const FormInput = styled.input`
-
-//   font-family: 'Poppins';
-//   margin-bottom: 10px; /* Increase margin-bottom for spacing */
-//   padding: 10px;
-//   border: none;
-//   border-radius: 10px;
-//   font-size: 18px;
-//   border: none;
-//   outline: none;
-//   width: 100%; /* Add width property to make the input box fill the available width */
-
-//   &:nth-of-type(4){
-//     width:20%;
-//     float:left;
-//   }
-//   &:nth-of-type(5){
-//     width:75%;
-//     float:right;
-//   }
-
-//   @media only screen and (max-width:440px){
-//     &:nth-of-type(4){
-//       font-size:14px;
-//     }
-//   }
-//   @media only screen and (max-width:400px){
-//     font-size:15px;
-//   }
-
-// `;
-
-// export const FormButton = styled.button`
-//   margin-top: 40px; /* Increase the margin-top value for spacing */
-//   background: #01bf71;
-//   padding: 16px 0;
-//   border: none;
-//   border-radius: 12px;
-//   color: #fff;
-//   font-size: 20px;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center; /* Center the button horizontally */
-//   align-items: center; /* Center the button vertically */
-//   width: 100%; /* Make the button fill the available width */
-//   box-sizing: border-box; /* Include padding within the button's width */
-//   &:hover {
-//     opacity: 0.8;
-//     transition: 0.25s ease;
-//   }
-
-// font-family:'Poppins';
-// margin-bottom: 0px;
-// padding: 10px;
-// border: none;
-// border-radius: 10px;
-// font-size:18px;
-// border:none;
-// outline:none;
-
-// `;
-
-// export const Text = styled.span`
-//  text-align: center;
-
-//  margin-top: 15px;
-
-//  margin-top: 50px;
-
-//  color: #fff;
-//  font-size: 14px;
-// `;
 
 ///////////////////////////// NEW UI ELEMENTS ////////////////////
 
@@ -318,7 +152,7 @@ export const SignUpButton = styled.button`
   font-weight: 400;
   font-size: 1rem;
   border-radius: 50px;
-  background: #01bf71;
+  background-color: ${props => props.disabled ? 'gray' : '#01bf71'};
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
@@ -334,6 +168,7 @@ export const SignUpButton = styled.button`
     transform: scale(0.95);
   }
 `;
+
 
 export const Image = styled.img`
   height: auto;
@@ -351,4 +186,10 @@ export const Image = styled.img`
       transform: scale(1);
     }
   }
+`;
+
+export const Error = styled.b`
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #ff3300;
 `;

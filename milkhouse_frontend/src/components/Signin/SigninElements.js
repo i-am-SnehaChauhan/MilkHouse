@@ -195,7 +195,7 @@ export const SignInButton = styled.button`
   font-weight: 400;
   font-size: 1rem;
   border-radius: 50px;
-  background: #01bf71;
+  background-color: ${props => props.disabled ? 'gray' : '#01bf71'};
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
@@ -337,4 +337,9 @@ export const Image = styled.img`
       transform: translateY(0);
     }
   }
+`;
+export const Error = styled.b`
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #ff3300;
 `;
