@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Nav, NavbarContainer, NavLogo, MobileIcon } from './NavbarElements.js';
 import { FaBars } from 'react-icons/fa';
 import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements.js';
@@ -14,6 +14,24 @@ const glassStyle = {
 
 
 const Navbar = ({ toggle }) => {
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement(
+  //     {
+  //       pageLanguage: "en",
+  //       autoDisplay: false
+  //     },
+  //     "google_translate_element"
+  //   );
+  // };
+  // useEffect(() => {
+  //   var addScript = document.createElement("script");
+  //   addScript.setAttribute(
+  //     "src",
+  //     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  //   );
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
   const [navbarBg] = useState(glassStyle);
 
   const navigate = useNavigate();
@@ -26,7 +44,7 @@ const Navbar = ({ toggle }) => {
     <>
       <Nav style={navbarBg}>
         <NavbarContainer>
-          <NavLogo to="/">Milkhouse</NavLogo>
+          <NavLogo to="/">MilkHouse</NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
@@ -49,7 +67,9 @@ const Navbar = ({ toggle }) => {
           <NavBtn>
             <NavBtnLink to="/signin">Sign In</NavBtnLink>
             <NavBtnLink to="/signup">Sign Up</NavBtnLink>
+            {/* <div id="google_translate_element"></div> */}
           </NavBtn>
+         
         </NavbarContainer>
       </Nav>
     </>

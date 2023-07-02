@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import './App.css';
 import Home from './pages';
 import SignupPage from './pages/signup';
@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
+  
   return (
     <Router>
       <Routes>
