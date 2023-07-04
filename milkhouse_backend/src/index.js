@@ -17,13 +17,13 @@ const password = process.env.MONGO_DB_PASSWORD;
 mongoose.connect(
     `mongodb+srv://${user}:${password}@milkhouse.wtgwlin.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true, 
-      useUnifiedTopology: true   
+      useUnifiedTopology: true,
     }
 ).then(() => {
     console.log('Connected to database!');
     }
-).catch(() => {
-    console.log('Connection failed!');
+).catch((err) => {
+    console.log('Connection failed!', err);
     }
 );
 
@@ -31,8 +31,9 @@ mongoose.connect(
 
 app.use(bodyParser.json());
 
+app.use('/api', userRoutes);
 
 app.listen(process.env.PORT, () => {
-    console.log('Example app listening on ' + process.env.PORT);
+    console.log('App listening on ' + process.env.PORT);
     }
 );
