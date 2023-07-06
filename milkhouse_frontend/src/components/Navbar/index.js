@@ -40,6 +40,11 @@ const Navbar = ({ toggle }) => {
     navigate("/contact");
   };
 
+  const handleDonationClick = () => {
+    navigate("/donation");
+  };
+
+
   return (
     <>
       <Nav style={navbarBg}>
@@ -50,7 +55,7 @@ const Navbar = ({ toggle }) => {
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to="about">About</NavLinks>
+              <NavLinks to="/about">About</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="features">Services</NavLinks>
@@ -62,6 +67,11 @@ const Navbar = ({ toggle }) => {
             </NavItem>
             <NavItem>
               <NavLinks to="Feedback">Feedback</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="#" onClick={handleDonationClick}>
+                Donation
+              </NavLinks>
             </NavItem>
           </NavMenu>
           <NavBtn>
