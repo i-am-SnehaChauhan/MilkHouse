@@ -1,63 +1,53 @@
-import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { TbSearch } from "react-icons/tb";
-import { CgShoppingCart } from "react-icons/cg";
-import { AiOutlineHeart } from "react-icons/ai";
-import "./Header.css";
-// import Search from "./Search/Search";
-// import { Context } from "../../utils/context";
-// import Cart from "../Cart/Cart";
+import {AppBar, Toolbar, Typography, Button, styled, Box} from '@mui/material';
+import '@fontsource/roboto/300.css';
+import Search from './Search';
+import CustomButtons from './CustomButtons';
+
+const StyledAppBar = styled(AppBar)({
+    background: 'linear-gradient(45deg, #000000 30%, #FF8E53 90%)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    height: '60px',
+
+});
+
+const Component = styled('Box')`
+    margin-left: 8%;
+    line-height: 0;
+
+`
+const SubHeading = styled('Typography')`
+    font-size: 10px;
+    font-style: italic;
+    margin-left: 20px;
+`
+const ButtonWrapper = styled('Box')`
+    margin: 0 2% 0 auto;
+`
 
 const Header = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [searchModal, setSearchModal] = useState(false);
-    const navigate = useNavigate();
-    const handleScroll = () => {
-        const offset = window.scrollY;
-        if (offset > 200) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-    }, []);
-
-    // const { cartCount, showCart, setShowCart } = useContext(Context);
-
     return (
-        <>
-            <header
-                className={`main-header ${scrolled ? "sticky-header" : ""}`}
-            >
-                <div className="header-content">
-                    <ul className="left">
-                        <li onClick={() => navigate("/")}>Home</li>
-                        <li onClick={() => navigate("/about")}>About</li>
-                        <li>Categories</li>
-                    </ul>
-                    <div className="center" onClick={() => navigate("/dairy")}>
-                        MILKHOUSE
-                    </div>
-                    <div className="right">
-                        <TbSearch onClick={() => setSearchModal(true)} />
-                        <AiOutlineHeart />
-                        <span
-                            className="cart-icon"
-                            // onClick={() => setShowCart(true)}
-                        >
-                            <CgShoppingCart />
-                            {/* {!!cartCount && <span>{cartCount}</span>} */}
-                        </span>
-                    </div>
-                </div>
-            </header>
-            {/* {searchModal && <Search setSearchModal={setSearchModal} />}
-            {showCart && <Cart />} */}
-        </>
-    );
-};
+        <StyledAppBar position="static">
+            <Toolbar>
+                <Component>
+                   <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} fontFamily={'Roboto'}>
+                        MilkHouse
+                   </Typography>
+                   <Box>
+                        <SubHeading>Live&nbsp;  
+                            <Box component="span" style={{color: '#FFE500'}}>Healthy&nbsp; </Box> 
+                            Life
+                        </SubHeading>
+                   </Box>
+                </Component>
+
+                <Search />
+
+                <ButtonWrapper>
+                    <CustomButtons />
+                </ButtonWrapper>
+            </Toolbar>
+        </StyledAppBar>
+    )
+}
 
 export default Header;
