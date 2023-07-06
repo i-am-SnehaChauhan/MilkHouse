@@ -1,11 +1,18 @@
 import Slider from "react-slick";
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: #C9D2FE;
+`;
 export const Container = styled.div`
     display: flex;
+    height: 350px;
     justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    // margin-top: 50px;
+    // margin-bottom: 50px;
+    background-color: #C9D2FE;
 `;
 
 export const ContainerSlider = styled.div`
@@ -24,7 +31,7 @@ export const AvatarComponent = styled.div`
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: gray;
+    color: black;
    
 `
 

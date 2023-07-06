@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
-    height: 90%;
-    background-color: #D1CBC3;
+    height: 100%;
+    background-color: #FFD557;
     padding: 5rem;
+    margin-bottom: 0rem;
 `;
 
 export const Containertitle = styled.h1`
