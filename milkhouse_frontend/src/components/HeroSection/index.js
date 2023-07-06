@@ -41,7 +41,7 @@ const HeroSection = () => {
                 Sign up for a new account today.
             </HeroP>
             <HeroBtnWrapper>
-                <Button as={Link} to="/signup" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
+                <Button as={Link} to="/dairy" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
                     Get Started {hover ? <ArrowForward /> : <ArrowRight />}
                 </Button>
             </HeroBtnWrapper>
