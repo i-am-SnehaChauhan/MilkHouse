@@ -312,6 +312,16 @@ export const ForgotPassword = styled.p`
   color: #1e1e1e;
 `;
 
+export const NewAccount = styled.p`
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #01bf71;
+`;
+
+
 export const PasswordContainer = styled.div`
   position: relative;
   display: flex;

@@ -2,13 +2,14 @@ import {AppBar, Toolbar, Typography, Button, styled, Box} from '@mui/material';
 import '@fontsource/roboto/300.css';
 import Search from './Search';
 import CustomButtons from './CustomButtons';
+import { useNavigate } from 'react-router-dom';
 
-const StyledAppBar = styled(AppBar)({
-    background: 'linear-gradient(45deg, #000000 30%, #FF8E53 90%)',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    height: '60px',
 
-});
+const StyledAppBar = styled(AppBar)`
+  background: linear-gradient(45deg, #000000 30%, #FF8E53 90%);
+  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+  height: 60px;
+`;
 
 const Component = styled('Box')`
     margin-left: 8%;
@@ -25,6 +26,13 @@ const ButtonWrapper = styled('Box')`
 `
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
+    const loginPage = () => {
+        navigate('/signin');
+    }
+
     return (
         <StyledAppBar position="static">
             <Toolbar>
@@ -42,8 +50,8 @@ const Header = () => {
 
                 <Search />
 
-                <ButtonWrapper>
-                    <CustomButtons />
+                <ButtonWrapper onClick={loginPage}>
+                    <CustomButtons  />
                 </ButtonWrapper>
             </Toolbar>
         </StyledAppBar>
