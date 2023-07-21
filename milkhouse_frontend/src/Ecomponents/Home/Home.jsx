@@ -10,10 +10,11 @@ const Component = styled(Box)`
 const Home = () => {
   return (
     <>
-        <Navbar />
-        <Component>
+         <Component>
             <Banner />
         </Component> 
+        <Navbar />
+        
         
         
        

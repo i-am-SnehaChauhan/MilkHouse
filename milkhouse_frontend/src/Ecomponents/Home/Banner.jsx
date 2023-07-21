@@ -6,8 +6,10 @@ import 'react-multi-carousel/lib/styles.css';
 
 const Image = styled('img')({
     width: '100%',
-    height: '300px',
-    objectFit: 'cover'
+    height: '370px',
+    objectFit: 'cover',
+    transform: 'scale(1)', // Default Zoom out the image by 10%
+    transition: 'transform 0.3s ease'
 })
 
 
