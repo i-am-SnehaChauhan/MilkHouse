@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Ecomponents/Header/Header'
 import Home from '../Ecomponents/Home/Home'
-
+import DataProvider from '../Econtext/ContextProvider'
 import {Box} from '@mui/material'
 const dairy = () => {
   return (
