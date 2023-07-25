@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Img from "../../image/signup.png";
+import { NavLink } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {auth} from "../../firebase";
+import { auth } from "../../firebase";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -19,10 +21,32 @@ import {
   PasswordContainer,
   Image,
   Error,
+  RadioContainer,
+  RadioInput,
+  RadioLabel,
 } from "./SignupElements";
 
 const SignUp = () => {
   const Navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const handlePasswordToggle = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+  const handleConfirmPasswordToggle = () => {
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
+  };
+  const paragraphStyles = {
+    fontFamily: "Poppins",
+    fontStyle: "normal",
+    fontWeight: 600,
+    fontSize: "1rem",
+    lineHeight: "2rem",
+    color: "#01bf71",
+  };
   const [data, setData] = useState({
     name: "",
     username: "",
@@ -37,26 +61,33 @@ const SignUp = () => {
   const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false);
 
   const handleSubmission = () => {
-    if(!data.name || !data.username || !data.email || !data.contactNumber || !data.password || !data.confirmpassword){
+    if (
+      !data.name ||
+      !data.username ||
+      !data.email ||
+      !data.contactNumber ||
+      !data.password ||
+      !data.confirmpassword
+    ) {
       setErrMessage("Please fill all the fields");
       return;
     }
-    if(data.password !== data.confirmpassword){
+    if (data.password !== data.confirmpassword) {
       setErrMessage("Passwords do not match");
       return;
     }
     setErrMessage("");
 
     setSubmitBtnDisabled(true);
-    createUserWithEmailAndPassword(auth,data.email, data.password)
-      .then(async(userCredential) => {
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
         setSubmitBtnDisabled(false);
         await updateProfile(user, {
           displayName: data.name,
-        })
+        });
         Navigate("/signin");
       })
       .catch((error) => {
@@ -82,6 +113,27 @@ const SignUp = () => {
           <SignUpContainer>
             <SignUpForm>
               <SignUph1>Create account</SignUph1>
+              <RadioContainer>
+                <RadioInput
+                  type="radio"
+                  id="user"
+                  name="role"
+                  value="user"
+                  checked={!isAdmin}
+                  onChange={() => setIsAdmin(false)}
+                />
+                <RadioLabel htmlFor="user">User</RadioLabel>
+
+                <RadioInput
+                  type="radio"
+                  id="admin"
+                  name="role"
+                  value="admin"
+                  checked={isAdmin}
+                  onChange={() => setIsAdmin(true)}
+                />
+                <RadioLabel htmlFor="admin">Admin</RadioLabel>
+              </RadioContainer>
               <FormInput
                 onChange={(e) => setData({ ...data, name: e.target.value })}
                 id="FullNameInput"
@@ -99,7 +151,6 @@ const SignUp = () => {
                 id="emailInput"
                 type="email"
                 placeholder="Email"
-                required
               ></FormInput>
 
               <PhoneContainer>
@@ -126,37 +177,24 @@ const SignUp = () => {
                   onChange={(e) =>
                     setData({ ...data, password: e.target.value })
                   }
+                  type={showPassword ? "text" : "password"}
                   id="PasswordInput"
-                  // type={passwordType}
                   placeholder="Password"
+                  required
                 />
-                {/* {passwordType === "password" ? (
                 <i
-                  className="fa-solid fa-eye-slash"
-                  id="eye"
+                  className="password-toggle-icon"
                   style={{
                     position: "absolute",
-                    top: "35%",
-                    right: "18%",
+                    top: "37%",
+                    right: "16%",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
                   }}
-                  onClick={handleclick}
-                ></i>
-              ) : (
-                <i
-                  className="fa-solid fa-eye"
-                  id="eye"
-                  style={{
-                    position: "absolute",
-                    top: "35%",
-                    right: "18%",
-                    transform: "translateY(-50%)",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleclick}
-                ></i> */}
-                {/* )} */}
+                  onClick={handlePasswordToggle}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </i>
               </PasswordContainer>
               <PasswordContainer>
                 <FormInput
@@ -164,36 +202,22 @@ const SignUp = () => {
                     setData({ ...data, confirmpassword: e.target.value })
                   }
                   id="PasswordInput"
-                  // type={passwordType}
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm Password"
                 />
-                {/* {passwordType === "password" ? (
                 <i
-                  className="fa-solid fa-eye-slash"
-                  id="eye"
+                  className="password-toggle-icon"
                   style={{
                     position: "absolute",
-                    top: "35%",
-                    right: "18%",
+                    top: "37%",
+                    right: "16%",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
                   }}
-                  onClick={handleclick}
-                ></i>
-              ) : (
-                <i
-                  className="fa-solid fa-eye"
-                  id="eye"
-                  style={{
-                    position: "absolute",
-                    top: "35%",
-                    right: "18%",
-                    transform: "translateY(-50%)",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleclick}
-                ></i>
-              )} */}
+                  onClick={handleConfirmPasswordToggle}
+                >
+                  {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                </i>
               </PasswordContainer>
               {/* <Captcha message={setTrackState} trackState={trackState}/> */}
               <SignUpButton
@@ -204,6 +228,12 @@ const SignUp = () => {
               >
                 Sign Up
               </SignUpButton>
+
+              <NavLink to="/signin">
+                <p style={paragraphStyles}>
+                  Already having an account? Login Here
+                </p>
+              </NavLink>
               <Error>{errMessage}</Error>
             </SignUpForm>
           </SignUpContainer>

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Img from "../../image/signin.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import {auth} from "../../firebase";
+import { auth } from "../../firebase";
 
 import {
   NewContainer,
@@ -24,10 +25,18 @@ import {
   Image,
   Error,
   NewAccount,
+  RadioContainer,
+  RadioInput,
+  RadioLabel,
 } from "./SigninElements";
-
 const SignIn = () => {
   const Navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const handlePasswordToggle = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -37,15 +46,15 @@ const SignIn = () => {
   const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false);
 
   const handleSubmission = () => {
-    if(!data.email|| !data.password){
+    if (!data.email || !data.password) {
       setErrMessage("Please fill all the fields");
       return;
     }
     setErrMessage("");
 
     setSubmitBtnDisabled(true);
-    signInWithEmailAndPassword(auth,data.email, data.password)
-      .then(async(userCredential) => {
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
         setSubmitBtnDisabled(false);
@@ -59,7 +68,6 @@ const SignIn = () => {
     console.log(data);
   };
 
-
   return (
     <>
       <NewContainer>
@@ -67,7 +75,31 @@ const SignIn = () => {
           <SignInContainer>
             <SignInForm>
               <SignInh1>Sign in</SignInh1>
-              <SignInLabel htmlFor="email">Email</SignInLabel>
+              <RadioContainer>
+                <RadioInput
+                  type="radio"
+                  id="user"
+                  name="role"
+                  value="user"
+                  checked={!isAdmin}
+                  onChange={() => setIsAdmin(false)}
+                />
+                <RadioLabel htmlFor="user">User</RadioLabel>
+
+                <RadioInput
+                  type="radio"
+                  id="admin"
+                  name="role"
+                  value="admin"
+                  checked={isAdmin}
+                  onChange={() => setIsAdmin(true)}
+                />
+                <RadioLabel htmlFor="admin">Admin</RadioLabel>
+              </RadioContainer>
+              <SignInLabel htmlFor="email">
+                {" "}
+                {isAdmin ? "Admin Email" : "Email"}
+              </SignInLabel>
               <SignInInput
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 type="email"
@@ -81,42 +113,36 @@ const SignIn = () => {
                   onChange={(e) =>
                     setData({ ...data, password: e.target.value })
                   }
+                  type={showPassword ? "text" : "password"}
                   placeholder="at least 8 characters"
-                  require
+                  required
                 />
-                {/* {passwordType === "password" ? (
-                  <i
-                    className="fa-solid fa-eye-slash"
-                    id="eye"
-                    style={{
-                      position: "absolute",
-                      top: "35%",
-                      right: "18%",
-                      transform: "translateY(-50%)",
-                      cursor: "pointer",
-                    }}
-                  ></i>
-                ) : (
-                  <i
-                    className="fa-solid fa-eye"
-                    id="eye"
-                    style={{
-                      position: "absolute",
-                      top: "35%",
-                      right: "18%",
-                      transform: "translateY(-50%)",
-                      cursor: "pointer",
-                    }}
-                    onClick={handleclick}
-                  ></i>
-                )} */}
+                <i
+                  className="password-toggle-icon"
+                  style={{
+                    position: "absolute",
+                    top: "37%",
+                    right: "16%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handlePasswordToggle}
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </i>
               </PasswordContainer>
               <RememberMe>
                 <CheckBox type="checkbox" id="rememberMe" />
                 <label htmlFor="rememberMe">Remember me</label>
               </RememberMe>
 
-              <SignInButton disabled={submitBtnDisabled} type="submit" onClick={handleSubmission}>Sign In</SignInButton>
+              <SignInButton
+                disabled={submitBtnDisabled}
+                type="submit"
+                onClick={handleSubmission}
+              >
+                Sign In
+              </SignInButton>
               <Error>{errMessage}</Error>
               <NavLink to="/signin/forgotPassword">
                 <ForgotPassword>Forgot password?</ForgotPassword>

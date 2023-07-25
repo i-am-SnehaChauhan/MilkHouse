@@ -193,3 +193,19 @@ export const Error = styled.b`
   font-size: 0.8rem;
   color: #ff3300;
 `;
+export const RadioContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+export const RadioInput = styled.input`
+  margin-right: 5px;
+`;
+
+export const RadioLabel = styled.label`
+  margin-right: 20px;
+  margin-bottom:0px;
+  cursor: pointer;
+  font-size: 14px;
+`;
