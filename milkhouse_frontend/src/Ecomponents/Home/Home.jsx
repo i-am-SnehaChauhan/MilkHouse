@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Navbar from './Navbar';
 import Banner from './Banner';
+import Slide from './Slide';
 import { Box, styled } from '@mui/material';
 import {getProducts} from '../../redux/actions/productAction'
 import {useDispatch, useSelector} from 'react-redux';
@@ -11,7 +12,7 @@ const Component = styled(Box)`
 `
 const Home = () => {
    
-  useSelector((state) => state.getProducts);
+  const {products} = useSelector((state) => state.getProducts);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,6 +25,28 @@ const Home = () => {
             <Banner />
         </Component> 
         <Navbar />
+        <Component>
+        <Slide
+                    data={products} 
+                    title='Discounts for You'
+                    timer={false} 
+                />
+                <Slide
+                    data={products} 
+                    title='Suggested Items'
+                    timer={false} 
+                />
+                <Slide
+                    data={products} 
+                    title='Top Selection'
+                    timer={false} 
+                />
+                <Slide
+                    data={products} 
+                    title='Recommended Items'
+                    timer={false} 
+                />
+        </Component>
         
         
         

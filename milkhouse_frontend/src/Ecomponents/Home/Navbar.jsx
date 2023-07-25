@@ -17,7 +17,7 @@ const pulseAnimation = keyframes`
 const Component = styled(Box)`
   display: flex;
   justify-content: space-between;
-  margin: 40px 130px 0px 130px;
+  margin: 20px 130px 20px 130px;
 `;
 
 const Container = styled(Box)`
