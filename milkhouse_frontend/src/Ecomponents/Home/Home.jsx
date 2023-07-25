@@ -1,18 +1,19 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import Banner from './Banner';
 import Slide from './Slide';
 import { Box, styled } from '@mui/material';
-import {getProducts} from '../../redux/actions/productAction'
-import {useDispatch, useSelector} from 'react-redux';
+import { getProducts } from '../../redux/actions/productAction'
+import { useDispatch, useSelector } from 'react-redux';
+import MidSlide from './MidSlide';
 
 const Component = styled(Box)`
    padding: 7px 7px;
    background-color: #f2f2f2;
 `
 const Home = () => {
-   
-  const {products} = useSelector((state) => state.getProducts);
+
+  const { products } = useSelector((state) => state.getProducts);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,37 +22,37 @@ const Home = () => {
 
   return (
     <>
-         <Component>
-            <Banner />
-        </Component> 
-        <Navbar />
-        <Component>
+      <Component>
+        <Banner />
+      </Component>
+      <Navbar />
+      <Component>
+        <MidSlide
+          products={products}
+          title='Deal of the Day'
+          timer={true}
+        />
         <Slide
-                    data={products} 
-                    title='Discounts for You'
-                    timer={false} 
-                />
-                <Slide
-                    data={products} 
-                    title='Suggested Items'
-                    timer={false} 
-                />
-                <Slide
-                    data={products} 
-                    title='Top Selection'
-                    timer={false} 
-                />
-                <Slide
-                    data={products} 
-                    title='Recommended Items'
-                    timer={false} 
-                />
-        </Component>
-        
-        
-        
-       
-        
+          products={products}
+          title='Suggested Items'
+          timer={false}
+        />
+        <Slide
+          products={products}
+          title='Top Selection'
+          timer={false}
+        />
+        <Slide
+          products={products}
+          title='Recommended Items'
+          timer={false}
+        />
+      </Component>
+
+
+
+
+
     </>
   )
 }
