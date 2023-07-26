@@ -11,7 +11,7 @@ const DetailViewPage = () => {
   return (
     <>
       <Header />
-        <DetailView />
+      <DetailView />
     </>
   )
 }

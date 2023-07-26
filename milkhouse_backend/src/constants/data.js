@@ -1,25 +1,25 @@
 export const products = [
     { 
         id: 'product1',
-        url: 'https://rukminim1.flixcart.com/image/150/150/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70', 
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70',
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690381695/Products/Milk_A1-removebg-preview_eprvd8.png', 
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690381695/Products/Milk_A1-removebg-preview_eprvd8.png',
         title: {
-            shortTitle: 'Home & Kitchen',
-            longTitle: 'Pigeon FAVOURITE Electric Kettle  (1.5 L, Silver, Black)'
+            shortTitle: 'A1 Milk Delight', 
+            longTitle: 'Fresh and Creamy A1 Milk Delight'
         }, 
         price: {
-            mrp: 1195,
-            cost: 625,
+            mrp: 60,
+            cost: 40,
             discount: '47%'
         },
         quantity: 1,
-        description: 'This electric kettle from Pigeon will soon become a travelers best friend, a hostelite saviour and an answer to all the midnight cravings. With this handy appliance, you can boil water and use it to make instant noodles, packet soup, coffee and green tea.',
+        description: 'Enjoy the goodness of pure and creamy milk with Milk Delight. Sourced from the finest dairy farms, this milk is rich in essential nutrients and perfect for your daily consumption.',
         discount: 'Extra 10% Off', 
         tagline: 'Deal of the day' 
     },
     { 
         id: 'product2',
-        url: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70', 
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690382434/Products/images_acx3os.jpg', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70',
         title: {
             shortTitle: 'Sandwich Makers',
@@ -37,15 +37,15 @@ export const products = [
     },
     { 
         id: 'product3',
-        url: 'https://rukminim1.flixcart.com/image/150/150/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/c_scale,h_150,w_150/v1690381250/Products/A2_Milk_wubvpr.jpg', 
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/c_scale,w_567/v1690381250/Products/A2_Milk_wubvpr.jpg', 
         title: {
-            shortTitle: 'Fitness Gear',
-            longTitle: 'AJRO DEAL New Adjustable Single Resistance Tube (Multicolor) Resistance Tube  (Multicolor)'
+            shortTitle: 'A2 Milk Delight',
+            longTitle: 'Fresh and Creamy A1 Milk Delight'
         }, 
         price: {
-            mrp: 499,
-            cost: 166,
+            mrp: 80,
+            cost: 60,
             discount: '66%'
         },
         quantity: 1,
