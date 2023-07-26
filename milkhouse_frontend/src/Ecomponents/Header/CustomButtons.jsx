@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Button, styled } from '@mui/material'
 import { Typography } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled(Box)`
     display: flex;
@@ -36,9 +36,14 @@ const LoginButton = styled(Button)`
 
 
 const CustomButtons = () => {
+    const navigate = useNavigate();
+    const loginPage = () => {
+        navigate('/signin');
+    }
+    
   return (
     <Wrapper>
-        <LoginButton variant="contained">Login</LoginButton>
+        <LoginButton variant="contained" onClick={loginPage}>Login</LoginButton>
         <Typography style={{marginTop: 3, width: 135}}>Become a Seller</Typography>
         <Typography style={{marginTop: 3}}>More</Typography>
         <Container>

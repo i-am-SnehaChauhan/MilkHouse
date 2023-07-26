@@ -8,3 +8,15 @@ export const getProducts = async(request,response) => {
          response.status(500).json({message: "Error in Fetching Products" + error.message});     
      }
 }
+
+export const getProductById = async(request,response) => {
+   try {
+      const id = request.params.id;
+      const product = await Products.findOne({_id: id});
+      response.status(200).json(product);
+    }
+    catch (error) {
+      response.status(500).json({message: "Error in Fetching Product" + error.message});     
+    }
+}
+

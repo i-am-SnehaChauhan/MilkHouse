@@ -8,11 +8,11 @@ const Component = styled(Box)`
 `;
 
 const LeftComponent = styled(Box)`
-    width: 83%;
+    width: 80%;
 `;
 
 const RightComponent = styled(Box)`
-    width: 17%;
+    width: 20%;
     padding: 5px;
     margin-top: 10px;
     background: #FFFFFF;
@@ -32,7 +32,7 @@ const MidSlide = ({ products, title, timer }) => {
            />
         </LeftComponent>
         <RightComponent>
-            <img src={addUrl} alt="add" style={{width: '200px', height: 'auto'}}/>
+            <img src={addUrl} alt="add" style={{width: '230px', height: 'auto'}}/>
         </RightComponent>
 
     </Component>

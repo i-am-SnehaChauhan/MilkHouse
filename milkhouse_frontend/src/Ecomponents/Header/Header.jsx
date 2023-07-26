@@ -3,7 +3,7 @@ import '@fontsource/roboto/300.css';
 import Search from './Search';
 import CustomButtons from './CustomButtons';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 const StyledAppBar = styled(AppBar)`
   background: linear-gradient(45deg, #000000 30%, #FF8E53 90%);
@@ -11,32 +11,30 @@ const StyledAppBar = styled(AppBar)`
   height: 60px;
 `;
 
-const Component = styled('Box')`
+const Component = styled(Link)`
     margin-left: 8%;
     line-height: 0;
+    text-decoration: none;  
+    color: #FFFFFF;
 
 `
-const SubHeading = styled('Typography')`
+const SubHeading = styled(Typography)`
     font-size: 10px;
     font-style: italic;
     margin-left: 20px;
+    margin-top: 0px;
 `
-const ButtonWrapper = styled('Box')`
+const ButtonWrapper = styled(Box)`
     margin: 0 2% 0 auto;
+    text-decoration: none;
 `
 
 const Header = () => {
 
-    const navigate = useNavigate();
-
-    const loginPage = () => {
-        navigate('/signin');
-    }
-
     return (
         <StyledAppBar position="static">
             <Toolbar>
-                <Component>
+                <Component to="/dairy" >
                    <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} fontFamily={'Roboto'}>
                         MilkHouse
                    </Typography>
@@ -50,7 +48,7 @@ const Header = () => {
 
                 <Search />
 
-                <ButtonWrapper onClick={loginPage}>
+                <ButtonWrapper>
                     <CustomButtons  />
                 </ButtonWrapper>
             </Toolbar>
