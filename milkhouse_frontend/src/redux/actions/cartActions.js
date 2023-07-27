@@ -5,11 +5,11 @@ const URL = 'http://localhost:2000';
 
 export const addToCart = (id, quantity) => async(dispatch) => {
    try{
-      await axios.get(`${URL}/product/${id}`);
+     const {data} =  await axios.get(`${URL}/product/${id}`);
             dispatch({
                 type: actionTypes.ADD_TO_CART,
                 payload: {
-                    ...Data,
+                    ...data,
                     quantity
                 },
             });

@@ -12,7 +12,7 @@ const StyledAppBar = styled(AppBar)`
   height: 60px;
 `;
 
-const Component = styled(Link)`
+const Component = styled(Box)`
     margin-left: 8%;
     line-height: 0;
     text-decoration: none;  
@@ -31,6 +31,10 @@ const ButtonWrapper = styled('span')(({ theme }) => ({
         display: 'none'
     }
 }));
+
+const Heading = styled(Link)`
+   text-decoration: none;
+`
 
 const MenuButton = styled(IconButton)(({ theme }) => ({
     display: 'none',
@@ -72,8 +76,8 @@ const Header = () => {
                 <Drawer open={open} onClose={handleClose}>
                     {list()}
                 </Drawer>
-                <Component to="/dairy" >
-                   <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} fontFamily={'Roboto'}>
+                <Component >
+                   <Typography variant="h5" component="h1" sx={{ flexGrow: 3 }} fontFamily={'Roboto'} style={{marginBottom:'0px'}}>
                         MilkHouse
                    </Typography>
                    <Box>

@@ -32,6 +32,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
 const Container = styled(Link)(({ theme }) => ({
     display: 'flex',
     textDecoration: 'none',
+    color:'inherit',
     [theme.breakpoints.down('sm')]: {
         display: 'block'
     }
@@ -64,7 +65,7 @@ const CustomButtons = () => {
         <LoginButton variant="contained" onClick={loginPage}>Login</LoginButton>
         <Typography style={{marginTop: 7, width: 135, textAlign: 'center'}}>Become a Seller</Typography>
         <Typography style={{marginTop: 7}}>More</Typography>
-        <Container>
+        <Container to='/cart'>
             <ShoppingCartIcon />
             <Typography>Cart</Typography>
         </Container>
