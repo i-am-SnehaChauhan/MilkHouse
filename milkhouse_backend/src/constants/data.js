@@ -19,19 +19,19 @@ export const products = [
     },
     { 
         id: 'product2',
-        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690382434/Products/images_acx3os.jpg', 
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70',
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/b_rgb:ffffff00/v1690382434/Products/images_acx3os.jpg', 
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/b_rgb:ffffff00/v1690382434/Products/images_acx3os.jpg',
         title: {
-            shortTitle: 'Sandwich Makers',
-            longTitle: 'Flipkart SmartBuy Sandwich 01 Grill  (Black)'
+            shortTitle: 'Yogurt Bliss',
+            longTitle: 'Yogurt Bliss - Natural Greek Yogurt - 1kg'
         },
         price: {
-            mrp: 1499,
-            cost: 899,
+            mrp: 100,
+            cost: 80,
             discount: '40%'
         },
         quantity: 1,
-        description: 'This non-stick sandwich toaster .easy to use and very handy. Directly hold over flame to make tasty toasts and toasted sandwiches. Specially designed by keeping your needs in mind, the sandwich maker makes whatever youre doing simpler, smarter and better',
+        description: 'Indulge in the heavenly taste of Yogurt Bliss. Made from premium-quality Greek yogurt, this creamy delight is a healthy and delicious addition to your breakfast or snacks.',
         discount: 'From 99+5% Off', 
         tagline: 'Pestige, Nova & more' 
     },
@@ -55,73 +55,73 @@ export const products = [
     },
     { 
         id: 'product4',
-        url: 'https://rukminim1.flixcart.com/image/300/300/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70', 
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70',
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690463118/Products/portable-network-graphics-american-cheese-clip-art-grated-cheese-png-favpng-HAPePikCyY8NE4j79M597fRRh-removebg-preview_fi4db7.png', 
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690463118/Products/portable-network-graphics-american-cheese-clip-art-grated-cheese-png-favpng-HAPePikCyY8NE4j79M597fRRh-removebg-preview_fi4db7.png',
         title: {
-            shortTitle: 'Smart Watches',
-            longTitle: 'Molife Sense 500 Smartwatch  (Black Strap, Freesize)',
+            shortTitle: 'Cheese Delight',
+            longTitle: 'Cheese Delight - Gourmet Cheddar Cheese - 1kg',
         }, 
         price: {
-            mrp: 6999,
-            cost: 4049,
+            mrp: 150,
+            cost: 120,
             discount: '42%'
         },
         quantity: 1,
-        description: 'The Molife Sense 500, a brilliant smartwatch with a beautiful large display. Say hello to the infinity 1.7-inch display with 2.5D curved edges. Thanks to seamless Bluetooth 5.0 connectivity, you wont have to keep waiting. Bring a change to your outfit every day with changeable straps. A splash of color every day keeps the boredom away.',
+        description: 'Treat your taste buds with Cheese Delight, a gourmet cheddar cheese that adds a burst of flavor to your favorite dishes. Enjoy it on crackers, in sandwiches, or as a topping for your pasta.',
         discount: 'Grab Now', 
         tagline: 'Best Seller' 
     },
     { 
         id: 'product5',
-        url: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70',
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70', 
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462525/Products/Easy-Vanilla-IceCream-4-removebg-preview_zwi8sc.png',
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462525/Products/Easy-Vanilla-IceCream-4-removebg-preview_zwi8sc.png', 
         title: {
-            shortTitle: 'Trimmers, Dryers & more',
-            longTitle: 'Nova Professional NHP 8220 Hair Dryer  (1800 W, Multicolor)'
+            shortTitle: 'Ice Cream Dream',
+            longTitle: 'Ice Cream Dream - Premium Vanilla Ice Cream',
         }, 
         price: {
-            mrp: 1899,
-            cost: 1124,
+            mrp: 189,
+            cost: 140,
             discount: '40%'
         },
         quantity: 1,
-        description: '',
+        description: 'Dive into the delightful world of Ice Cream Dream. This premium vanilla ice cream is a delightful treat for hot summer days or any time you crave a sweet escape.',
         discount: 'From ₹499', 
         tagline: 'Kubra, Nova & more' 
     },
     { 
         id: 'product6',
-        url: 'https://rukminim1.flixcart.com/image/150/150/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70',
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70', 
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462773/Products/1000x1000__buttercupluxuryspread1000x1000-1635309947514_mjxkiv.jpg',
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462773/Products/1000x1000__buttercupluxuryspread1000x1000-1635309947514_mjxkiv.jpg', 
         title: {
-            shortTitle: 'Table Fans',
-            longTitle: 'Portable 300 mm Ultra High Speed 3 Blade Table Fan  (Black, Pack of 1)'
+            shortTitle: 'Butterlicious',
+            longTitle: 'Butterlicious - Pure Salted Butter',
         }, 
         price: {
-            mrp: 2250,
-            cost: 1199,
+            mrp: 250,
+            cost: 200,
             discount: '46%'
         },
         quantity: 1,
-        description: 'Table Fan. Perfect size fan for use on a table, desk or in an RV. Whisper quiet, powerful airflow and reliable operation in a compact 6" size. Two adjustable speeds to customize airflow: high or low settings. Tough break-resistant ABS plastic blades. ',
+        description: 'Spread the love with Butterlicious, the pure and rich salted butter that elevates the taste of your toasts, pancakes, and baked goodies. ',
         discount: 'Minimum 40% Off', 
         tagline: 'Top Selling' 
     },
     { 
         id: 'product7',
-        url: 'https://rukminim1.flixcart.com/image/150/150/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70',
-        detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70', 
+        url: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462997/Products/download_2_xbdos7.jpg',
+        detailUrl: 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690462997/Products/download_2_xbdos7.jpg', 
         title: {
-            shortTitle: 'Headphones',
-            longTitle: 'boAt Rockerz 235v2 with ASAP charging Version 5.0 Bluetooth Headset '
+            shortTitle: 'Fresh Paneer Delight',
+            longTitle: 'Fresh Paneer Delight - Pure Indian Cottage Cheese '
         }, 
         price: {
-            mrp: 2990,
-            cost: 1199,
+            mrp: 300,
+            cost: 250,
             discount: '59%'
         },
         quantity: 1,
-        description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
+        description: 'Experience the goodness of Fresh Paneer Delight, made from pure and wholesome cows milk. Soft, creamy, and rich in protein, it is perfect for making your favorite paneer dishes.',
         discount: 'Minimum 50% Off', 
         tagline: 'Grab Now!' 
     }
