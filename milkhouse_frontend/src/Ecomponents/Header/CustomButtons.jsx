@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled(Box)(({ theme }) => ({
-    margin: '0 1% 0 5%',
+    margin: '0 1% 0 auto',
     display: 'flex',
+    alignItems: 'center',
     '& > *': {
         marginRight: '40px !important',
         textDecoration: 'none',
