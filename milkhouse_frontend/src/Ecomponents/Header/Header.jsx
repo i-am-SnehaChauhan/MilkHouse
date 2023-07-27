@@ -50,7 +50,7 @@ const Header = () => {
         setOpen(true);
     }
     const list = () => (
-        <Box style={{ width: 250 }} onClick={handleClose}>
+        <Box style={{ width: 200}} onClick={handleClose}>
             <List>
                 <listItem button>
                     <CustomButtons />

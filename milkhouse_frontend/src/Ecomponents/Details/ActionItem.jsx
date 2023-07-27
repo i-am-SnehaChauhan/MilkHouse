@@ -21,7 +21,7 @@ const Image = styled('img')({
 });
 
 const StyledButton = styled(Button)(({theme}) => ({
-    width: '48.5%',
+    width: '45%',
     height:' 50px',
     borderRadius: '2',
     [theme.breakpoints.down('lg')]: {
