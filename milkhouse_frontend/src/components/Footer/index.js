@@ -1,70 +1,54 @@
 import React from 'react'
-import { FaFacebook, FaLinkedin, FaYoutube, FaInstagram, FaTwitter, FaGithub} from 'react-icons/fa';
-import { FooterContainer,FooterWrap, FooterLinksContainer,FooterLinksWrapper,FooterLinkItems, FooterLinkTitle,FooterText, FooterLink, SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, FooterForm, Footerinput} from './FooterElements';
+import { Container, Grid, Typography, Button, TextField } from '@mui/material';
+import { LocationOn, Phone, Mail, Twitter, Facebook, YouTube, LinkedIn, Email } from '@mui/icons-material';
+
 const Footer = () => {
-
-  const handleClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }
-
   return (
-    <FooterContainer>
-       <FooterWrap>
-         <FooterLinksContainer>
-            <FooterLinksWrapper>
-            <SocialLogo onClick={handleClick}>
-              MilkHouse
-            </SocialLogo>
-                <FooterLinkItems className='about'>
-                       <FooterLink to="/signin">About Us</FooterLink>
-                       <FooterLink to="/contact">Contact Us</FooterLink>
-                       <FooterLink to="/signin">Our Farmers</FooterLink>
-                       <FooterLink to="/signin">Services</FooterLink>
-                       <FooterLink to="/signin">Testimonials</FooterLink>
-                </FooterLinkItems>
-                <FooterLinkItems className='contact'>
-                       <FooterLink to="/contact">Our Blog</FooterLink>
-                       <FooterLink to="/">Our Gallery</FooterLink>
-                       <FooterLink to="/">Products</FooterLink>
-                       <FooterLink to="/">Shop</FooterLink>
-                </FooterLinkItems>
-            </FooterLinksWrapper>
-
-            <FooterLinksWrapper>
-                <FooterLinkItems>
-                    <FooterLinkTitle>NewsLetter</FooterLinkTitle>
-                    <FooterText>Get latest updates and offers.</FooterText>
-                    <FooterForm className="form-group">
-                        <Footerinput placeholder="Enter your Email"
-								type="email"
-								id="email"
-								require />
-                    </FooterForm>
-                </FooterLinkItems>
-            </FooterLinksWrapper>
-
-            <FooterLinksWrapper>
-                
-            <FooterLinkItems className='socials' >
-              <FooterLink className="icons youtube" style={{ backgroundColor:"#FF0000"}}><FaYoutube style={{ fontSize: '22px'}}  /> </FooterLink>
-              <FooterLink className="icons twitter" style={{ backgroundColor:"#1DA1F2"}}><FaTwitter style={{ fontSize: '22px'}}  /> </FooterLink>
-              <FooterLink className="icons linkdn" style={{ backgroundColor:"#0077B5"}}><FaLinkedin style={{ fontSize: '22px'}}/> </FooterLink>
-              <FooterLink className="icons insta" style={{ backgroundColor:"#E4405F"}} ><FaInstagram style={{ fontSize: '22px'}}  /> </FooterLink>
-              <FooterLink className="icons fb" style={{ backgroundColor:"#1877F2"}}><FaFacebook style={{ fontSize: '22px'}}  /> </FooterLink>
-            <FooterLink className="icons github" style={{ backgroundColor:"black"}} ><FaGithub style={{ fontSize: '26px'}}  /> </FooterLink>
-
-            </FooterLinkItems>
-
-          </FooterLinksWrapper>
-        </FooterLinksContainer>
-        <SocialMedia>
-          <SocialMediaWrap>
-            <WebsiteRights>MilkHouse © {new Date().getFullYear()}&nbsp;All rights reserved.</WebsiteRights>
-          </SocialMediaWrap>
-        </SocialMedia>
-      </FooterWrap>
-    </FooterContainer>
-  )
+    <div className="container-fluid bg-light footer mt-5 py-5" style={{backgroundColor:"#ede1d7"}}>
+      <Container>
+        <Grid container spacing={5}>
+          <Grid item lg={3} md={6}>
+            <Typography variant="h5" className="text-black mb-4">Our Office</Typography>
+            <Typography variant="body2" className="mb-2"><LocationOn className="me-3" />123 Street, New York, USA</Typography>
+            <Typography variant="body2" className="mb-2"><Phone className="me-3" />+012 345 67890</Typography>
+            <Typography variant="body2" className="mb-2"><Mail className="me-3" />info@example.com</Typography>
+            <div className="d-flex pt-3">
+              <Button className="btn-square btn-secondary rounded-circle me-2" href=""><Twitter /></Button>
+              <Button className="btn-square btn-secondary rounded-circle me-2" href=""><Facebook /></Button>
+              <Button className="btn-square btn-secondary rounded-circle me-2" href=""><YouTube /></Button>
+              <Button className="btn-square btn-secondary rounded-circle me-2" href=""><LinkedIn /></Button>
+            </div>
+          </Grid>
+          <Grid item lg={3} md={6} container direction="column">
+            
+            <Typography variant="h5" className="text-black mb-4">Quick Links</Typography>
+            <Button className="btn-link" href="/signin">About Us</Button>
+            <Button className="btn-link" href="/contact">Contact Us</Button>
+            <Button className="btn-link" href="">Our Services</Button>
+            <Button className="btn-link" href="">Terms &amp; Condition</Button>
+            <Button className="btn-link" href="">Support</Button>
+          </Grid>
+          <Grid item lg={3} md={6}>
+            <Typography variant="h5" className="text-black mb-4">Business Hours</Typography>
+            <Typography variant="body1" className="mb-1">Monday - Friday</Typography>
+            <Typography variant="body2">09:00 am - 07:00 pm</Typography>
+            <Typography variant="body1" className="mb-1">Saturday</Typography>
+            <Typography variant="body2">09:00 am - 12:00 pm</Typography>
+            <Typography variant="body1" className="mb-1">Sunday</Typography>
+            <Typography variant="body2">Closed</Typography>
+          </Grid>
+          <Grid item lg={3} md={6}>
+            <Typography variant="h5" className="text-black mb-4">Newsletter</Typography>
+            <Typography variant="body2">Subscribe to our daily newsletter.</Typography>
+            <div className="position-relative w-100">
+              <TextField className="form-control bg-transparent w-100 py-3 ps-4 pe-5" variant="outlined" placeholder="Your email" />
+              <Button type="button" className="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2"><Email />SignUp</Button>
+            </div>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
 }
 
 export default Footer;

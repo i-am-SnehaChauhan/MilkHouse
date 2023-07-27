@@ -7,7 +7,7 @@ export const ServicesContainer = styled.div`
     flex-direction: column;
     //justify-content: center;
     align-items: center;
-    background: #8EF0A0;
+    background: rgb(169 232 183);
 
     @media screen and (max-width: 768px){
         height: 1100px;
@@ -54,6 +54,19 @@ export const ServicesCol = styled.div`
     align-items: center;
     border-radius: 10px;
     height: 500px;
+    //width: 100%;
+    padding: 30px;
+    transition: all 0.2s ease-in-out;
+    
+`;
+
+export const ServicesRow = styled.div`
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    height: 150px;
     //width: 100%;
     padding: 30px;
     transition: all 0.2s ease-in-out;
