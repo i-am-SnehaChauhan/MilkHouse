@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProductDetails } from '../../redux/actions/productAction';
-import { Box, Typography, styled, Grid } from '@mui/material';
+import { Box, styled, Grid } from '@mui/material';
 import ActionItem from './ActionItem';
+import ProductDetail from './ProductDetail';
 
 const Component = styled(Box)`
    background : #F2F2F2;
-   margin-top: 55px;  
+   margin-top: 30px;  
 `;
 
 const Container = styled(Grid)`
@@ -43,11 +44,7 @@ const DetailView = () => {
             <ActionItem product={product} />
           </Grid>
           <RightContainer item lg={8} md={8} sm={8} xs={12}>
-            <Typography>{product.title.longTitle}</Typography>
-            <Typography style={{marginTop:5, color:'#878787', fontSize:14}}>
-                 8 Ratings & 1 Reviews
-                 <Box component="span"><img src={""} alt=''/></Box>
-              </Typography>
+              <ProductDetail product={product} />
           </RightContainer>
         </Container>
       }
