@@ -1,9 +1,10 @@
-import {AppBar, Toolbar, Typography, Button, styled, Box} from '@mui/material';
+import React, { useState } from 'react';
+import {AppBar, Toolbar, Typography,List, IconButton, Drawer, styled, Box} from '@mui/material';
 import '@fontsource/roboto/300.css';
 import Search from './Search';
 import CustomButtons from './CustomButtons';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Menu } from '@mui/icons-material';
 
 const StyledAppBar = styled(AppBar)`
   background: linear-gradient(45deg, #000000 30%, #FF8E53 90%);
@@ -24,16 +25,53 @@ const SubHeading = styled(Typography)`
     margin-left: 20px;
     margin-top: 0px;
 `
-const ButtonWrapper = styled(Box)`
-    margin: 0 2% 0 auto;
-    text-decoration: none;
-`
+const ButtonWrapper = styled('span')(({ theme }) => ({ 
+    margin: '0 5% 0 auto', 
+    [theme.breakpoints.down('sm')]: {
+        display: 'none'
+    }
+}));
+
+const MenuButton = styled(IconButton)(({ theme }) => ({
+    display: 'none',
+    [theme.breakpoints.down('sm')]: {
+        display: 'block'
+    }
+}));
 
 const Header = () => {
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleOpen = () => {
+        setOpen(true);
+    }
+    const list = () => (
+        <Box style={{ width: 250 }} onClick={handleClose}>
+            <List>
+                <listItem button>
+                    <CustomButtons />
+                </listItem>
+            </List>
+        </Box>
+    );
 
     return (
         <StyledAppBar position="static">
-            <Toolbar>
+            <Toolbar style={{ minHeight: 55 }}>
+            <MenuButton
+                    color="inherit"
+                    onClick={handleOpen}
+                >
+                    <Menu />
+                </MenuButton>
+
+                <Drawer open={open} onClose={handleClose}>
+                    {list()}
+                </Drawer>
                 <Component to="/dairy" >
                    <Typography variant="h5" component="h1" sx={{ flexGrow: 1 }} fontFamily={'Roboto'}>
                         MilkHouse
