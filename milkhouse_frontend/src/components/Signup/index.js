@@ -106,7 +106,7 @@ const SignUp = () => {
           <LeftContainer>
             <LeftHeading>Welcome!</LeftHeading>
             <LeftPara>
-              Sign up to be a part of the community, because UMatter.
+              Hii, Sign-up now and be the part of Community.
             </LeftPara>
             <Image src={Img} alt="Sign Up Graphic" />
           </LeftContainer>

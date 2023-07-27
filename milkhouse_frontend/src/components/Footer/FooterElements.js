@@ -214,6 +214,7 @@ export const SocialLogo = styled(Link)`
 // Website rights
 export const WebsiteRights = styled.small`
   color: #000000;
+  text-align:center;
   
 `;
 
