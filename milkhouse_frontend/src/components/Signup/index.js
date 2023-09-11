@@ -113,7 +113,7 @@ const SignUp = () => {
           <SignUpContainer>
             <SignUpForm>
               <SignUph1>Create account</SignUph1>
-              <RadioContainer>
+              {/* <RadioContainer>
                 <RadioInput
                   type="radio"
                   id="user"
@@ -133,7 +133,7 @@ const SignUp = () => {
                   onChange={() => setIsAdmin(true)}
                 />
                 <RadioLabel htmlFor="admin">Admin</RadioLabel>
-              </RadioContainer>
+              </RadioContainer> */}
               <FormInput
                 onChange={(e) => setData({ ...data, name: e.target.value })}
                 id="FullNameInput"
