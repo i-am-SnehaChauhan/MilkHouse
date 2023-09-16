@@ -1,38 +1,57 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     background-color: #FFD557;
     padding: 5rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0rem; */
+    position:static;
+    max-width:1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
 `;
 
 export const Containertitle = styled.h1`
     font-weight: bold;
     ${'' /* align-items: center; */}
-    display: flex;
+    text-align:center;
     justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+    font-size:40px;
 `;
 export const FeaturesCard = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border-radius: 10px;
-  max-height: 380px;
-  padding: 30px;
-  box-shadow: 0 1px 3px gray;
-  color: var(--text-clr);
-  transition: all 0.2s ease-in-out;
-  background-color: white;
-
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px dashed #cdcdcd;
+  display: inline-block;
+  
   &:hover {
+    visibility: visible;
+    /* animation-name: fadeInUp; 
+
+    animation-duration: 1500ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both; */
+    transform: rotate(3deg);
+  }
+
+  /* Define keyframes animations outside of :hover */
+`;
+
+  
+
+  /* &:hover {
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-  }
-`;
+  } */
+
 
 export const FeaturesWrapper = styled.div`
   max-width: 1000px;
@@ -55,11 +74,22 @@ export const FeaturesWrapper = styled.div`
 `;
 
 export const FeaturesIcon = styled.img`
-  height: 170px;
-  width: 180px;
-  margin-bottom: 10px;
+  height: 208px;
+  width: 208px;
+  /* margin-bottom: 10px;
   border: 0.5px solid gray;
-  box-shadow: 3px 3px 3px gray;
+  box-shadow: 3px 3px 3px gray; */
+  border-radius: 50%;
+  transition: transform 0.2s ease; /* Add a smooth transition effect */
+  &:hover {
+    /* visibility: visible; */
+    /* animation-name: fadeInUp; 
+
+    animation-duration: 1500ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both; */
+    transform: rotate(15deg);
+  }
 `;
 
 export const FeaturesH1 = styled.h1`
@@ -76,12 +106,26 @@ export const FeaturesH1 = styled.h1`
 `;
 
 export const FeaturesH2 = styled.h2`
-  margin-top: 0.5rem;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  /* margin-top: 0.5rem; */
+  /* font-size: 1.3rem; */
+  margin-bottom: 15px;
+ 
+    font-size: 26px;
+    font-weight: 700;
 `;
 
 export const FeaturesP = styled.p`
-  font-size: 1rem;
-  text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+   
+  
+  &:hover {
+    /* -webkit-animation-name: rotate; */
+    visibility: visible;
+    animation-name:"rotate";
+    animation-duration: 1500ms;
+    
+  }
+  
 `;

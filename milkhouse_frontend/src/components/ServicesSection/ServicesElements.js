@@ -1,50 +1,28 @@
 import styled from "styled-components";
 
 export const ServicesContainer = styled.div`
-    
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    //justify-content: center;
-    align-items: center;
-    background: rgb(212 245 220);
-
-    @media screen and (max-width: 768px){
-        height: 1100px;
-    }
-
-    @media screen and (max-width: 480px){
-        height: 1300px;
-    }
+   padding: 300px 0 70px;
+    margin-top: -230px;
+    background-image: url(http://el.commonsupport.com/newwp/hankcok/wp-content/uploads/2020/07/bg-1.jpg);
+    background-size: cover;
 `;
 
 export const ServicesWrapper1 = styled.div`
-    max-width: 1300px;
-    height: 225px;
-    margin-top: 0px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    justify-content: center;
-    grid-gap: 100px;
-    padding: 0 50px;
-    @media screen and (max-width: 1000px){
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and (max-width: 768px){
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
+   margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+    margin: 0px 0px 15px;
+    color: #595959;
 `;
 export const ServicesWrapper2 = styled.div`
-    margin-top: 50px;
-    width: 100%;
-    height: 549px;
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: block;
 `;
 
 export const ServicesCol = styled.div`
@@ -61,15 +39,10 @@ export const ServicesCol = styled.div`
 `;
 
 export const ServicesRow = styled.div`
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 10px;
-    height: 150px;
-    //width: 100%;
-    padding: 30px;
-    transition: all 0.2s ease-in-out;
+   display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
     
 `;
 
@@ -104,13 +77,10 @@ export const ServicesIcon = styled.img`
 `;
 
 export const ServicesH1 = styled.h1`
-    font-size: 2.5rem;
-    color: #000;
-    margin-bottom: 64px;
-    font-family: 'Roboto', sans-serif;
-    @media screen and (max-width: 480px){
-        font-size: 2rem;
-    }
+   position: relative;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 700;
 
 `;
 
@@ -122,11 +92,8 @@ export const ServicesH2 = styled.h2`
 `;
 
 export const ServicesP = styled.p`
-   font-size: 1.4rem;
-   line-height: 1.6;
-   margin-bottom: 20px;
-   text-align: center; 
-   font-family: 'Open Sans', sans-serif;
+      position: relative;
+    margin-bottom: 50px;
 `;
 
 

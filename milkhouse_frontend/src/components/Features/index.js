@@ -1,5 +1,13 @@
-import React from 'react'
-import {Container, Containertitle, FeaturesCard,FeaturesIcon, FeaturesH2, FeaturesP, FeaturesWrapper } from './FeatureElements'
+import React from "react";
+import {
+  Container,
+  Containertitle,
+  FeaturesCard,
+  FeaturesIcon,
+  FeaturesH2,
+  FeaturesP,
+  FeaturesWrapper,
+} from "./FeatureElements";
 import Icon1 from "../../image/e-caatle.jpg";
 import Icon2 from "../../image/modern-dairy.jpg";
 import Icon3 from "../../image/home-delivery.jpg";
@@ -13,76 +21,77 @@ const Features = () => {
         <Containertitle>
             Features
         </Containertitle>
-
-
-        <FeaturesWrapper>
+      <div className="row">
+      <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon2} />
-                <FeaturesH2>
-                <b>Modern dairy</b>
-                </FeaturesH2>
-                <FeaturesP>
-                By providing a comprehensive range of services, our platform aims to streamline operations, enhance productivity, and drive sustainable growth for farmers and stakeholders.
-                </FeaturesP>
+              <FeaturesIcon src={Icon1} />
             </FeaturesCard>
-
+            <FeaturesH2>Modern dairy</FeaturesH2>
+            <div className="text">
+            By providing a comprehensive range of services, our platform aims to streamline operations, enhance productivity, and drive sustainable growth for farmers and stakeholders.
+            </div>
+          </FeaturesP>
+        </div>
+        <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon1} />
-                <FeaturesH2>
-                <b>E-Cattle Cart</b>
-                </FeaturesH2>
-                <FeaturesP>
-                Cattle Cart ensures the well-being of dairy animals while streamlining record-keeping and enhancing operational efficiency.
-
-                </FeaturesP>
+              <FeaturesIcon src={Icon2} />
             </FeaturesCard>
+            <FeaturesH2>E-Cattle Cart</FeaturesH2>
+            <div className="text">
+            Cattle Cart ensures the well-being of dairy animals while streamlining record-keeping and enhancing operational efficiency.
 
+            </div>
+          </FeaturesP>
+        </div>
+        <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon3} />
-                <FeaturesH2>
-                <b>Home Delivery Services</b>
-                </FeaturesH2>
-                <FeaturesP>
-                We understand the importance of timely delivery, and our dedicated team ensures that your cart reaches you promptly.
-                </FeaturesP>
+              <FeaturesIcon src={Icon3} />
             </FeaturesCard>
-
-
-        </FeaturesWrapper>
-
-        <FeaturesWrapper>
+            <FeaturesH2>Home Delivery Services</FeaturesH2>
+            <div className="text">
+            We understand the importance of timely delivery, and our dedicated team ensures that your cart reaches you promptly.
+            </div>
+          </FeaturesP>
+        </div>
+        <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon4} />
-                <FeaturesH2>
-                <b>Best Quality Products</b>
-                </FeaturesH2>
-                <FeaturesP>
-                Our dairy products are carefully crafted using premium ingredients and state-of-the-art production techniques.  
-                </FeaturesP>
+              <FeaturesIcon src={Icon4} />
             </FeaturesCard>
-
+            <FeaturesH2>Best Quality Products</FeaturesH2>
+            <div className="text">
+            Our dairy products are carefully crafted using premium ingredients and state-of-the-art production techniques.  
+            </div>
+          </FeaturesP>
+        </div>
+        <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon5} />
-                <FeaturesH2>
-                <b>Healthy A-two Milk</b>
-                </FeaturesH2>
-                <FeaturesP>
-                Nurture your well-being with our A-2 milk, a wholesome and naturally healthier choice that offers enhanced digestibility and potential benefits and nourishing lifestyle.
-                </FeaturesP>
+              <FeaturesIcon src={Icon5} />
             </FeaturesCard>
-
+            <FeaturesH2>Healthy A-two Milk</FeaturesH2>
+            <div className="text">
+            Nurture your well-being with our A-2 milk, a wholesome and naturally healthier choice that offers enhanced digestibility and potential benefits and nourishing lifestyle.
+            </div>
+          </FeaturesP>
+        </div>
+        <div className="col-lg-4 col-md-6 service-block-one">
+          <FeaturesP>
             <FeaturesCard>
-                <FeaturesIcon src={Icon6} />
-                <FeaturesH2>
-                <b>Nutritious Fooder</b>
-                </FeaturesH2>
-                <FeaturesP>
-                Nourished livestock with our high-quality and nutritionally dense fodder and carefully selected ingredients and meticulous production process result in a well-balanced feed.
-                </FeaturesP>
+              <FeaturesIcon src={Icon6} />
             </FeaturesCard>
-        </FeaturesWrapper>
+            <FeaturesH2>Nutritious Fooder</FeaturesH2>
+            <div className="text">
+            Nourished livestock with our high-quality and nutritionally dense fodder and carefully selected ingredients and meticulous production process result in a well-balanced feed.
+            </div>
+          </FeaturesP>
+        </div>
+      </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Features
+export default Features;
