@@ -100,7 +100,7 @@ const Navbar = ({ toggle }) => {
   };
   return (
    
-     <div class="main-content">
+     <Wrapper>
             <NavbarContainer>
             <NavLogo to="/">MilkDelights</NavLogo>
                 <Nav>
@@ -130,7 +130,7 @@ const Navbar = ({ toggle }) => {
 <Item><NavLinks to="#" onClick={handleDonationClick}>
                 Donation
               </NavLinks></Item>
-              <Button as={Link} to="/signin">Sign In</Button>
+            <Item> <Button as={Link} to="/signin">Sign In</Button> </Item> 
 <Button as={Link} to="/signup">Sign Up</Button>
                                 </NavItem>
                             </NavBtn>
@@ -143,7 +143,7 @@ const Navbar = ({ toggle }) => {
                 </Nav>
                 
             </NavbarContainer>
-</div>
+</Wrapper>
   );
 };
 

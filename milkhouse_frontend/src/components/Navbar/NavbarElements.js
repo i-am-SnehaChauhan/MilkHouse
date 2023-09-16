@@ -18,19 +18,22 @@ export const Nav = styled.nav`
 `;
 export const Wrapper=styled.div`
     opacity: 1;
+    z-index: 99901;
     visibility: visible;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    overflow-y: auto;
-    background: #202020;
-    padding: 0px 0px;
-    z-index: 5;
-    transition: all 0.7s ease;
-    transform: translateX(0%);
+    position:fixed;
+    animation-name: slideInDown;
+    animation-duration: 1.25s;
+
+    @keyframes slideInDown{
+      0% {
+    transform: translate3d(0,-100%,0);
+    visibility: visible;
+      }
+      100% {
+    transform: translate3d(0,0,0);
+      }
+    }
+   
 `;
 export const NavbarContainer = styled.div`
  position: static;
@@ -223,7 +226,7 @@ export const NavBtnLink = styled.div`
 
 export const Item=styled.li`
   position: relative;
-    padding: 15px 35px;
+    padding: 15px 30px;
    transition: all 300ms ease;
    
     display: block;
@@ -258,7 +261,7 @@ export const Item=styled.li`
  export const Button=styled.button`
  align-items: center;
   appearance: none;
-  /* padding: 15px 35px; */
+  padding: 12px 28px;
   background-image: radial-gradient(100% 100% at 100% 0px, #FFB300 0px, #41170a 100%);
   border: 0;
   margin:auto;
@@ -278,8 +281,8 @@ export const Item=styled.li`
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  /* padding-left: 16px;
+  padding-right: 16px; */
   position: relative;
   text-align: left;
   text-decoration: none;
