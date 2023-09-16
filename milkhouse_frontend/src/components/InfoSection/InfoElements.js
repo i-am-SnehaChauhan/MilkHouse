@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const TextWrapper= styled.div`
-margin-top: 20px;
+     margin-top: 20px;
     margin-bottom: 0px;
     font-size: 18px;
     line-height: 28px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0px 0px 15px;
 `;
 
@@ -142,7 +142,10 @@ export const ServicesIcon = styled.img`
     overflow: hidden;
     box-sizing: border-box;
     width: 100%;
-    transition: .5s;
+    transition: transform 0.2s ease; /* Add a smooth transition effect */
+  &:hover {
+    transform: rotate(13deg);
+  }
 `;
 
 export const ServicesH1 = styled.h1`

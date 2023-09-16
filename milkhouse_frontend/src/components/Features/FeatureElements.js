@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    /* width: 100%;
-    height: 100%;
-    background-color: #FFD557;
-    padding: 5rem;
-    margin-bottom: 0rem; */
     position:static;
     max-width:1200px;
     padding: 0 15px;
@@ -33,24 +28,11 @@ export const FeaturesCard = styled.div`
   
   &:hover {
     visibility: visible;
-    /* animation-name: fadeInUp; 
-
-    animation-duration: 1500ms;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both; */
     transform: rotate(3deg);
   }
 
   /* Define keyframes animations outside of :hover */
 `;
-
-  
-
-  /* &:hover {
-    transform: scale(1.02);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  } */
 
 
 export const FeaturesWrapper = styled.div`
@@ -76,18 +58,9 @@ export const FeaturesWrapper = styled.div`
 export const FeaturesIcon = styled.img`
   height: 208px;
   width: 208px;
-  /* margin-bottom: 10px;
-  border: 0.5px solid gray;
-  box-shadow: 3px 3px 3px gray; */
   border-radius: 50%;
   transition: transform 0.2s ease; /* Add a smooth transition effect */
   &:hover {
-    /* visibility: visible; */
-    /* animation-name: fadeInUp; 
-
-    animation-duration: 1500ms;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both; */
     transform: rotate(15deg);
   }
 `;
@@ -106,8 +79,6 @@ export const FeaturesH1 = styled.h1`
 `;
 
 export const FeaturesH2 = styled.h2`
-  /* margin-top: 0.5rem; */
-  /* font-size: 1.3rem; */
   margin-bottom: 15px;
  
     font-size: 26px;

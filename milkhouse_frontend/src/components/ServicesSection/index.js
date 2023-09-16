@@ -1,17 +1,11 @@
 import React from "react";
-import Icon1 from "../../image/svg-1.svg";
-import Icon2 from "../../image/svg-2.svg";
-import Icon3 from "../../image/svg-3.svg";
 import {
   ServicesContainer,
   ServicesH1,
   ServicesWrapper1,
   ServicesWrapper2,
-  ServicesCol,
   ServicesRow,
-  ServicesCard,
   ServicesIcon,
-  ServicesH2,
   ServicesP,
 } from "./ServicesElements";
 const url =
@@ -46,9 +40,6 @@ const Services = () => {
             <ServicesIcon src={url2} />
             <ServicesIcon src={url3} />
           </ServicesRow>
-          {/* <ServicesRow>
-               
-            </ServicesRow> */}
         </div>
         <div class="col-lg-5">
           <ServicesIcon src={Icon4} />

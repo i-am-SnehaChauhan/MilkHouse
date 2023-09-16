@@ -10,11 +10,11 @@ export const ServicesContainer = styled.div`
 export const ServicesWrapper1 = styled.div`
    margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 28px;
     font-weight: 400;
     margin: 0px 0px 15px;
-    color: #595959;
+    /* color: #595959; */
 `;
 export const ServicesWrapper2 = styled.div`
     position: static;

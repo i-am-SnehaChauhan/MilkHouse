@@ -55,7 +55,7 @@ export const HeroContent = motion(styled.div`
     flex-direction: column; 
     align-items: center;
     
-    :before {
+    &:before {
         content: '';
         position: absolute;
         top: 0;
@@ -69,6 +69,7 @@ export const HeroContent = motion(styled.div`
             rgba(0,0,0,0.6) 100%
 
      ),
+        }
           
     `);
 

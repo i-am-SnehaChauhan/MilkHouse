@@ -4,24 +4,10 @@ import Icon2 from "../../image/svg-2.svg";
 import Icon3 from "../../image/svg-3.svg";
 import { InfoContainer, InfoWrapper, InfoRow, Column, TextWrapper, TopLine, Heading, Subtitle,ServicesContainer,
   ServicesH1,
-  ServicesWrapper1,
-  ServicesWrapper2,
-  ServicesCol,
-  ServicesRow,
   ServicesCard,
   ServicesIcon,
   ServicesH2,
   ServicesP, } from './InfoElements';
-  const url =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690471828/milkhouse/kfwjcpdgayndphlure4j.png";
-const url1 =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690472973/milkhouse/lqlhhvvryfd5hdvs7dij.png";
-const url2 =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690472807/milkhouse/apqbx3euquv7rl8fwdc3.png";
-const url3 =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690473090/milkhouse/pnvx5ybehzvjwyr3syqq.png";
-const Icon4 =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690473256/milkhouse/hqhvzef2yeayc862wnsa.png";
 const About = () => {
   return (
     <>
