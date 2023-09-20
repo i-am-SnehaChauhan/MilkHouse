@@ -9,10 +9,10 @@ export const Nav = styled.nav`
     ::before{
       position: absolute;
     content: '';
-    left: 0;
     bottom: 0;
     width: 100%;
     height: 50%;
+    align-item: center;
     background-color: #362920;
     }
 `;
@@ -20,7 +20,8 @@ export const Wrapper=styled.div`
     opacity: 1;
     z-index: 99901;
     visibility: visible;
-    position:fixed;
+    align-item: center;
+    // position:fixed;
     animation-name: slideInDown;
     animation-duration: 1.25s;
 
@@ -38,6 +39,7 @@ export const Wrapper=styled.div`
 export const NavbarContainer = styled.div`
  position: static;
     max-width: 100%;
+    align-item: center;
     padding: 0px 15px;
     margin: 0 auto;
 `;
@@ -45,7 +47,7 @@ export const NavbarContainer = styled.div`
 export const NavLogo = styled(LinkR)`
  background-color: rgb(237, 225, 215);
   color: #362920;
-  font-size: 3rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   /* font-family: "Roboto", sans-serif; */
@@ -191,6 +193,7 @@ export const NavLinks = styled(LinkS)`
 export const NavBtn = styled.ul`
       padding: 0px;
     display: block !important;
+    
 
   /* @media screen and (max-width: 768px) {
     display: none;

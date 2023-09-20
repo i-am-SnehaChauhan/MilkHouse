@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, NavbarContainer, NavLogo, MobileIcon,Wrapper,Button} from './NavbarElements.js';
-import { FaBars,FaRegWindowClose } from 'react-icons/fa';
-import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink,Item,NavPageLinks } from './NavbarElements.js';
+import { Nav, NavbarContainer, NavLogo, MobileIcon, Wrapper, Button } from './NavbarElements.js';
+import { FaBars, FaRegWindowClose } from 'react-icons/fa';
+import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, Item, NavPageLinks } from './NavbarElements.js';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 // import { Button } from '../ButtonElements'
@@ -51,7 +51,7 @@ const Navbar = ({ toggle }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); 
+  }, []);
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
   const handleBlogsClick = () => {
@@ -64,7 +64,7 @@ const Navbar = ({ toggle }) => {
   // };
   const onHover = () => {
     setHover(!hover)
-}
+  }
   const handleHomeClick = () => {
     setIsOpen(false); // Close the navbar
     navigate("/");
@@ -99,51 +99,51 @@ const Navbar = ({ toggle }) => {
     setIsOpen(!isOpen);
   };
   return (
-   
-     <Wrapper>
-            <NavbarContainer>
-            <NavLogo to="/">MilkDelights</NavLogo>
-                <Nav>
-                    <NavBtnLink></NavBtnLink>
 
-                    <NavMenu isOpen={isOpen}>
-                        {/* <!--Mobile Navigation Toggler--> */}
-                        <MobileIcon onClick={handleToggle}>
-                        {isOpen ? <FaRegWindowClose /> : <FaBars />}
-                        {/* <Wrapper></Wrapper> */}
-                        </MobileIcon>
+    <Wrapper>
+      <NavbarContainer>
+        {/* <NavLogo to="/">MilkDelights</NavLogo> */}
+        <Nav>
+          <NavBtnLink></NavBtnLink>
 
-                        {/* <!-- Main Menu --> */}
-                        <nav class="main-menu navbar-expand-md navbar-light">
-                            <NavBtn>
-                                <NavItem>
-                                {/* <Item><NavLinks to="/">Home</NavLinks></Item> */}
+          <NavMenu isOpen={isOpen}>
+            {/* <!--Mobile Navigation Toggler--> */}
+            <MobileIcon onClick={handleToggle}>
+              {isOpen ? <FaRegWindowClose /> : <FaBars />}
+              {/* <Wrapper></Wrapper> */}
+            </MobileIcon>
 
-<Item><NavLinks to="about" onClick={handleAboutClick}>About</NavLinks></Item>
-<Item><NavLinks to="features"  onClick={handleServicesClick}>Services</NavLinks>
-</Item>
-<Item><NavLinks to="#" onClick={handleContactClick}>
-                Contact{" "}
-              </NavLinks>
-              </Item>
-<Item><NavLinks to="Feedback">Feedback</NavLinks></Item>
-<Item><NavLinks to="#" onClick={handleDonationClick}>
-                Donation
-              </NavLinks></Item>
-            <Item> <Button as={Link} to="/signin">Sign In</Button> </Item> 
-<Button as={Link} to="/signup">Sign Up</Button>
-                                </NavItem>
-                            </NavBtn>
-                            </nav>
-                        {/* <!-- Main Menu End--> */}
-                                                {/* <button type="button" className="theme-btn search-toggler"><span className="stroke-gap-icon icon-Search"></span></button>  
+            {/* <!-- Main Menu --> */}
+            <nav class="main-menu navbar-expand-md navbar-light">
+              <NavBtn>
+                <NavItem>
+                  {/* <Item><NavLinks to="/">Home</NavLinks></Item> */}
+
+                  <Item><NavLinks to="about" onClick={handleAboutClick}>About</NavLinks></Item>
+                  <Item><NavLinks to="features" onClick={handleServicesClick}>Services</NavLinks>
+                  </Item>
+                  <Item><NavLinks to="#" onClick={handleContactClick}>
+                    Contact{" "}
+                  </NavLinks>
+                  </Item>
+                  <Item><NavLinks to="Feedback">Feedback</NavLinks></Item>
+                  <Item><NavLinks to="#" onClick={handleDonationClick}>
+                    Donation
+                  </NavLinks></Item>
+                  <Item> <Button as={Link} to="/signin">Sign In</Button> </Item>
+                  <Button as={Link} to="/signup">Sign Up</Button>
+                </NavItem>
+              </NavBtn>
+            </nav>
+            {/* <!-- Main Menu End--> */}
+            {/* <button type="button" className="theme-btn search-toggler"><span className="stroke-gap-icon icon-Search"></span></button>  
                                                                        */}
-                                                                       
-                    	                    </NavMenu>
-                </Nav>
-                
-            </NavbarContainer>
-</Wrapper>
+
+          </NavMenu>
+        </Nav>
+
+      </NavbarContainer>
+    </Wrapper>
   );
 };
 
