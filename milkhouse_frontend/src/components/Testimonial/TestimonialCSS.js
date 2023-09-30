@@ -8,11 +8,12 @@ export const Wrapper = styled.div`
 `;
 export const Container = styled.div`
     display: flex;
-    height: 350px;
+    height: max-content;
+    padding:35px;
     justify-content: center;
     // margin-top: 50px;
     // margin-bottom: 50px;
-    background-color: #C9D2FE;
+    background-color: #ffffffc7;
 `;
 
 export const ContainerSlider = styled.div`

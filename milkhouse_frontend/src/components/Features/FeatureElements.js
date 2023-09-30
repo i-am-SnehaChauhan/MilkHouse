@@ -16,7 +16,9 @@ export const Containertitle = styled.h1`
     justify-content: center;
     position: relative;
     margin-bottom: 50px;
-    font-size:40px;
+    margin-top: 50px;
+    font-size: 65px;
+    font-weight: 600;
 `;
 export const FeaturesCard = styled.div`
   position: relative;

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Nav, NavbarContainer, NavLogo, MobileIcon, Wrapper, Button } from './NavbarElements.js';
-import { FaBars, FaRegWindowClose } from 'react-icons/fa';
-import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, Item, NavPageLinks } from './NavbarElements.js';
+import { Nav, NavbarContainer, NavLogo, MobileIcon,Wrapper,Button,Navimage} from './NavbarElements.js';
+import { FaBars,FaRegWindowClose } from 'react-icons/fa';
+import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink,Item,NavPageLinks } from './NavbarElements.js';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import logo from "../../image/logo.png";
 // import { Button } from '../ButtonElements'
 
 const glassStyle = {
@@ -19,28 +20,12 @@ const glassStyle = {
 // Function to perform a search (you can customize this)
 
 
-const Navbar = ({ toggle }) => {
-  // const googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement(
-  //     {
-  //       pageLanguage: "en",
-  //       autoDisplay: false
-  //     },
-  //     "google_translate_element"
-  //   );
-  // };
-  // useEffect(() => {
-  //   var addScript = document.createElement("script");
-  //   addScript.setAttribute(
-  //     "src",
-  //     "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-  //   );
-  //   document.body.appendChild(addScript);
-  //   window.googleTranslateElementInit = googleTranslateElementInit;
-  // }, []);
-  const [searchValue, setSearchValue] = useState("");
-  const [navbarBg] = useState(glassStyle);
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [searchValue, setSearchValue] = useState("");
+
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
@@ -99,12 +84,16 @@ const Navbar = ({ toggle }) => {
     setIsOpen(!isOpen);
   };
   return (
-
-    <Wrapper>
-      <NavbarContainer>
-        {/* <NavLogo to="/">MilkDelights</NavLogo> */}
-        <Nav>
-          <NavBtnLink></NavBtnLink>
+   
+     <Wrapper>
+            <NavbarContainer>
+              
+            <NavLogo to="/">
+            <Navimage src={logo}/>
+              MilkDelights
+            </NavLogo>
+                <Nav>
+                    <NavBtnLink></NavBtnLink>
 
           <NavMenu isOpen={isOpen}>
             {/* <!--Mobile Navigation Toggler--> */}
