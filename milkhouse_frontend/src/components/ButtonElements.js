@@ -3,13 +3,13 @@ import { Link } from 'react-scroll'
 
 export const Button = styled(Link)`
     border-radius: 50px;
-    background: ${({ primary }) => (primary ? '#01BF71' : '#010606')};
+    background: ${({ primary }) => (primary ? '#4b2820' : '#010606')};
     white-space: nowrap;
     color: ${({ dark }) => (dark ? '#fff' : '#fff')};
     padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
     font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
     outline: none;
-    border: 2px solid #01BF71;
+    border: 2px solid #EF6C00;
     box-shadow: 0 3px 0 black, 0px 3px 6px #fff;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
