@@ -7,7 +7,6 @@ section
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url("../../image/contactbg.png");
     background-size: cover;
     height:auto;
 
@@ -230,7 +229,7 @@ section
     {
         width: 90%;
         min-width: auto;
-        margin: 20px;
+        margin: 90px;
         box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     }
 

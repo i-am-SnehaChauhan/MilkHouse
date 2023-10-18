@@ -21,6 +21,9 @@ a {
   align-items: center;
   gap: 10px;
   min-height: 70px;
+  position:fixed;
+  z-index:1000;
+  width:100%;
   
 }
 

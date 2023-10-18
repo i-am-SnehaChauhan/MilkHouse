@@ -20,7 +20,13 @@ function Navbar() {
   const removeActive = () => {
     setIsActive(false)
   }
-
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      removeActive();
+    }
+  };
 
   return (
     <div className="App">
@@ -41,11 +47,11 @@ function Navbar() {
             <li onClick={removeActive}>
               <a href='/' className={`${styles.navLink}`}>Home</a>
             </li>
-            <li onClick={removeActive}>
-              <a href='/' className={`${styles.navLink}`}>About</a>
+            <li onClick={() => scrollToSection('aboutSection')}>
+              <a href='#' className={`${styles.navLink}`}>About</a>
             </li>
-            <li onClick={removeActive}>
-              <a href='/' className={`${styles.navLink}`}>Features</a>
+            <li onClick={() => scrollToSection('featureSection')}>
+              <a href='#' className={`${styles.navLink}`}>Features</a>
             </li>
             <li onClick={removeActive}>
               <a href='/contact' className={`${styles.navLink}`}>Contact</a>

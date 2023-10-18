@@ -11,7 +11,7 @@ import { InfoContainer, InfoWrapper, InfoRow, Column, TextWrapper, TopLine, Head
 const About = () => {
   return (
     <>
-      <InfoContainer>
+      <InfoContainer id="aboutSection">
         <InfoWrapper>
           <Subtitle>
                 <Heading>Welcome to MilkHouse Farm</Heading>

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // Footer container
 export const FooterContainer = styled.footer`
-  background-color: #ECA5B1;
+  background-color: #403126;
   padding-top: 3rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
   z-index: 99;
 `;
 
@@ -22,19 +22,10 @@ export const FooterWrap = styled.div`
 // Footer links container
 export const FooterLinksContainer = styled.div`
   width: 100%;
-  display: grid;
-
-  @media (min-width: 320px) {
-    justify-content: center;
-  }
-
-  @media (max-width: 786px) {
-    gap: 2rem;
-  }
-
-  @media (min-width: 786px) {
-    grid-template-columns: 1fr 0.5fr;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 // Footer links wrapper
@@ -42,11 +33,15 @@ export const FooterLinksWrapper = styled.div`
   @media (max-width: 786px) {
     display: grid;
     gap: 2rem;
+    grid-template-columns: 1fr;
   }
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
 
   @media (min-width: 786px) {
-    &:nth-child(1) {
-      display: flex;
+    &:nth-child(n) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       justify-content: space-around;
     }
     &:nth-child(2) {
@@ -64,15 +59,19 @@ export const FooterLinkItems = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  color: #000000;
+  color: #fff;
+  font-family:Poppins;
 
   &.socials {
     display: flex;
     flex-direction: row;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.5rem;
     margin-top: 1rem;
+  }
+  list{
+    margin-bottom:10px;
   }
 
   @media (min-width: 320px) {
@@ -86,92 +85,37 @@ export const FooterLinkItems = styled.div`
     align-items: flex-start;
     text-align: left;
   }
-`
-;
+`;
 
 // Footer link title
 export const FooterLinkTitle = styled.h1`
- font-size: 18px;
- font-weight: bold;
- margin-bottom: 16px;
-`
-// export const FooterLinkTitleHr = styled.hr`
-//   content: "";
-//   border: 2px solid;
-//   margin-top: 0;
-//   width: 52%;
-//   color: #000000;
-   
-// `
-export const FooterText = styled.p`
-    color: #000000;
-`
-
-export const FooterForm = styled.form`
-    color : white;
-    padding: 1rem;
-    height: 30;
-
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline-block;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  text-decoration: none;
+  position: relative;
+  color: inherit;
+text-transform:uppercase;
+  
 `;
 
-export const Footerinput = styled.input`
-    margin-bottom: 40px;
-    padding: 10px;
-    border: none;
-    border-radius: 9px;
-    font-size:14px;
-    border:none;
-    outline:none;
-`;
+
 
 export const FooterLink = styled(Link)`
-  color: rgba(0, 0, 0, 0.8);
+  /* Your styles for FooterLink */
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   margin-bottom: 0.6rem;
-  font-size: 14px;
+  font-size: 16px;
 
   &:hover {
-    color: #01bf71;
-    transition: 0.3s ease-out;
+    color: #f7bd00;
   }
 
-    
-&.icons{
- text-align:center;
-  border-radius:22px;
-  padding:7px
 
-  
- }
-  &.icons:hover{
-  transform: translate(0,-10px);
-  background-color:white !important;
-  
-
- }
- &.icons{
-  color:white !important;
- }
- &.insta:hover{
-  color:#E4405F!important;
- }
- &.fb:hover{
-  color:#1877F2!important;
-}
- &.youtube:hover{
-  color:#FF0000 !important;
-}
- &.twitter:hover{
-  color:#1DA1F2 !important;
-}
- &.linkdn:hover{
-  color:#0077B5 !important;
-}
- `
- 
- ;
-
- 
+`;
 
 // Social media
 export const SocialMedia = styled.section``;
@@ -181,41 +125,44 @@ export const SocialMediaWrap = styled.div`
   max-width: 1100px;
   display: flex;
   flex-direction: column;
-  ${'' /* padding: 3rem; */}
-  ${'' /* align-items: center; */}
+  align-items: center;
 `;
 
 // Social logo
 export const SocialLogo = styled(Link)`
-  color: #000000;
+  /* Your styles for SocialLogo */
+  color: rgb(255, 255, 255);
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: bold;
 
   &:hover {
-    mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+    mask-image: linear-gradient(
+      -75deg,
+      rgba(0, 0, 0, 0.6) 30%,
+      #000 50%,
+      rgba(0, 0, 0, 0.6) 70%
+    );
     mask-size: 200%;
     animation: shine 2s infinite;
-    color: #01bf71;
+    color: lightcyan;
   }
 
   @keyframes shine {
-  from {
-    mask-position: 150%;
+    from {
+      mask-position: 150%;
+    }
+
+    to {
+      mask-position: -50%;
+    }
   }
-  
-  to {
-    mask-position: -50%;
-  }
-}
 `;
 
 // Website rights
 export const WebsiteRights = styled.small`
-  color: #000000;
-  text-align:center;
-  
+  color: #fff;
 `;
 
 // Social icons

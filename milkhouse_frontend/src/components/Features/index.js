@@ -17,7 +17,7 @@ import Icon6 from "../../image/fodder.jpg";
 
 const Features = () => {
   return (
-    <Container>
+    <Container id="featureSection">
         <Containertitle>
             Features
         </Containertitle>

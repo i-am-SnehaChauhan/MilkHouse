@@ -14,7 +14,7 @@ import CartPage from './pages/cart';
 function App() {
   
   return (
-    <Router>
+    <Router>    
       <Routes>
         <Route exact path="/" element={<Home />} />
        <Route exact path="/signin" element={<SigninPage />} />
