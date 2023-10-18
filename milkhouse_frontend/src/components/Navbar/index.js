@@ -1,139 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { Nav, NavbarContainer, NavLogo, MobileIcon,Wrapper,Button,Navimage} from './NavbarElements.js';
-import { FaBars,FaRegWindowClose } from 'react-icons/fa';
-import { NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink,Item,NavPageLinks } from './NavbarElements.js';
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { useState } from 'react'
+import styles from './Navbar.module.css';
 import logo from "../../image/logo.png";
-// import { Button } from '../ButtonElements'
-
-const glassStyle = {
-  background: "rgba(40, 30, 30, 0.3)",
-  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-  backdropFilter: "blur(7.1px)",
-  WebkitBackdropFilter: "blur(7.1px)", // Updated property name
-  border: "1px solid rgba(40, 30, 30, 0.18)",
-};
 
 
-
-// Function to perform a search (you can customize this)
-
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const [searchValue, setSearchValue] = useState("");
+function Navbar() {
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-    };
+  // adding the states 
+  const [isActive, setIsActive] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  const [hover, setHover] = useState(false);
-  const navigate = useNavigate();
-  const handleBlogsClick = () => {
-    setIsOpen(false); // Close the navbar
-    navigate("/blogs");
+  //add the active class
+  const toggleActiveClass = () => {
+    setIsActive(!isActive);
   };
-  // const handleFeedbackClick = () => {
-  //   setIsOpen(false); // Close the navbar
-  //   navigate("/feedback");
-  // };
-  const onHover = () => {
-    setHover(!hover)
+
+
+  //clean up function to remove the active class
+  const removeActive = () => {
+    setIsActive(false)
   }
-  const handleHomeClick = () => {
-    setIsOpen(false); // Close the navbar
-    navigate("/");
-  };
 
-  const handleAboutClick = () => {
-    setIsOpen(false); // Close the navbar
-    navigate("/");
-  };
 
-  const handleServicesClick = () => {
-    setIsOpen(false); // Close the navbar
-    navigate("/");
-  };
-
-  const handleContactClick = () => {
-    navigate("/contact");
-  };
-
-  const handleDonationClick = () => {
-    navigate("/donation");
-  };
-
-  const handleSearchInputChange = (event) => {
-    setSearchValue(event.target.value);
-  };
-  const performSearch = () => {
-    // Redirect to a search results page or perform the search action here
-    console.log("Performing search for:", searchValue);
-  };
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
   return (
-   
-     <Wrapper>
-            <NavbarContainer>
-              
-            <NavLogo to="/">
-            <Navimage src={logo}/>
-              MilkDelights
-            </NavLogo>
-                <Nav>
-                    <NavBtnLink></NavBtnLink>
+    <div className="App">
+      <header className="App-header">
 
-          <NavMenu isOpen={isOpen}>
-            {/* <!--Mobile Navigation Toggler--> */}
-            <MobileIcon onClick={handleToggle}>
-              {isOpen ? <FaRegWindowClose /> : <FaBars />}
-              {/* <Wrapper></Wrapper> */}
-            </MobileIcon>
 
-            {/* <!-- Main Menu --> */}
-            <nav class="main-menu navbar-expand-md navbar-light">
-              <NavBtn>
-                <NavItem>
-                  {/* <Item><NavLinks to="/">Home</NavLinks></Item> */}
+        <nav className={`${styles.navbar}`}>
 
-                  <Item><NavLinks to="about" onClick={handleAboutClick}>About</NavLinks></Item>
-                  <Item><NavLinks to="features" onClick={handleServicesClick}>Services</NavLinks>
-                  </Item>
-                  <Item><NavLinks to="#" onClick={handleContactClick}>
-                    Contact{" "}
-                  </NavLinks>
-                  </Item>
-                  <Item><NavLinks to="Feedback">Feedback</NavLinks></Item>
-                  <Item><NavLinks to="#" onClick={handleDonationClick}>
-                    Donation
-                  </NavLinks></Item>
-                  <Item> <Button as={Link} to="/signin">Sign In</Button> </Item>
-                  <Button as={Link} to="/signup">Sign Up</Button>
-                </NavItem>
-              </NavBtn>
-            </nav>
-            {/* <!-- Main Menu End--> */}
-            {/* <button type="button" className="theme-btn search-toggler"><span className="stroke-gap-icon icon-Search"></span></button>  
-                                                                       */}
 
-          </NavMenu>
-        </Nav>
+          {/* logo */}
+          
+          <a href='/' className={`${styles.logo}`}>
+          <img className={styles.navimg} src={logo}></img>
+            MilkDelights</a>
 
-      </NavbarContainer>
-    </Wrapper>
+
+          <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+            <li onClick={removeActive}>
+              <a href='/' className={`${styles.navLink}`}>Home</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/' className={`${styles.navLink}`}>About</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/' className={`${styles.navLink}`}>Features</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/contact' className={`${styles.navLink}`}>Contact</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/donation' className={`${styles.navLink}`}>Donation</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/signin' className={`${styles.navLink}`}>Register</a>
+            </li>
+          </ul>
+
+
+          <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
+            <span className={`${styles.bar}`}></span>
+            <span className={`${styles.bar}`}></span>
+            <span className={`${styles.bar}`}></span>
+          </div>
+        </nav>
+
+
+      </header>
+    </div>
   );
-};
+}
+
 
 export default Navbar;
+
+;

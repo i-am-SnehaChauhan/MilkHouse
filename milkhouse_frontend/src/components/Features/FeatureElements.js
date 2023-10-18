@@ -6,7 +6,7 @@ export const Container = styled.div`
     padding: 0 15px;
     margin: 0 auto;
     box-sizing: border-box;
-
+    background-color:white; 
 `;
 
 export const Containertitle = styled.h1`

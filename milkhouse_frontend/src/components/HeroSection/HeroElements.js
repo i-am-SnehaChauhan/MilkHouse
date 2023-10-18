@@ -3,7 +3,7 @@ import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 import { motion } from "framer-motion";
 
 export const HeroContainer = styled.div`
-    background: #0c0c0c;
+    /* background: #0c0c0c; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,17 +12,6 @@ export const HeroContainer = styled.div`
     position: relative;
     z-index: 1;
 
-    :before{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 100%),
-        linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
-        z-index: 2;
-    }
 `
 
 export const HeroBg = styled.div`
@@ -48,28 +37,12 @@ export const ImageBg = styled.img`
 
 export const HeroContent = motion(styled.div`
     z-index: 3;
-    max-width: 1200px;
-    position: absolute; 
-   // padding: 8px 24px;
-      display: flex;
-    flex-direction: column; 
-    align-items: center;
-    
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        /* bottom: 0; */
-        left: 0;
-        /* z-index: 2; */
-        background: linear-gradient(
-            180deg,
-            rgba(0,0,0,0.2) 0%,
-            rgba(0,0,0,0.6) 100%
-
-     ),
-        }
+    position: absolute;
+    padding: 8px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+   
           
     `);
 
@@ -93,9 +66,8 @@ export const HeroH1 = styled.h1`
 
 export const HeroP = styled.h2`
     font-size: 2.4rem;
-    font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
-    color: #fff;
+    font-weight: 600;
+    color: #000;
     text-align: center; 
     max-width: 600px;
 
