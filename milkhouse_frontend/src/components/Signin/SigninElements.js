@@ -90,11 +90,11 @@ export const FormInput = styled.input`
   font-size: 18px;
   border: none;
   outline: none;
-  background: rgb(255, 255, 255);
+  background: #403126;
   :focus {
-    border-bottom: 5px solid #01bf71;
+    border-bottom: 5px solid #403126;
     transition: opacity 0.4s ease;
-    box-shadow: 1px 2px 10px #01bf71;
+    box-shadow: 1px 2px 10px #403126;
   }
   :invalid {
     border-bottom: 5px solid red;
@@ -105,7 +105,7 @@ export const FormInput = styled.input`
 `;
 
 export const FormButton = styled.button`
-  background: #01bf71;
+  background: #403126;
   padding: 16px 10px;
   border: none;
   border-radius: 15px;
@@ -118,7 +118,7 @@ export const FormButton = styled.button`
   }
   :active {
     background: #fff;
-    color: #01bf71;
+    color: #403126;
     opacity: 1;
     border: 2px solid #01bf71;
   }
@@ -151,7 +151,7 @@ export const NewContainer = styled.div`
 
 export const FormContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 0 20px #01bf71;
+  box-shadow: 0 0 20px #403126;
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -175,7 +175,7 @@ export const RightContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(147.84deg, #01bf71 8.1%, #00492b 95.42%);
+  background: linear-gradient(147.84deg, #C4A484 8.1%, #403126 95.42%);
   min-height: 100%;
 `;
 
@@ -195,7 +195,7 @@ export const SignInButton = styled.button`
   font-weight: 400;
   font-size: 1rem;
   border-radius: 50px;
-  background-color: ${props => props.disabled ? 'gray' : '#01bf71'};
+  background-color: ${props => props.disabled ? 'gray' : '#403126'};
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
@@ -241,7 +241,7 @@ export const SignInh1 = styled.h1`
   font-size: 2.3rem;
   line-height: 4rem;
   margin-bottom: 1rem;
-  color: #01bf71;
+  color: #403126;
 `;
 
 export const SignInLabel = styled.label`
@@ -252,7 +252,7 @@ export const SignInLabel = styled.label`
   font-weight: 700;
   font-size: 1rem;
   line-height: 2rem;
-  color: #01bf71;
+  color: #403126;
 `;
 
 export const SignInInput = styled.input`
@@ -260,7 +260,7 @@ export const SignInInput = styled.input`
   padding: 0.5rem;
   border-radius: 0;
   border: None;
-  background: rgba(1, 191, 113, 0.3);
+  background: #C4A484;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -318,7 +318,7 @@ export const NewAccount = styled.p`
   font-weight: 600;
   font-size: 1rem;
   line-height: 2rem;
-  color: #01bf71;
+  color: #403126;
 `;
 
 
