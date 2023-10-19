@@ -39,7 +39,7 @@ const Container = styled(Link)(({ theme }) => ({
 }));
 
 const LoginButton = styled(Button)(({ theme }) => ({
-    color: '#000000',
+    color: '#fff',
     background: '#FF8E53',
     textTransform: 'none',
     fontWeight: 600,
@@ -62,13 +62,14 @@ const CustomButtons = () => {
     
   return (
     <Wrapper >
+       
+        {/* <Typography style={{marginTop: 7, width: 135, textAlign: 'center'}}>Become a Seller</Typography> */}
+        {/* <Typography style={{color:'white'}}>Home</Typography>
         <LoginButton variant="contained" onClick={loginPage}>Login</LoginButton>
-        <Typography style={{marginTop: 7, width: 135, textAlign: 'center'}}>Become a Seller</Typography>
-        <Typography style={{marginTop: 7}}>More</Typography>
         <Container to='/cart'>
-            <ShoppingCartIcon />
-            <Typography>Cart</Typography>
-        </Container>
+            <ShoppingCartIcon style={{color:'white'}} />
+            <Typography style={{color:'white'}}>Cart</Typography>
+        </Container> */}
     </Wrapper>
   )
 }

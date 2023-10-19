@@ -1,32 +1,44 @@
 import { useState } from 'react'
 import styles from '../../components/Navbar/Navbar.module.css';
 import logo from "../../image/logo.png";
-
-
+import Search from './Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
+import {AppBar, Toolbar, Typography,List, IconButton, Drawer, styled, Box} from '@mui/material';
+import CustomButtons from './CustomButtons';
+import { Button} from '@mui/material'
+import { Link } from 'react-router-dom';
 function Header() {
 
-
+    const ButtonWrapper = styled('span')(({ theme }) => ({ 
+        margin: '0 5% 0 auto', 
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
+    }));
   // adding the states 
   const [isActive, setIsActive] = useState(false);
-
 
   //add the active class
   const toggleActiveClass = () => {
     setIsActive(!isActive);
   };
 
-
+  const Container = styled(Link)(({ theme }) => ({
+    display: 'flex',
+    fontSize:'18px',fontFamily:'Roboto',
+    color:'inherit',
+    [theme.breakpoints.down('sm')]: {
+        display: 'block'
+    },
+    ':hover':{
+        color:'#f7bd00'
+    }
+}));
   //clean up function to remove the active class
   const removeActive = () => {
     setIsActive(false)
   }
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      removeActive();
-    }
-  };
 
   return (
     <div className="App">
@@ -42,28 +54,31 @@ function Header() {
           <img className={styles.navimg} src={logo}></img>
             MilkDelights</a>
 
-
-          <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+            <Search/>
+          <ul style={{display:'flex',justifyContent:'space-between',gap:'60px',margin:'0 1% 0 auto'}}>
             <li onClick={removeActive}>
-              <a href='/' className={`${styles.navLink}`}>Home</a>
+              <Container to='/' style={{fontSize:'17px',fontFamily:'Roboto',fontWeight:'450'}}>
+              <Typography style={{color:'white',fontSize:'17px',fontWeight:'450',':hover': {
+          color: 'yellow'
+        }}}>Home</Typography>
+              </Container>
             </li>
-            <li onClick={() => scrollToSection('aboutSection')}>
-              <a href='#' className={`${styles.navLink}`}>About</a>
-            </li>
-            <li onClick={() => scrollToSection('featureSection')}>
-              <a href='#' className={`${styles.navLink}`}>Features</a>
-            </li>
-            <li onClick={removeActive}>
-              <a href='/contact' className={`${styles.navLink}`}>Contact</a>
-            </li>
-            <li onClick={removeActive}>
-              <a href='/donation' className={`${styles.navLink}`}>Donation</a>
+           <li onClick={removeActive}>
+            <Container to='/cart'>
+            <PersonIcon style={{color:'white'}} />
+            <Typography style={{color:'white',fontSize:'17px',fontWeight:'450'}}>Login</Typography>
+        </Container>
             </li>
             <li onClick={removeActive}>
-              <a href='/signin' className={`${styles.navLink}`}>Register</a>
+            <Container to='/cart'>
+            <ShoppingCartIcon style={{color:'white'}} />
+            <Typography style={{color:'white',fontSize:'17px',fontWeight:'450'}}>Cart</Typography>
+        </Container>
             </li>
           </ul>
-
+          <ButtonWrapper>
+                    <CustomButtons  />
+                </ButtonWrapper>
 
           <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
             <span className={`${styles.bar}`}></span>
@@ -71,8 +86,6 @@ function Header() {
             <span className={`${styles.bar}`}></span>
           </div>
         </nav>
-
-
       </header>
     </div>
   );

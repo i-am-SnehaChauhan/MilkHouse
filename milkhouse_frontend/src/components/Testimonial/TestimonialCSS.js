@@ -11,7 +11,7 @@ export const Container = styled.div`
     height: max-content;
     padding:50px;
     justify-content: center;
-    background-color: #ffffffc7;
+    background: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
 `;
 
 export const ContainerSlider = styled.div`

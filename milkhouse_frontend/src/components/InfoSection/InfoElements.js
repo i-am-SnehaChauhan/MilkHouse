@@ -20,7 +20,7 @@ export const InfoContainer = styled.div`
     top: 0;
     right: 0;
     bottom: 230px;
-    background-color: #f7bd00;
+    background: radial-gradient(circle at 10% 20%, rgb(251, 221, 19) 0.1%, rgb(255, 153, 1) 90%);;
     }
 `;
 
