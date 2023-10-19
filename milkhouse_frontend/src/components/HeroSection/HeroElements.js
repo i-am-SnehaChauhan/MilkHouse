@@ -53,7 +53,7 @@ export const HeroH1 = styled.h1`
     font-size: 3.6rem;
     line-height: 1.2;
     font-weight: 600;
-    color: white;
+    color: black;
     @media screen and (max-width: 768px) {
         font-size: 40px;
     }
@@ -65,10 +65,10 @@ export const HeroH1 = styled.h1`
 `;
 
 export const HeroP = styled.h2`
-    font-size: 2.4rem;
+    font-size: 1.7rem;
     font-weight: 600;
     color: #000;
-    text-align: center; 
+    text-align: left; 
     max-width: 600px;
 
     @media screen and (max-width: 768px) {
@@ -85,7 +85,7 @@ export const HeroBtnWrapper = styled.div`
     margin-top: 32px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 

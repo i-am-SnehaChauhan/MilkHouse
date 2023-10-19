@@ -7,12 +7,15 @@ export const Button = styled(Link)`
     white-space: nowrap;
     color: ${({ dark }) => (dark ? '#fff' : '#fff')};
     padding: ${({ big }) => (big ? '14px 48px' : '12px 30px')};
-    font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+    font-size: ${({ fontBig }) => (fontBig ? '28px' : '28px')};
     outline: none;
     border: 2px solid #EF6C00;
     box-shadow: 0 3px 0 black, 0px 3px 6px #fff;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
+    margin-left:0;
+    width: 391px;
+    height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;

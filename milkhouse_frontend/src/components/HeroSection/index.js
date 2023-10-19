@@ -81,9 +81,9 @@ const HeroSection = () => {
                     >
                         <HeroContainer >
                             <HeroContent>
-                            
+                            <HeroH1>WELCOME TO </HeroH1>
+                                <HeroH1>MILKDELIGHTS</HeroH1>
                                 <HeroP>
-                                    WELCOME TO MILKDELIGHTS
                                     Pure Milk, Pure Delight: Savor the Freshness!
                                 </HeroP>
                                 
