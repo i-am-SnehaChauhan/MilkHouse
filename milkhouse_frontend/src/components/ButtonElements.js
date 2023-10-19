@@ -12,9 +12,6 @@ export const Button = styled(Link)`
     box-shadow: 0 3px 0 black, 0px 3px 6px #fff;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    margin-left:0;
-    width: 391px;
-    height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;

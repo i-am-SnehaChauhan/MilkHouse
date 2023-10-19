@@ -1,101 +1,84 @@
-import React, { useState } from 'react';
-import {AppBar, Toolbar, Typography,List, IconButton, Drawer, styled, Box} from '@mui/material';
-import '@fontsource/roboto/300.css';
-import Search from './Search';
-import CustomButtons from './CustomButtons';
-import { Link } from 'react-router-dom';
-import { Menu } from '@mui/icons-material';
+import { useState } from 'react'
+import styles from '../../components/Navbar/Navbar.module.css';
+import logo from "../../image/logo.png";
 
-const StyledAppBar = styled(AppBar)`
-  background: linear-gradient(45deg, #000000 30%, #FF8E53 90%);
-  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
-  height: 60px;
-`;
 
-const Component = styled(Box)`
-    margin-left: 8%;
-    line-height: 0;
-    text-decoration: none;  
-    color: #FFFFFF;
+function Header() {
 
-`
-const SubHeading = styled(Typography)`
-    font-size: 10px;
-    font-style: italic;
-    margin-left: 20px;
-    margin-top: 0px;
-`
-const ButtonWrapper = styled('span')(({ theme }) => ({ 
-    margin: '0 5% 0 auto', 
-    [theme.breakpoints.down('sm')]: {
-        display: 'none'
+
+  // adding the states 
+  const [isActive, setIsActive] = useState(false);
+
+
+  //add the active class
+  const toggleActiveClass = () => {
+    setIsActive(!isActive);
+  };
+
+
+  //clean up function to remove the active class
+  const removeActive = () => {
+    setIsActive(false)
+  }
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      removeActive();
     }
-}));
+  };
 
-const Heading = styled(Link)`
-   text-decoration: none;
-`
+  return (
+    <div className="App">
+      <header className="App-header">
 
-const MenuButton = styled(IconButton)(({ theme }) => ({
-    display: 'none',
-    [theme.breakpoints.down('sm')]: {
-        display: 'block'
-    }
-}));
 
-const Header = () => {
-    const [open, setOpen] = useState(false);
+        <nav className={`${styles.navbar}`}>
 
-    const handleClose = () => {
-        setOpen(false);
-    }
 
-    const handleOpen = () => {
-        setOpen(true);
-    }
-    const list = () => (
-        <Box style={{ width: 200}} onClick={handleClose}>
-            <List>
-                <listItem button>
-                    <CustomButtons />
-                </listItem>
-            </List>
-        </Box>
-    );
+          {/* logo */}
+          
+          <a href='/' className={`${styles.logo}`}>
+          <img className={styles.navimg} src={logo}></img>
+            MilkDelights</a>
 
-    return (
-        <StyledAppBar position="static">
-            <Toolbar style={{ minHeight: 55 }}>
-            <MenuButton
-                    color="inherit"
-                    onClick={handleOpen}
-                >
-                    <Menu />
-                </MenuButton>
 
-                <Drawer open={open} onClose={handleClose}>
-                    {list()}
-                </Drawer>
-                <Component >
-                   <Typography variant="h5" component="h1" sx={{ flexGrow: 3 }} fontFamily={'Roboto'} style={{marginBottom:'0px'}}>
-                        MilkHouse
-                   </Typography>
-                   <Box>
-                        <SubHeading>Live&nbsp;  
-                            <Box component="span" style={{color: '#FFE500'}}>Healthy&nbsp; </Box> 
-                            Life
-                        </SubHeading>
-                   </Box>
-                </Component>
+          <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+            <li onClick={removeActive}>
+              <a href='/' className={`${styles.navLink}`}>Home</a>
+            </li>
+            <li onClick={() => scrollToSection('aboutSection')}>
+              <a href='#' className={`${styles.navLink}`}>About</a>
+            </li>
+            <li onClick={() => scrollToSection('featureSection')}>
+              <a href='#' className={`${styles.navLink}`}>Features</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/contact' className={`${styles.navLink}`}>Contact</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/donation' className={`${styles.navLink}`}>Donation</a>
+            </li>
+            <li onClick={removeActive}>
+              <a href='/signin' className={`${styles.navLink}`}>Register</a>
+            </li>
+          </ul>
 
-                <Search />
 
-                <ButtonWrapper>
-                    <CustomButtons  />
-                </ButtonWrapper>
-            </Toolbar>
-        </StyledAppBar>
-    )
+          <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
+            <span className={`${styles.bar}`}></span>
+            <span className={`${styles.bar}`}></span>
+            <span className={`${styles.bar}`}></span>
+          </div>
+        </nav>
+
+
+      </header>
+    </div>
+  );
 }
 
+
 export default Header;
+
+;

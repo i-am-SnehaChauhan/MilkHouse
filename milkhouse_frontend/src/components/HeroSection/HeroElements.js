@@ -64,7 +64,7 @@ export const HeroH1 = styled.h1`
 `;
 
 export const HeroP = styled.h2`
-    font-size: 1.7rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #fff;
     text-align: center; 
@@ -84,7 +84,7 @@ export const HeroBtnWrapper = styled.div`
     margin-top: 32px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
 

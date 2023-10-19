@@ -81,9 +81,8 @@ const HeroSection = () => {
                     >
                         <HeroContainer >
                             <HeroContent>
-                            <HeroH1>WELCOME TO </HeroH1>
-                                <HeroH1>MILKDELIGHTS</HeroH1>
-                                <HeroP>
+                            <HeroP>
+                                    WELCOME TO MILKDELIGHTS <br/>
                                     Pure Milk, Pure Delight: Savor the Freshness!
                                 </HeroP>
                                 {/* {LeftSubSectionJSX} */}
