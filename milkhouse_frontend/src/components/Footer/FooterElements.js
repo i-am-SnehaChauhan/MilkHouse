@@ -70,17 +70,12 @@ export const FooterLinkItems = styled.div`
     gap: 0.5rem;
     margin-top: 1rem;
   }
-  list{
-    margin-bottom:10px;
-  }
-
   @media (min-width: 320px) {
     align-items: center;
     &.socials {
       margin: 1rem;
     }
   }
-
   @media (min-width: 786px) {
     align-items: flex-start;
     text-align: left;
@@ -96,7 +91,7 @@ export const FooterLinkTitle = styled.h1`
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   text-decoration: none;
   position: relative;
-  color: inherit;
+  color:  #f7bd00;
 text-transform:uppercase;
   
 `;
@@ -104,23 +99,25 @@ text-transform:uppercase;
 
 
 export const FooterLink = styled(Link)`
-  /* Your styles for FooterLink */
-  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   margin-bottom: 0.6rem;
   font-size: 16px;
-
+  /* display: flex;
+  flex-direction: column; */
   &:hover {
     color: #f7bd00;
   }
-
-
+  /* @media (min-width: 320px) {
+    align-items: center;
+  } */
+`;
+export const FooterLogo = styled.img`
+border-radius: 50%;
+  height: 80px;
+   width: 80px;
+  margin: 0 10px 0 10px;
 `;
 
-// Social media
-export const SocialMedia = styled.section``;
-
-// Social media wrap
 export const SocialMediaWrap = styled.div`
   max-width: 1100px;
   display: flex;
@@ -134,19 +131,11 @@ export const SocialLogo = styled(Link)`
   color: rgb(255, 255, 255);
   cursor: pointer;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
 
   &:hover {
-    mask-image: linear-gradient(
-      -75deg,
-      rgba(0, 0, 0, 0.6) 30%,
-      #000 50%,
-      rgba(0, 0, 0, 0.6) 70%
-    );
-    mask-size: 200%;
-    animation: shine 2s infinite;
-    color: lightcyan;
+    color: #f7bd00;
   }
 
   @keyframes shine {
@@ -163,10 +152,5 @@ export const SocialLogo = styled(Link)`
 // Website rights
 export const WebsiteRights = styled.small`
   color: #fff;
+  font-size:16px;
 `;
-
-// Social icons
-export const SocialIcons = styled.div``;
-
-// Social icons link
-export const SocialIconsLink = styled.a``;

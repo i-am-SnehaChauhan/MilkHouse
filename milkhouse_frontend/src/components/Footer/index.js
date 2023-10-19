@@ -1,16 +1,6 @@
 import React from "react";
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import {
-  FaFacebook,
-  FaLinkedin,
-  FaYoutube,
-  FaInstagram,
-  FaTwitter,
-  FaGithub,
-  FaMobile,
-  FaMailBulk
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import logo from "../../image/logo.png";
 import { LocationOn, Phone, Mail, Twitter, Facebook, YouTube, LinkedIn, Email } from '@mui/icons-material';
 import {
   FooterContainer,
@@ -19,14 +9,11 @@ import {
   FooterLinksWrapper,
   FooterLinkItems,
   FooterLinkTitle,
-  FooterLinkTitleHr,
+  FooterLogo,
   FooterLink,
-  SocialMedia,
-  SocialMediaWrap,
   SocialLogo,
-  WebsiteRights,
+  WebsiteRights, 
 } from "./FooterElements";
-
 const Footer = () => {
   const handleClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -41,21 +28,21 @@ const Footer = () => {
             <FooterLinkItems>
   <FooterLinkTitle>Our Office</FooterLinkTitle>
   <List>
-    <ListItem>
+  <ListItem>
       <ListItemIcon>
-        <LocationOn style={{ marginRight: '0.5rem' }} />
+        <LocationOn style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
       </ListItemIcon>
       <ListItemText primary="IGDTUW, Kashmere Gate, ND-India" />
     </ListItem>
     <ListItem>
       <ListItemIcon>
-        <Phone style={{ marginRight: '0.5rem' }} />
+        <Phone style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
       </ListItemIcon>
       <ListItemText primary="+012 345 67890" />
     </ListItem>
     <ListItem>
       <ListItemIcon>
-        <Mail style={{ marginRight: '0.5rem' }} />
+        <Mail style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
       </ListItemIcon>
       <ListItemText primary="agrotechiam354@gmail.com" />
     </ListItem>
@@ -63,17 +50,31 @@ const Footer = () => {
 </FooterLinkItems>
             
            
-              <FooterLinkItems >
-            
-                  <FooterLinkTitle>Quick Links</FooterLinkTitle>
-                
-
-            
-                <FooterLink to="/contact">Contact</FooterLink>
-                <FooterLink to="/">Services</FooterLink>
-                <FooterLink to="/develop">Destinations</FooterLink>
-                <FooterLink to="/donate">Support and Donate</FooterLink>
-              </FooterLinkItems>
+<FooterLinkItems>
+  <FooterLinkTitle>Quick Links</FooterLinkTitle>
+  <List>
+  <ListItem>
+      <FooterLink to="/contact">
+        <ListItemText primary="Contact" />
+      </FooterLink>
+    </ListItem>
+    <ListItem>
+      <FooterLink onClick={handleClick}className="footer-link">
+        <ListItemText primary="Services" />
+      </FooterLink>
+    </ListItem>
+    <ListItem>
+      <FooterLink to="/develop" className="footer-link">
+        <ListItemText primary="Destinations" />
+      </FooterLink>
+    </ListItem>
+    <ListItem>
+      <FooterLink to="/donate" className="footer-link">
+        <ListItemText primary="Support and Donate" />
+      </FooterLink>
+    </ListItem>
+  </List>
+</FooterLinkItems>
            
             <FooterLinkItems>
   <FooterLinkTitle>Business Hours</FooterLinkTitle>
@@ -92,17 +93,12 @@ const Footer = () => {
            
           </FooterLinksWrapper>
         </FooterLinksContainer>
-        <SocialMedia>
-          <SocialMediaWrap>
             <FooterLinkItems className="socials">
-              {/* Social media icons */}
+            <FooterLogo src={logo}/> <SocialLogo onClick={handleClick}>MilkDelights</SocialLogo>
             </FooterLinkItems>
-            <SocialLogo onClick={handleClick}>MilkDelights</SocialLogo>
             <WebsiteRights>
               MilkDelights © {new Date().getFullYear()}&nbsp;All rights reserved.
             </WebsiteRights>
-          </SocialMediaWrap>
-        </SocialMedia>
       </FooterWrap>
     </FooterContainer>
   );
