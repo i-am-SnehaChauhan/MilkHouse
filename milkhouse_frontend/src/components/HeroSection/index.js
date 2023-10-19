@@ -68,7 +68,7 @@ const HeroSection = () => {
     //     </HeroContent>
     // </HeroContainer>
     <>
-    <Container maxWidth="xl" sx={{backgroundColor:"#ffaea587"}}>
+    <Container maxWidth="xl" sx={{ background: 'linear-gradient(45deg, #000000 30%, #FF8E53 90%)'}}>
                 <Grid container alignItems="center">
                     <Grid
                         item
@@ -86,7 +86,7 @@ const HeroSection = () => {
                                 <HeroP>
                                     Pure Milk, Pure Delight: Savor the Freshness!
                                 </HeroP>
-                                
+                                {/* {LeftSubSectionJSX} */}
                                 <HeroBtnWrapper>
                 <Button as={Link} to="/dairy" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
                      Get Started {hover ? <ArrowForward /> : <ArrowRight />}

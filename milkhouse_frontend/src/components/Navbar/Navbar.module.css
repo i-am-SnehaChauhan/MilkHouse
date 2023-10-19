@@ -14,7 +14,8 @@ a {
 
 /* navbar */
 .navbar {
-  background-color: #403126;
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
+  /* box-shadow: 0 3px 5px 2px rgb(162 91 54); */
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;

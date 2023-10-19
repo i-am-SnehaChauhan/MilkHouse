@@ -27,7 +27,7 @@ const Footer = () => {
           
             <FooterLinkItems>
   <FooterLinkTitle>Our Office</FooterLinkTitle>
-  <List>
+  <footerLinkItems>
   <ListItem>
       <ListItemIcon>
         <LocationOn style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
@@ -46,13 +46,13 @@ const Footer = () => {
       </ListItemIcon>
       <ListItemText primary="agrotechiam354@gmail.com" />
     </ListItem>
-  </List>
+  </footerLinkItems>
 </FooterLinkItems>
             
            
 <FooterLinkItems>
   <FooterLinkTitle>Quick Links</FooterLinkTitle>
-  <List>
+  <FooterLinkItems>
   <ListItem>
       <FooterLink to="/contact">
         <ListItemText primary="Contact" />
@@ -73,12 +73,12 @@ const Footer = () => {
         <ListItemText primary="Support and Donate" />
       </FooterLink>
     </ListItem>
-  </List>
+  </FooterLinkItems>
 </FooterLinkItems>
            
             <FooterLinkItems>
   <FooterLinkTitle>Business Hours</FooterLinkTitle>
-  <List>
+  <FooterLinkItems>
     <ListItem>
       <ListItemText primary="Monday - Friday" />
     </ListItem>
@@ -88,7 +88,7 @@ const Footer = () => {
     <ListItem>
       <ListItemText primary="Sunday" />
     </ListItem>
-  </List>
+  </FooterLinkItems>
 </FooterLinkItems>
            
           </FooterLinksWrapper>

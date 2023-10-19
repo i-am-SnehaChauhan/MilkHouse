@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // Footer container
 export const FooterContainer = styled.footer`
-  background-color: #403126;
+   background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   padding-top: 3rem;
   padding-bottom: 2rem;
   z-index: 99;
@@ -77,7 +77,6 @@ export const FooterLinkItems = styled.div`
     }
   }
   @media (min-width: 786px) {
-    align-items: flex-start;
     text-align: left;
   }
 `;
@@ -99,7 +98,6 @@ text-transform:uppercase;
 
 
 export const FooterLink = styled(Link)`
-  text-decoration: none;
   margin-bottom: 0.6rem;
   font-size: 16px;
   /* display: flex;

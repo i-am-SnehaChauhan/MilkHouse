@@ -9,10 +9,8 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
     display: flex;
     height: max-content;
-    padding:35px;
+    padding:50px;
     justify-content: center;
-    // margin-top: 50px;
-    // margin-bottom: 50px;
     background-color: #ffffffc7;
 `;
 
