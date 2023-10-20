@@ -5,7 +5,7 @@ import { getProductDetails } from '../../redux/actions/productAction';
 import { Box, styled, Grid } from '@mui/material';
 import ActionItem from './ActionItem';
 import ProductDetail from './ProductDetail';
-
+import Header from '../Header/Header';
 const Component = styled(Box)`
    background : #F2F2F2; 
 `;
@@ -18,9 +18,12 @@ const Container = styled(Grid)(({ theme }) => ({
   }
 }));
 
-const RightContainer = styled(Grid)`
-   margin-top: 55px;
-`;
+const RightContainer = styled(Grid)(({ theme }) => ({
+   marginTop: '155px',
+   [theme.breakpoints.down('md')]: {
+    margin: '20px',
+  }
+}));
 
 
 const DetailView = () => {
@@ -38,7 +41,10 @@ const DetailView = () => {
   console.log(product);
 
   return (
+    <>
+    
     <Component>
+    <Header/>
       {
          product && Object.keys(product).length &&
         <Container container>
@@ -51,6 +57,7 @@ const DetailView = () => {
         </Container>
       }
     </Component>
+    </>
   );
 };
 

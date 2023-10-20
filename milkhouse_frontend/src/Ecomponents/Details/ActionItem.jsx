@@ -9,8 +9,10 @@ import { addToCart } from '../../redux/actions/cartActions';
 const LeftContainer = styled(Box)(({theme}) => ({
   minWidth: '40%',
   padding: '40px 0 0 80px',
+  marginTop:'50px',
     [theme.breakpoints.down('lg')]: {
       padding: '20px 40px',
+      marginTop:'122px',
     }
 }))
    
