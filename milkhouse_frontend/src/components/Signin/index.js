@@ -125,6 +125,7 @@ const SignIn = () => {
                     right: "16%",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
+                    color:'rgb(64, 49, 38)'
                   }}
                   onClick={handlePasswordToggle}
                 >

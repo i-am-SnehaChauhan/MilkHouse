@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const FormContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 0 20px #01bf71;
+  box-shadow: 0 0 20px #403126;
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -44,12 +44,12 @@ export const LeftContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(147.84deg, #01bf71 8.1%, #00492b 95.42%);
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   min-height: 100%;
 `;
 
 export const LeftHeading = styled.h1`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
@@ -58,10 +58,10 @@ export const LeftHeading = styled.h1`
 `;
 
 export const LeftPara = styled.p`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1rem;
   color: #ffffff;
   margin-top: 0.4rem;
@@ -79,13 +79,13 @@ export const SignUpForm = styled.form`
 `;
 
 export const SignUph1 = styled.h1`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 700;
   font-size: 2.3rem;
   line-height: 4rem;
   margin-bottom: 1rem;
-  color: #01bf71;
+  color:#403126;
 `;
 
 export const FormInput = styled.input`
@@ -93,11 +93,11 @@ export const FormInput = styled.input`
   padding: 0.5rem;
   border-radius: 0;
   border: None;
-  background: rgba(1, 191, 113, 0.3);
-  font-family: "Poppins";
+  background:  rgb(255 179 104 / 57%);
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 0.8rem;
   color: Black;
   margin-bottom: 1rem;
@@ -110,12 +110,12 @@ export const FormInput = styled.input`
   }
 
   &:hover {
-    border: 1px solid #01bf71;
+    border: 1px solid #ed730e;
   }
 
   &:focus {
     border-radius: 0;
-    border: 2px solid #01bf71;
+    border: 2px solid #ed730e;
   }
 `;
 
@@ -147,12 +147,12 @@ export const PasswordContainer = styled.div`
 
 export const SignUpButton = styled.button`
   width: 9rem;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 50px;
-  background-color: ${props => props.disabled ? 'gray' : '#01bf71'};
+  background-color: ${props => props.disabled ? 'gray' : '#403126'};
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
@@ -160,8 +160,8 @@ export const SignUpButton = styled.button`
   text-decoration: none;
 
   &:hover {
-    background: #00492B;
-    color: #ffffff;
+    background: #f7bd00;
+    color: #000;
   }
 
   &:active {
@@ -190,7 +190,7 @@ export const Image = styled.img`
 
 export const Error = styled.b`
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #ff3300;
 `;
 export const RadioContainer = styled.div`
@@ -207,5 +207,5 @@ export const RadioLabel = styled.label`
   margin-right: 20px;
   margin-bottom:0px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
 `;

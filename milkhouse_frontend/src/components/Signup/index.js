@@ -45,7 +45,7 @@ const SignUp = () => {
     fontWeight: 600,
     fontSize: "1rem",
     lineHeight: "2rem",
-    color: "#01bf71",
+    color: "#403126",
   };
   const [data, setData] = useState({
     name: "",
@@ -190,6 +190,7 @@ const SignUp = () => {
                     right: "16%",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
+                    color:'rgb(64, 49, 38)'
                   }}
                   onClick={handlePasswordToggle}
                 >

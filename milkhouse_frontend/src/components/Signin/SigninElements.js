@@ -49,7 +49,7 @@ export const FormContent = styled.div`
 `;
 
 export const Form = styled.form`
-  background: linear-gradient(45deg, black, rgb(1, 147, 86), rgb(10, 201, 122));
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   max-width: 550px;
   height: auto;
   width: 100%;
@@ -175,7 +175,7 @@ export const RightContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(147.84deg, #C4A484 8.1%, #403126 95.42%);
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   min-height: 100%;
 `;
 
@@ -190,10 +190,10 @@ export const SignInForm = styled.form`
 
 export const SignInButton = styled.button`
   width: 7rem;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 50px;
   background-color: ${props => props.disabled ? 'gray' : '#403126'};
   white-space: nowrap;
@@ -204,8 +204,8 @@ export const SignInButton = styled.button`
   margin-bottom: 1rem;
 
   &:hover {
-    background: #00492b;
-    color: #ffffff;
+    background:#f7bd00;
+    color: #000;
   }
 
   &:active {
@@ -214,7 +214,7 @@ export const SignInButton = styled.button`
 `;
 
 export const RightHeading = styled.h1`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
@@ -223,10 +223,10 @@ export const RightHeading = styled.h1`
 `;
 
 export const RightPara = styled.p`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1rem;
   color: #ffffff;
   margin-top: 0.4rem;
@@ -235,7 +235,7 @@ export const RightPara = styled.p`
 `;
 
 export const SignInh1 = styled.h1`
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 700;
   font-size: 2.3rem;
@@ -247,7 +247,7 @@ export const SignInh1 = styled.h1`
 export const SignInLabel = styled.label`
   text-align: left;
   width: 70%;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 700;
   font-size: 1rem;
@@ -260,11 +260,11 @@ export const SignInInput = styled.input`
   padding: 0.5rem;
   border-radius: 0;
   border: None;
-  background: #C4A484;
-  font-family: "Poppins";
+  background: rgb(255 179 104 / 57%);
+  /* font-family: "Poppins"; */
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 0.8rem;
   color: Black;
   margin-bottom: 1rem;
@@ -277,12 +277,12 @@ export const SignInInput = styled.input`
   }
 
   &:hover {
-    border: 1px solid #01bf71;
+    border: 1px solid #ed730e;
   }
 
   &:focus {
     border-radius: 0;
-    border: 2px solid #01bf71;
+    border: 2px solid #ed730e;
   }
 `;
 
@@ -297,7 +297,7 @@ export const RememberMe = styled.div`
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1rem;
     color: #1e1e1e;
   }
@@ -307,7 +307,7 @@ export const ForgotPassword = styled.p`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1rem;
   color: #1e1e1e;
 `;
@@ -350,7 +350,7 @@ export const Image = styled.img`
 `;
 export const Error = styled.b`
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: #ff3300;
 `;
 export const RadioContainer = styled.div`
@@ -367,5 +367,5 @@ export const RadioLabel = styled.label`
   margin-right: 20px;
   margin-bottom:0px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
 `;

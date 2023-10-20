@@ -62,7 +62,7 @@ function Header() {
               </Container>
             </li>
            <li onClick={removeActive}>
-            <Container to='/cart'>
+            <Container to='/signin'>
             <PersonIcon style={{color:'white'}} />
             <Typography style={{color:'white',fontSize:'17px',fontWeight:'450'}}>Login</Typography>
         </Container>
