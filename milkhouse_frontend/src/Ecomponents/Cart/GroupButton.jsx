@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { ButtonGroup, Button, styled } from "@mui/material";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import { Typography, styled} from '@mui/material';
 
 const Component = styled(ButtonGroup)`
     margin-top: 30px;

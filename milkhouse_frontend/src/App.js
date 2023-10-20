@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DonationPage from './pages/donation';
 import DetailViewPage from './pages/detailview';
 import CartPage from './pages/cart';
-
+import ProductsPage from './pages/products';
 
 function App() {
   
@@ -23,6 +23,7 @@ function App() {
         <Route path="/dairy" element ={<DairyPage />} />
         <Route path="/donation" element ={<DonationPage />} />
         <Route path='/dairy/product/:id' element={<DetailViewPage/>} />
+        <Route path='/dairy/products' element={<ProductsPage/>} />
         <Route path='/cart' element={<CartPage/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>

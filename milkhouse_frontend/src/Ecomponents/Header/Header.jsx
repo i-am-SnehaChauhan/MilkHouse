@@ -4,9 +4,7 @@ import logo from "../../image/logo.png";
 import Search from './Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
-import {AppBar, Toolbar, Typography,List, IconButton, Drawer, styled, Box} from '@mui/material';
-import CustomButtons from './CustomButtons';
-import { Button} from '@mui/material'
+import { Typography, styled} from '@mui/material';
 import { Link } from 'react-router-dom';
 function Header() {
 
@@ -55,9 +53,9 @@ function Header() {
             MilkDelights</a>
 
             <Search/>
-          <ul style={{display:'flex',justifyContent:'space-between',gap:'60px',margin:'0 1% 0 auto'}}>
+          <ul style={{display:'flex',justifyContent:'space-between',gap:'60px'}}>
             <li onClick={removeActive}>
-              <Container to='/' style={{fontSize:'17px',fontFamily:'Roboto',fontWeight:'450'}}>
+              <Container to='/dairy' style={{fontSize:'17px',fontFamily:'Roboto',fontWeight:'450'}}>
               <Typography style={{color:'white',fontSize:'17px',fontWeight:'450',':hover': {
           color: 'yellow'
         }}}>Home</Typography>
@@ -76,10 +74,6 @@ function Header() {
         </Container>
             </li>
           </ul>
-          <ButtonWrapper>
-                    <CustomButtons  />
-                </ButtonWrapper>
-
           <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
             <span className={`${styles.bar}`}></span>
             <span className={`${styles.bar}`}></span>

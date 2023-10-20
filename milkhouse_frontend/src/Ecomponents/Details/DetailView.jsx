@@ -7,8 +7,7 @@ import ActionItem from './ActionItem';
 import ProductDetail from './ProductDetail';
 
 const Component = styled(Box)`
-   background : #F2F2F2;
-   margin-top: 30px;  
+   background : #F2F2F2; 
 `;
 
 const Container = styled(Grid)(({ theme }) => ({

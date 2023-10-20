@@ -84,7 +84,8 @@ const Slide = ({ products, timer, title }) => {
                                 <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
                         </Timer>
                 }
-                <ViewAllButton variant="contained" color="primary">View All</ViewAllButton>
+                <Link to="/dairy/products" style={{marginLeft:'20px'}}>
+                <ViewAllButton variant="contained" color="primary">View All</ViewAllButton></Link>
             </Deal>
             <Divider />
             <Carousel
