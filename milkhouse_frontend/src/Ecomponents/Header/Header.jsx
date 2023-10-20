@@ -53,7 +53,7 @@ function Header() {
             MilkDelights</a>
 
             <Search/>
-          <ul style={{display:'flex',justifyContent:'space-between',gap:'60px'}}>
+          <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
             <li onClick={removeActive}>
               <Container to='/dairy' style={{fontSize:'17px',fontFamily:'Roboto',fontWeight:'450'}}>
               <Typography style={{color:'white',fontSize:'17px',fontWeight:'450',':hover': {
