@@ -9,11 +9,22 @@ export const signup = async (req, res) => {
             });
         }
         
-        const newUser = new User({User});
+        // Create a new user using the data from req.body
+        const newUser = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            username: req.body.username,  // Make sure username is provided in the request
+            email: req.body.email,
+            countryCode: req.body.countryCode,  // Make sure countryCode is provided in the request
+            contactNumber: req.body.contactNumber,
+            password: req.body.password,
+            // ... other fields ...
+        });
+
+        await newUser.save();
         
-        const savedUser = await newUser.save();
         return res.status(201).json({
-            message: 'Signup successfull',
+            message: 'Signup successful',
         });
     } catch (error) {
         console.log(error);
@@ -22,4 +33,3 @@ export const signup = async (req, res) => {
         });
     }
 };
-

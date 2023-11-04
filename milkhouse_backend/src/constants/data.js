@@ -140,7 +140,7 @@ export const users = [
         lastName: 'Doe',
         email: 'jane@gmail.com',
         password: '123456',
-        contact: '1234567890',
+        contactNumber: '1234567890',
     },
 
 ];
