@@ -15,18 +15,6 @@ import PaymentForm from './PaymentForm';
 import Review from './Review';
 import Navbar from '../../components/Navbar';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
@@ -70,9 +58,9 @@ export default function Checkout() {
         
         {/* <Navbar/> */}
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Container component="main" maxWidth="sm" sx={{ mb: 4, marginTop: '100px'  }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center">
+          <Typography component="h1" variant="h4" align="center" sx={{ fontWeight: 600, fontSize: '2.3rem',fontFamily:'none' }}>
             Checkout
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
@@ -114,7 +102,7 @@ export default function Checkout() {
             </React.Fragment>
           )}
         </Paper>
-        <Copyright />
+        
       </Container>
     </React.Fragment>
   );
