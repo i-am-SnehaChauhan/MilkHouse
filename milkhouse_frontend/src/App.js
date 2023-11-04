@@ -12,6 +12,7 @@ import CartPage from './pages/cart';
 import ProductsPage from './pages/products';
 import CheckoutPage from './pages/checkout';
 import Dashboard from './Dashboard/Dashboard'
+import NotFound from './pages/404';
 
 function App() {
   
@@ -30,7 +31,7 @@ function App() {
         <Route path='/cart' element={<CartPage/>} />
         <Route path='/checkout' element={<CheckoutPage/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </Router>
   );
