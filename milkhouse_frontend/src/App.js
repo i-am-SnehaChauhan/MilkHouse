@@ -11,6 +11,7 @@ import DetailViewPage from './pages/detailview';
 import CartPage from './pages/cart';
 import ProductsPage from './pages/products';
 import CheckoutPage from './pages/checkout';
+import Dashboard from './Dashboard/Dashboard'
 
 function App() {
   
@@ -28,6 +29,7 @@ function App() {
         <Route path='/dairy/products' element={<ProductsPage/>} />
         <Route path='/cart' element={<CartPage/>} />
         <Route path='/checkout' element={<CheckoutPage/>} />
+        <Route path='/dashboard' element={<Dashboard/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
