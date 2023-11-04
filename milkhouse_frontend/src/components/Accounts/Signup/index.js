@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Img from "../../image/signup.png";
+import Img from "../../../image/signup.png";
 import { NavLink } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +26,7 @@ import {
 
 const SignUp = () => {
   const Navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handlePasswordToggle = () => {
@@ -76,28 +74,11 @@ const SignUp = () => {
       setErrMessage("Passwords do not match");
       return;
     }
+    
     setErrMessage("");
+  }
 
-    setSubmitBtnDisabled(true);
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then(async (userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        setSubmitBtnDisabled(false);
-        await updateProfile(user, {
-          displayName: data.name,
-        });
-        Navigate("/signin");
-      })
-      .catch((error) => {
-        setErrMessage(error.message);
-        setSubmitBtnDisabled(false);
-        console.log("Error-", error.message);
-      });
-
-    console.log(data);
-  };
+  // setSubmitBtnDisabled(true);
 
   return (
     <>
@@ -113,27 +94,6 @@ const SignUp = () => {
           <SignUpContainer>
             <SignUpForm>
               <SignUph1>Create account</SignUph1>
-              {/* <RadioContainer>
-                <RadioInput
-                  type="radio"
-                  id="user"
-                  name="role"
-                  value="user"
-                  checked={!isAdmin}
-                  onChange={() => setIsAdmin(false)}
-                />
-                <RadioLabel htmlFor="user">User</RadioLabel>
-
-                <RadioInput
-                  type="radio"
-                  id="admin"
-                  name="role"
-                  value="admin"
-                  checked={isAdmin}
-                  onChange={() => setIsAdmin(true)}
-                />
-                <RadioLabel htmlFor="admin">Admin</RadioLabel>
-              </RadioContainer> */}
               <FormInput
                 onChange={(e) => setData({ ...data, name: e.target.value })}
                 id="FullNameInput"
@@ -190,7 +150,7 @@ const SignUp = () => {
                     right: "16%",
                     transform: "translateY(-50%)",
                     cursor: "pointer",
-                    color:'rgb(64, 49, 38)'
+                    color: 'rgb(64, 49, 38)'
                   }}
                   onClick={handlePasswordToggle}
                 >
@@ -225,7 +185,7 @@ const SignUp = () => {
                 type="submit"
                 onClick={handleSubmission}
                 disabled={submitBtnDisabled}
-                //   style={{cursor:`${trackState ? "pointer": "not-allowed"}`}}
+              //   style={{cursor:`${trackState ? "pointer": "not-allowed"}`}}
               >
                 Sign Up
               </SignUpButton>

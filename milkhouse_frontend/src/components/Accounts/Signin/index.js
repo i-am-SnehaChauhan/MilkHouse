@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Img from "../../image/signin.png";
+import Img from "../../../image/signin.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 
 import {
   NewContainer,
