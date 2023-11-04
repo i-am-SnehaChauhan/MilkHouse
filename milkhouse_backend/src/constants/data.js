@@ -127,4 +127,24 @@ export const products = [
     }
 ];
 
+export const users = [
+    {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john@gmail.com',
+        password: '123456',
+        contact: '1234567890',
+    },
+    {
+        firstName: 'Jane',
+        lastName: 'Doe',
+        email: 'jane@gmail.com',
+        password: '123456',
+        contact: '1234567890',
+    },
+
+];
+
+
+
 

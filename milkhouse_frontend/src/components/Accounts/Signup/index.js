@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Img from "../../../image/signup.png";
 import { NavLink } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { API } from '../../../service/api';
 
 import {
   Container,
@@ -19,14 +19,10 @@ import {
   PasswordContainer,
   Image,
   Error,
-  RadioContainer,
-  RadioInput,
-  RadioLabel,
 } from "./SignupElements";
 
 const SignUp = () => {
-  const Navigate = useNavigate();
-  // const [isAdmin, setIsAdmin] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handlePasswordToggle = () => {
@@ -58,7 +54,7 @@ const SignUp = () => {
   const [errMessage, setErrMessage] = useState("");
   const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false);
 
-  const handleSubmission = () => {
+  const handleSubmission = async() => {
     if (
       !data.name ||
       !data.username ||
@@ -76,6 +72,8 @@ const SignUp = () => {
     }
     
     setErrMessage("");
+
+    await API.userSignup(data)
   }
 
   // setSubmitBtnDisabled(true);
