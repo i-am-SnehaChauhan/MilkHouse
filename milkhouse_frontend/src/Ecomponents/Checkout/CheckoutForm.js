@@ -93,7 +93,7 @@ const Checkout = () => {
   
       
       const MakePayment= async() =>{
-        const stripe = await loadStripe(process.env.SECRET);
+        const stripe = await loadStripe("pk_test_51OjP9jSG8WEVyf0aeiqFoT54Ergz8GVOfLB5iOhTUOWRoshAKwt9eA0zpIer5c2uDPb5nDJxfcMeOY8PRIBUxeLO007wsYjRW3");
         const body={
           products: cartItems
         }
