@@ -109,7 +109,7 @@ const Checkout = () => {
   const discount = product ? product.discount : 0;
   const price = product ? product.price : 0;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     const {email,name,city,address} = data;
@@ -134,7 +134,14 @@ const Checkout = () => {
       setInvalid(true);
       return;
     }
-    MakePayment();   
+    try {
+      await MakePayment();
+      // Optionally, you can perform any additional actions after successful form submission
+      console.log("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Optionally, handle any errors that occur during form submission
+    } 
   };
 
   const setBack = () => {
