@@ -1,13 +1,11 @@
 import React, { useEffect }  from 'react'
-import { Box, Button, styled, Typography } from '@mui/material';
+import { Box, Button, styled, Typography,Input } from '@mui/material';
 import { Grid } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { getProductDetails } from '../../redux/actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import {loadStripe} from '@stripe/stripe-js';
 import TotalView from '../Cart/TotalView';
-// import CartItem from './CartItem';  
-// import TotalView from './TotalView';
 
 const RequiredStar = styled(Typography)`
   color: red; /* Adjust the color of the star */
@@ -32,6 +30,18 @@ const Header = styled(Box)`
   padding: 15px 24px;
   background: #fff;
 `;
+const TextInput=styled(Input)`
+margin: 7px;
+&:focus {
+    border-color: brown; /* Change the border color to brown when focused */
+    /* Add more focus styles as needed */
+  }
+/* border: '1px solid #ccc';
+    padding: '10px';
+    borderRadius: '5px'; */
+/* onFocus:{(e) => e.target.style.borderColor = 'brown'}; */
+`
+
 
 const BottomWrapper = styled(Box)`
   padding: 16px 22px;
@@ -64,8 +74,9 @@ const Price = styled(Typography)`
     float: right;
 `;
 const Fields=styled(Typography)`
- font-size: 18px;
-    font-weight: 600;
+ font-size: 16px;
+font-weight: 600;
+display:flex;
 `
 const TotalAmount = styled(Typography)`
     font-size: 18px;
@@ -133,8 +144,8 @@ const Checkout = () => {
               >
                
                 <div className="flex-grow-1">
-                    <label for="first name"><b><Fields>First Name</Fields><RequiredStar>*</RequiredStar></b></label>
-                  <input
+                    <label><b><Fields>First Name<RequiredStar>*</RequiredStar></Fields></b></label>
+                  <TextInput
                     type="text"
                     placeholder="First Name"
                     className="form-control"
@@ -142,46 +153,57 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="flex-grow-1">
-                <label for="first name"><Fields>Last Name</Fields><RequiredStar>*</RequiredStar></label>
-                  <input
+                <label><Fields>Last Name<RequiredStar>*</RequiredStar></Fields></label>
+                  <TextInput
                     type="text"
                     placeholder="Last Name"
                     className="form-control"
+                    onFocus={(e) => e.target.style.borderColor = 'brown'}
+                    required
+                  />
+                </div>
+                <div className="flex-grow-1">
+                <label><Fields>Email<RequiredStar>*</RequiredStar></Fields></label>
+                  <TextInput
+                    type="text"
+                    placeholder="Email"
+                    className="form-control"
+                    onFocus={(e) => e.target.style.borderColor = 'brown'}
                     required
                   />
                 </div>
                 <div className="w-100">
-                <label for="first name"><Fields>Address Details</Fields></label>
-                  <input
+                <label htmlFor="first name"><Fields>Address Details <RequiredStar>*</RequiredStar></Fields></label>
+                  <TextInput
                     type="text"
                     placeholder="Address"
                     className="form-control"
                   />
                 </div>
                 <div className="w-100">
-                  <input
+                  <TextInput
                     type="text"
                     placeholder="Apartment, Suite ,etc"
                     className="form-control"
                   />
                 </div>
                 <div className="flex-grow-1" >
-                  <input
+                  <TextInput
                     type="text"
                     placeholder="City"
                     className="form-control"
                   />
                 </div>
                 <div className="flex-grow-1">
-                  <select name="" className="form-control form-select" id="">
+                  <select name="" className="form-control form-select" id=""  style={{margin:'7px'}}>
                     <option value="" selected disabled>
                       Select State
                     </option>
                   </select>
                 </div>
                 <div className="flex-grow-1">
-                  <input
-                    type="text"
+                  <TextInput
+                    type="integer"
                     placeholder="Zipcode"
                     className="form-control"
                   />
@@ -191,10 +213,11 @@ const Checkout = () => {
           </LeftComponent>
           <Grid item lg={3} md={3} sm={12} xs={12}>
             <TotalView cartItems={cartItems} />
-          </Grid>
-          <BottomWrapper>
+            <BottomWrapper>
               <StyledButton onClick={() => MakePayment()} variant="contained">Place Order</StyledButton>
             </BottomWrapper>
+          </Grid>
+         
         </Component>
       
     </>
