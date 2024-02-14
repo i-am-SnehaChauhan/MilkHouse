@@ -5,6 +5,7 @@ import FlashOnIcon from '@mui/icons-material/FlashOn';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
+import {getProductDetails} from '../../redux/actions/productAction';
 
 const LeftContainer = styled(Box)(({theme}) => ({
   minWidth: '40%',
@@ -53,13 +54,17 @@ export const ActionItem = ({product}) => {
     dispatch( addToCart(id, quantity) );
     navigate('/cart');
   }
+  const buyNow=()=>{
+    dispatch( getProductDetails(id) );
+    navigate('/checkout');
+  }
   return (
     <LeftContainer>
       <Box style={{padding: '15px 20px'}}>
         <Image src={product.detailUrl} alt="product" />
       </Box>
         <StyledButton variant='contained' onClick={() => addItemToCart()} style={{marginRight: 10, background: '#ff9f00'}}><Cart/>Add to Cart</StyledButton>
-        <StyledButton variant='contained' style={{background:'#fb541b'}}><FlashOnIcon/>Buy Now</StyledButton>
+        <StyledButton variant='contained' onClick={() => buyNow()} style={{background:'#fb541b'}}><FlashOnIcon/>Buy Now</StyledButton>
     </LeftContainer>
   )
 }

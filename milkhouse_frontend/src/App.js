@@ -13,6 +13,8 @@ import ProductsPage from './pages/products';
 import CheckoutPage from './pages/checkout';
 import Dashboard from './Dashboard/Dashboard'
 import NotFound from './pages/404';
+import Success from './pages/success';
+import Cancel from './pages/cancel';
 
 function App() {
   
@@ -32,6 +34,8 @@ function App() {
         <Route path='/checkout' element={<CheckoutPage/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path="*" element={<NotFound/>} />
+        <Route path='/success' element={<Success/>} />
+        <Route path='/cancel' element={<Cancel/>} />
       </Routes>
     </Router>
   );

@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Button, styled, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 import CartItem from './CartItem';  
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
@@ -45,13 +46,14 @@ const StyledButton = styled(Button)`
 
 const Cart = () => {
   const { cartItems } = useSelector(state => state.cart);
-
+  const navigate = useNavigate(); 
   const buyNow = async () => {
     // let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com' });
     // var information = {
     //   action: 'https://securegw-stage.paytm.in/order/process',
     //   params: response
     // }
+    navigate('/checkout');
     // post(information);
   }
 
@@ -68,7 +70,7 @@ const Cart = () => {
             ))
             }
             <BottomWrapper>
-              <StyledButton  variant="contained">Place Order</StyledButton>
+              <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
             </BottomWrapper>
           </LeftComponent>
           <Grid item lg={3} md={3} sm={12} xs={12}>

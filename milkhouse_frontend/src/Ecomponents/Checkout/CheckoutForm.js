@@ -1,109 +1,204 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
-import Navbar from '../../components/Navbar';
+import React, { useEffect }  from 'react'
+import { Box, Button, styled, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { getProductDetails } from '../../redux/actions/productAction';
+import { useSelector, useDispatch } from 'react-redux';
+import {loadStripe} from '@stripe/stripe-js';
+import TotalView from '../Cart/TotalView';
+// import CartItem from './CartItem';  
+// import TotalView from './TotalView';
 
-
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
+const RequiredStar = styled(Typography)`
+  color: red; /* Adjust the color of the star */
+  margin-left: 3px; /* Add some spacing between the label text and the star */
+`;
+const Component = styled(Grid)(({ theme }) => ({
+  padding: '30px 135px',
+  display: 'flex',
+  [theme.breakpoints.down('sm')]: {
+    padding: '15px 0'
   }
-}
+}));
 
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+const LeftComponent = styled(Grid)(({ theme }) => ({
+  paddingRight: 15,
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 15
+  }
+}));
 
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
+const Header = styled(Box)`
+  padding: 15px 24px;
+  background: #fff;
+`;
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+const BottomWrapper = styled(Box)`
+  padding: 16px 22px;
+  background: #fff;
+  box-shadow: 0 -2px 10px 0 rgb(0 0 0 / 10%);
+  border-top: 1px solid #f0f0f0;
+`;
+const Container = styled(Box)`
+    padding: 15px 24px;
+    background: #fff;
+    & > p {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+`;
+const StyledButton = styled(Button)`
+  display: flex;
+  margin-left: auto;
+  background: #fb641b;
+  color: #fff;
+  border-radius: 2px;
+  width: 250px;
+  height: 51px;
+`;
 
+const Heading = styled(Typography)`
+    color: #878787;
+`;
+const Price = styled(Typography)`
+    float: right;
+`;
+const Fields=styled(Typography)`
+ font-size: 18px;
+    font-weight: 600;
+`
+const TotalAmount = styled(Typography)`
+    font-size: 18px;
+    font-weight: 600;
+    border-top: 1px dashed #e0e0e0;
+    padding: 20px 0;
+    border-bottom: 1px dashed #e0e0e0;
+`;
+
+const Discount = styled(Typography)`
+    font-size: 16px; 
+  `
+const Checkout = () => {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const { cartItems } = useSelector(state => state.cart);
+    // Use the correct slice name in the useSelector
+    const { loading, product } = useSelector(state => state.getProductDetails);
+    useEffect(() => {
+        if (product && id !== product.id)
+          dispatch(getProductDetails(id));
+      }, [dispatch, id, product, loading]);
+      const discount = product ? product.discount : 0;
+      const price = product ? product.price : 0;
+  
+      
+      const MakePayment= async() =>{
+        const stripe = await loadStripe(process.env.SECRET);
+        const body={
+          products: cartItems
+        }
+        const headers={
+            "Content-Type":"application/json"
+        }
+        const response=await fetch("https://milkhouse.onrender.com/api/create-checkout-session",{
+            method:"POST",
+            headers:headers,
+            body:JSON.stringify(body)
+        });
+        const session=await response.json();
+        const result= stripe.redirectToCheckout({
+            sessionId:session.id
+        });
+        if(result.error){
+            console.log(result.error);
+        }
+    }
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          marginBottom: '12px',
-          position: 'relative',
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        
-        {/* <Navbar/> */}
-      </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4, marginTop: '100px'  }}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center" sx={{ fontWeight: 600, fontSize: '2.3rem',fontFamily:'none' }}>
-            Checkout
-          </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          {activeStep === steps.length ? (
-            <React.Fragment>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
+    <>
+     
+        <Component container>
+          <LeftComponent item lg={9} md={9} sm={12} xs={12}>
+            <Header>
+              <Typography style={{ fontWeight: 600, fontSize: 18 }}>Billing Details</Typography>
+            </Header>
+            {/* {cartItems.map(item => (
+              <CartItem item={item} />
+            ))
+            } */}
 
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                </Button>
-              </Box>
-            </React.Fragment>
-          )}
-        </Paper>
-        
-      </Container>
-    </React.Fragment>
-  );
+              <h4 className="mb-3">Shipping Address</h4>
+              <form
+                action=""
+                className="d-flex gap-15 flex-wrap justify-content-between"
+              >
+               
+                <div className="flex-grow-1">
+                    <label for="first name"><b><Fields>First Name</Fields><RequiredStar>*</RequiredStar></b></label>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="flex-grow-1">
+                <label for="first name"><Fields>Last Name</Fields><RequiredStar>*</RequiredStar></label>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="form-control"
+                    required
+                  />
+                </div>
+                <div className="w-100">
+                <label for="first name"><Fields>Address Details</Fields></label>
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    className="form-control"
+                  />
+                </div>
+                <div className="w-100">
+                  <input
+                    type="text"
+                    placeholder="Apartment, Suite ,etc"
+                    className="form-control"
+                  />
+                </div>
+                <div className="flex-grow-1" >
+                  <input
+                    type="text"
+                    placeholder="City"
+                    className="form-control"
+                  />
+                </div>
+                <div className="flex-grow-1">
+                  <select name="" className="form-control form-select" id="">
+                    <option value="" selected disabled>
+                      Select State
+                    </option>
+                  </select>
+                </div>
+                <div className="flex-grow-1">
+                  <input
+                    type="text"
+                    placeholder="Zipcode"
+                    className="form-control"
+                  />
+                </div>
+                </form>
+           
+          </LeftComponent>
+          <Grid item lg={3} md={3} sm={12} xs={12}>
+            <TotalView cartItems={cartItems} />
+          </Grid>
+          <BottomWrapper>
+              <StyledButton onClick={() => MakePayment()} variant="contained">Place Order</StyledButton>
+            </BottomWrapper>
+        </Component>
+      
+    </>
+  )
 }
+
+export default Checkout;
