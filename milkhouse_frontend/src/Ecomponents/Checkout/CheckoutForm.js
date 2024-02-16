@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, styled, Typography, Input } from "@mui/material";
+import Styled from "styled-components";
+import { Box, Button, styled, Typography} from "@mui/material";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../redux/actions/productAction";
@@ -7,6 +8,45 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
 
+const statesIndia = [
+  "Andaman and Nicobar Islands",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Dadra and Nagar Haveli",
+  "Daman and Diu",
+  "Delhi",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jammu and Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Ladakh",
+  "Lakshadweep",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Puducherry",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+];
 const RequiredStar = styled(Typography)`
   color: red; /* Adjust the color of the star */
   margin-left: 3px; /* Add some spacing between the label text and the star */
@@ -27,19 +67,49 @@ const LeftComponent = styled(Grid)(({ theme }) => ({
 }));
 
 const Header = styled(Box)`
-  padding: 15px 24px;
-  background: #fff;
+  margin-bottom: 3rem;
+  /* background: #fff; */
 `;
-const TextInput = styled(Input)`
-  margin: 7px;
-  &:focus {
-    border-color: brown; /* Change the border color to brown when focused */
-    /* Add more focus styles as needed */
+const StyledSelect = Styled.select({
+  width: "100%",
+  padding: "10px",
+  border: "1px solid #ccc",
+  borderRadius: "5px",
+  backgroundColor: "#f8f9fa",
+  color: "black",
+  outline: "none",
+  fontFamily:'Roboto',
+  
+});
+const TextInput = Styled.input`
+  width: 70%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display:block;
+  /* background: #ffdfd0; */
+  background: #f8f9fa;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family:'Roboto';
+  line-height: 1rem;
+  color: Black;
+  margin-bottom: 1rem;
+  outline: none;
+  
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.5);
   }
-  /* border: '1px solid #ccc';
-    padding: '10px';
-    borderRadius: '5px'; */
-  /* onFocus:{(e) => e.target.style.borderColor = 'brown'}; */
+
+  &:hover {
+   
+  }
+
+  &:focus {
+
+    border: 1px solid rgb(133 44 2);
+  }
+
 `;
 
 const BottomWrapper = styled(Box)`
@@ -90,6 +160,10 @@ const Discount = styled(Typography)`
 `;
 const Checkout = () => {
   const dispatch = useDispatch();
+  const [selectedState, setSelectedState] = useState("");
+  const handleChange = (event) => {
+    setSelectedState(event.target.value); // Update the selected state when the user selects an option
+  };
   const { id } = useParams();
   const [invalid, setInvalid] = useState(false);
   const [msg, setMsg] = useState("");
@@ -109,52 +183,51 @@ const Checkout = () => {
   const discount = product ? product.discount : 0;
   const price = product ? product.price : 0;
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const {email,name,city,address} = data;
+  
+    const { email, name, city, address } = data;
+    const errors = {};
 
     if (!email || !validateEmail(email)) {
-      setMsg("Please enter a valid email address.");
-      setInvalid(true);
-      return;
+      errors.email = "Please enter a valid email address.";
     }
     if (!name) {
-      setMsg("Please enter your name.");
+      errors.name = "Please enter your name.";
+    }
+    if (!city) {
+      errors.city = "Please enter your city.";
+    }
+    if (!address) {
+      errors.address = "Please enter your address.";
+    }
+  
+    setErrors(errors);
+  
+    if (Object.keys(errors).length > 0) {
       setInvalid(true);
       return;
     }
-   if (!city) {
-      setMsg("Please enter your city.");
-      setInvalid(true);
-      return;
-    }
-   if (!address) {
-      setMsg("Please enter your address.");
-      setInvalid(true);
-      return;
-    }
+  
     try {
       await MakePayment();
-      // Optionally, you can perform any additional actions after successful form submission
       console.log("Form submitted successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Optionally, handle any errors that occur during form submission
-    } 
+    }
   };
-
+  
   const setBack = () => {
     setInvalid(false);
     return;
   };
   if (invalid) {
-    setTimeout(setBack, 5000);
+    setTimeout(setBack, 7000);
   }
   const MakePayment = async () => {
     console.log("payment executed");
     const stripe = await loadStripe(
-      "pk_test_51OjP9jSG8WEVyf0aeiqFoT54Ergz8GVOfLB5iOhTUOWRoshAKwt9eA0zpIer5c2uDPb5nDJxfcMeOY8PRIBUxeLO007wsYjRW3"
+      "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
     );
     const body = {
       products: cartItems,
@@ -180,26 +253,30 @@ const Checkout = () => {
     
   };
   const showInvalid = (fieldName) => {
-    return (
-      <p style={{ color: 'red' }}>Please enter a valid {fieldName}.</p>
-    );
+    if (invalid && errors[fieldName]) {
+      return (
+        <p style={{ color: 'red' }}>{errors[fieldName]}</p>
+      );
+    }
+    return null; // Return null if the field is valid or not touched
   };
+  
   return (
     <>
       <Component container>
         <LeftComponent item lg={9} md={9} sm={12} xs={12}>
           <Header>
-            <Typography style={{ fontWeight: 600, fontSize: 18 }}>
+            <Typography style={{ fontWeight: 600, fontSize: 25 }}>
               Billing Details
             </Typography>
           </Header>
 
-          <h4 className="mb-3">Shipping Address</h4>
+          {/* <h4 className="mb-3">Shipping Address</h4> */}
           <form
            onSubmit={handleSubmit}
             className="d-flex gap-15 flex-wrap justify-content-between"
           >
-            <div className="flex-grow-1">
+            <div className="w-50">
               <label>
                 <b>
                   <Fields>
@@ -210,13 +287,12 @@ const Checkout = () => {
               <TextInput
               onChange={(e) => setData({ ...data, name: e.target.value })}
                 type="text"
-                placeholder="First Name"
-                className="form-control"
+                placeholder="Full Name"
                 required
               />
                {invalid && showInvalid('name')}
             </div>
-            <div className="flex-grow-1">
+            <div className="w-50">
               <label>
                 <Fields>
                   Email<RequiredStar>*</RequiredStar>
@@ -225,8 +301,6 @@ const Checkout = () => {
               <TextInput
                 type="email"
                 placeholder="Email"
-                className="form-control"
-                // value={email}
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 aria-label="Email"
                 required
@@ -243,7 +317,6 @@ const Checkout = () => {
               <TextInput
                 type="text"
                 placeholder="Address"
-                className="form-control"
               />
                {invalid && showInvalid('address')}
             </div>
@@ -252,7 +325,6 @@ const Checkout = () => {
                onChange={(e) => setData({ ...data, address: e.target.value })}
                 type="text"
                 placeholder="Apartment, Suite ,etc"
-                className="form-control"
               />
             </div>
             <div className="flex-grow-1">
@@ -260,27 +332,31 @@ const Checkout = () => {
                onChange={(e) => setData({ ...data, city: e.target.value })}
                 type="text"
                 placeholder="City"
-                className="form-control"
               />
               {invalid && showInvalid('city')}
             </div>
             <div className="flex-grow-1">
-              <select
+              <StyledSelect
                 name=""
-                className="form-control form-select"
                 id=""
-                style={{ margin: "7px" }}
+                value={selectedState}
+                onChange={handleChange}
+                // style={{ margin: "7px" }}
               >
                 <option value="" selected disabled>
                   Select State
                 </option>
-              </select>
+                {statesIndia.map((state, index) => (
+          <option key={index} value={state}>
+            {state}
+           </option>
+                ))}
+              </StyledSelect>
             </div>
             <div className="flex-grow-1">
               <TextInput
                 type="text"
                 placeholder="Zipcode"
-                className="form-control"
               />
               {invalid && showInvalid("zipcode")}
             </div>
