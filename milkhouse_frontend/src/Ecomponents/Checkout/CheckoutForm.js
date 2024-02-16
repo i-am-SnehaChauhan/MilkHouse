@@ -1,109 +1,379 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
-import Navbar from '../../components/Navbar';
+import React, { useEffect, useState } from "react";
+import Styled from "styled-components";
+import { Box, Button, styled, Typography} from "@mui/material";
+import { Grid } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { getProductDetails } from "../../redux/actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
+import TotalView from "../Cart/TotalView";
 
+const statesIndia = [
+  "Andaman and Nicobar Islands",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Dadra and Nagar Haveli",
+  "Daman and Diu",
+  "Delhi",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jammu and Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Ladakh",
+  "Lakshadweep",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Puducherry",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+];
+const RequiredStar = styled(Typography)`
+  color: red; /* Adjust the color of the star */
+  margin-left: 3px; /* Add some spacing between the label text and the star */
+`;
+const Component = styled(Grid)(({ theme }) => ({
+  padding: "30px 135px",
+  display: "flex",
+  [theme.breakpoints.down("sm")]: {
+    padding: "15px 0",
+  },
+}));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const LeftComponent = styled(Grid)(({ theme }) => ({
+  paddingRight: 15,
+  [theme.breakpoints.down("sm")]: {
+    marginBottom: 15,
+  },
+}));
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
+const Header = styled(Box)`
+  margin-bottom: 3rem;
+  /* background: #fff; */
+`;
+const StyledSelect = Styled.select({
+  width: "100%",
+  padding: "10px",
+  border: "1px solid #ccc",
+  borderRadius: "5px",
+  backgroundColor: "#f8f9fa",
+  color: "black",
+  outline: "none",
+  fontFamily:'Roboto',
+  
+});
+const TextInput = Styled.input`
+  width: 70%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display:block;
+  /* background: #ffdfd0; */
+  background: #f8f9fa;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family:'Roboto';
+  line-height: 1rem;
+  color: Black;
+  margin-bottom: 1rem;
+  outline: none;
+  
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.5);
   }
-}
 
-export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  &:hover {
+   
+  }
 
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
+  &:focus {
+
+    border: 1px solid rgb(133 44 2);
+  }
+
+`;
+
+const BottomWrapper = styled(Box)`
+  padding: 16px 22px;
+  background: #fff;
+  box-shadow: 0 -2px 10px 0 rgb(0 0 0 / 10%);
+  border-top: 1px solid #f0f0f0;
+`;
+const Container = styled(Box)`
+  padding: 15px 24px;
+  background: #fff;
+  & > p {
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+`;
+const StyledButton = styled(Button)`
+  display: flex;
+  margin-left: auto;
+  background: #fb641b;
+  color: #fff;
+  border-radius: 2px;
+  width: 250px;
+  height: 51px;
+`;
+
+const Heading = styled(Typography)`
+  color: #878787;
+`;
+const Price = styled(Typography)`
+  float: right;
+`;
+const Fields = styled(Typography)`
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+`;
+const TotalAmount = styled(Typography)`
+  font-size: 18px;
+  font-weight: 600;
+  border-top: 1px dashed #e0e0e0;
+  padding: 20px 0;
+  border-bottom: 1px dashed #e0e0e0;
+`;
+
+const Discount = styled(Typography)`
+  font-size: 16px;
+`;
+const Checkout = () => {
+  const dispatch = useDispatch();
+  const [selectedState, setSelectedState] = useState("");
+  const handleChange = (event) => {
+    setSelectedState(event.target.value); // Update the selected state when the user selects an option
   };
+  const { id } = useParams();
+  const [invalid, setInvalid] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [data, setData] = useState({});
+  const { cartItems } = useSelector((state) => state.cart);
+  
+  const [errors, setErrors] = useState({});
+  const { loading, product } = useSelector((state) => state.getProductDetails);
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
   };
+  useEffect(() => {
+    if (product && id !== product.id) dispatch(getProductDetails(id));
+  }, [dispatch, id, product, loading]);
+  const discount = product ? product.discount : 0;
+  const price = product ? product.price : 0;
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const { email, name, city, address } = data;
+    const errors = {};
+
+    if (!email || !validateEmail(email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+    if (!name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!city) {
+      errors.city = "Please enter your city.";
+    }
+    if (!address) {
+      errors.address = "Please enter your address.";
+    }
+  
+    setErrors(errors);
+  
+    if (Object.keys(errors).length > 0) {
+      setInvalid(true);
+      return;
+    }
+  
+    try {
+      await MakePayment();
+      console.log("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+  
+  const setBack = () => {
+    setInvalid(false);
+    return;
+  };
+  if (invalid) {
+    setTimeout(setBack, 7000);
+  }
+  const MakePayment = async () => {
+    console.log("payment executed");
+    const stripe = await loadStripe(
+      "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+    );
+    const body = {
+      products: cartItems,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const response = await fetch(
+      "https://milkhouse.onrender.com/api/create-checkout-session",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      }
+    );
+    const session = await response.json();
+    const result = stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+    if (result.error) {
+      console.log(result.error);
+    }
+    
+  };
+  const showInvalid = (fieldName) => {
+    if (invalid && errors[fieldName]) {
+      return (
+        <p style={{ color: 'red' }}>{errors[fieldName]}</p>
+      );
+    }
+    return null; // Return null if the field is valid or not touched
+  };
+  
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          marginBottom: '12px',
-          position: 'relative',
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        
-        {/* <Navbar/> */}
-      </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4, marginTop: '100px'  }}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center" sx={{ fontWeight: 600, fontSize: '2.3rem',fontFamily:'none' }}>
-            Checkout
-          </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          {activeStep === steps.length ? (
-            <React.Fragment>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
+    <>
+      <Component container>
+        <LeftComponent item lg={9} md={9} sm={12} xs={12}>
+          <Header>
+            <Typography style={{ fontWeight: 600, fontSize: 25 }}>
+              Billing Details
+            </Typography>
+          </Header>
 
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
-                >
-                  {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                </Button>
-              </Box>
-            </React.Fragment>
-          )}
-        </Paper>
-        
-      </Container>
-    </React.Fragment>
+          {/* <h4 className="mb-3">Shipping Address</h4> */}
+          <form
+           onSubmit={handleSubmit}
+            className="d-flex gap-15 flex-wrap justify-content-between"
+          >
+            <div className="w-50">
+              <label>
+                <b>
+                  <Fields>
+                    Full Name<RequiredStar>*</RequiredStar>
+                  </Fields>
+                </b>
+              </label>
+              <TextInput
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+                type="text"
+                placeholder="Full Name"
+                required
+              />
+               {invalid && showInvalid('name')}
+            </div>
+            <div className="w-50">
+              <label>
+                <Fields>
+                  Email<RequiredStar>*</RequiredStar>
+                </Fields>
+              </label>
+              <TextInput
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+                aria-label="Email"
+                required
+              />
+              {invalid && showInvalid('email')}
+              {/* {invalid && <p style={{ color: 'red' }}>{msg}</p>} */}
+            </div>
+            <div className="w-100">
+              <label>
+                <Fields>
+                  Address Details <RequiredStar>*</RequiredStar>
+                </Fields>
+              </label>
+              <TextInput
+                type="text"
+                placeholder="Address"
+              />
+               {invalid && showInvalid('address')}
+            </div>
+            <div className="w-100">
+              <TextInput
+               onChange={(e) => setData({ ...data, address: e.target.value })}
+                type="text"
+                placeholder="Apartment, Suite ,etc"
+              />
+            </div>
+            <div className="flex-grow-1">
+              <TextInput
+               onChange={(e) => setData({ ...data, city: e.target.value })}
+                type="text"
+                placeholder="City"
+              />
+              {invalid && showInvalid('city')}
+            </div>
+            <div className="flex-grow-1">
+              <StyledSelect
+                name=""
+                id=""
+                value={selectedState}
+                onChange={handleChange}
+                // style={{ margin: "7px" }}
+              >
+                <option value="" selected disabled>
+                  Select State
+                </option>
+                {statesIndia.map((state, index) => (
+          <option key={index} value={state}>
+            {state}
+           </option>
+                ))}
+              </StyledSelect>
+            </div>
+            <div className="flex-grow-1">
+              <TextInput
+                type="text"
+                placeholder="Zipcode"
+              />
+              {invalid && showInvalid("zipcode")}
+            </div>
+          </form>
+        </LeftComponent>
+        <Grid item lg={3} md={3} sm={12} xs={12}>
+          <TotalView cartItems={cartItems} />
+          <BottomWrapper>
+            <StyledButton onClick={handleSubmit}variant="contained" type="submit">
+              Place Order
+            </StyledButton>
+          </BottomWrapper>
+          
+        </Grid>
+      </Component>
+    </>
   );
-}
+};
+
+export default Checkout;
