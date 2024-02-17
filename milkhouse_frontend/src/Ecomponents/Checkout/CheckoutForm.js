@@ -166,6 +166,7 @@ const Checkout = () => {
   };
   const { id } = useParams();
   const [invalid, setInvalid] = useState(false);
+  const [loadingPayment, setLoadingPayment] = useState(false);
   const [msg, setMsg] = useState("");
   const [data, setData] = useState({});
   const { cartItems } = useSelector((state) => state.cart);
@@ -185,7 +186,7 @@ const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setLoadingPayment(true); 
     const { email, name, city, address } = data;
     const errors = {};
 
@@ -206,6 +207,7 @@ const Checkout = () => {
   
     if (Object.keys(errors).length > 0) {
       setInvalid(true);
+      setLoadingPayment(false);
       return;
     }
   
@@ -214,6 +216,9 @@ const Checkout = () => {
       console.log("Form submitted successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
+    }
+    finally {
+      setLoadingPayment(false); // Reset loading state when payment process is complete
     }
   };
   
@@ -365,8 +370,9 @@ const Checkout = () => {
         <Grid item lg={3} md={3} sm={12} xs={12}>
           <TotalView cartItems={cartItems} />
           <BottomWrapper>
-            <StyledButton onClick={handleSubmit}variant="contained" type="submit">
-              Place Order
+            <StyledButton onClick={handleSubmit}variant="contained" type="submit"
+            disabled={loadingPayment}>
+            {loadingPayment ? "Processing..." : "Place Order"}
             </StyledButton>
           </BottomWrapper>
           
