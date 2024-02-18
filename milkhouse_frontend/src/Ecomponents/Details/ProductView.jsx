@@ -8,12 +8,13 @@ import { Box, styled, Grid } from '@mui/material';
 
 const Container = styled(Grid)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 2fr))',
+  gridTemplateColumns: 'repeat(4, 1fr)',
   gap: '20px',
   justifyContent: 'center',
   padding: '20px',
+  margin:'0px 50px 0px 50px',
   [theme.breakpoints.down('md')]: {
-    gridTemplateColumns: 'repeat(auto-fill, minmax(191px, 2fr))',
+    gridTemplateColumns: 'repeat(3, 1fr)',
   },
 }));
 export const ProductView = () => {
