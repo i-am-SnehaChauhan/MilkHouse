@@ -9,7 +9,7 @@ const DefaultData = async () => {
 
 
     } catch(error){
-        console.log('Error: Insrerting Data');
+        console.log('Error: Inserting Data');
     }
 
 }

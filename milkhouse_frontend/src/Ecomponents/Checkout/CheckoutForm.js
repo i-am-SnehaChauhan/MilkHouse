@@ -7,6 +7,7 @@ import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
+// require('dotenv').config();
 
 const statesIndia = [
   "Andaman and Nicobar Islands",
@@ -87,7 +88,6 @@ const TextInput = Styled.input`
   border-radius: 5px;
   border: 1px solid #ccc;
   display:block;
-  /* background: #ffdfd0; */
   background: #f8f9fa;
   font-weight: 400;
   font-size: 1rem;
@@ -231,9 +231,7 @@ const Checkout = () => {
   }
   const MakePayment = async () => {
     console.log("payment executed");
-    const stripe = await loadStripe(
-      "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
-    );
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY);
     const body = {
       products: cartItems,
     };
