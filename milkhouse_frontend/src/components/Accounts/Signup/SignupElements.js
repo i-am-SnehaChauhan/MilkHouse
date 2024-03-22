@@ -2,32 +2,34 @@ import styled from "styled-components";
 
 ///////////////////////////// NEW UI ELEMENTS ////////////////////
 
-export const Container = styled.div`
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 0;
-  overflow: hidden;
-  background: var(--bg-clr);
-`;
+// export const Container = styled.div`
+//   width: 100%;
+//   height: fit-content;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   z-index: 0;
+//   overflow: hidden;
+//   background: var(--bg-clr);
+// `;
 
 export const FormContainer = styled.div`
   background-color: #fff;
-  box-shadow: 0 0 20px #403126;
   position: relative;
   overflow: hidden;
-  width: 900px;
+  width: 100%;
   max-width: 100%;
-  min-height: 550px;
-  margin: 3rem auto;
+  height:90vh;
   display: flex;
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+    margin: 0;
+  }
 `;
 
 export const SignUpContainer = styled.div`
@@ -36,6 +38,10 @@ export const SignUpContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100%;
+  @media only screen and (max-width: 550px) {
+    padding: 15px 5px;
+    width: 100%;
+  }
 `;
 
 export const LeftContainer = styled.div`
@@ -45,7 +51,9 @@ export const LeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
-  min-height: 100%;
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
 `;
 
 export const LeftHeading = styled.h1`
@@ -86,6 +94,7 @@ export const SignUph1 = styled.h1`
   line-height: 4rem;
   margin-bottom: 1rem;
   color:#403126;
+  text-align: center;
 `;
 
 export const FormInput = styled.input`
@@ -152,7 +161,6 @@ export const SignUpButton = styled.button`
   font-weight: 400;
   font-size: 1.2rem;
   border-radius: 50px;
-  background-color: ${props => props.disabled ? 'gray' : '#403126'};
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
@@ -171,8 +179,7 @@ export const SignUpButton = styled.button`
 
 
 export const Image = styled.img`
-  height: auto;
-  width: 90%;
+
   animation: scale 2.5s ease-in-out infinite;
 
   @keyframes scale {

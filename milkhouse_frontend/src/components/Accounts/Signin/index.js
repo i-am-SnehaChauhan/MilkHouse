@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Img from "../../../image/signin.png";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { signInWithEmailAndPassword, signInWithRedirect} from "firebase/auth";
+import { auth, provider } from "../../../firebase";
 
 import {
-  NewContainer,
   FormContainer,
   SignInContainer,
   RightContainer,
@@ -30,6 +30,7 @@ import {
   RadioLabel,
 } from "./SigninElements";
 const SignIn = () => {
+  const navigate = useNavigate();
   const Navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -37,43 +38,80 @@ const SignIn = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [data, setData] = useState({});
+  const [msg, setMsg] = useState("");
+  const [invalid, setInvalid] = useState(false);
   const [errMessage, setErrMessage] = useState("");
-  const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false);
-
-  const handleSubmission = () => {
-    if (!data.email || !data.password) {
-      setErrMessage("Please fill all the fields");
-      return;
-    }
-    setErrMessage("");
-
-    setSubmitBtnDisabled(true);
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(async (userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        setSubmitBtnDisabled(false);
-        Navigate("/");
-      })
-      .catch((error) => {
-        setSubmitBtnDisabled(false);
-        console.log("Error-", error.message);
-      });
-
-    console.log(data);
+  const navigateToProfile = () => {
+    navigate("/");
   };
+  const sendPostRequest = async (e) => {
+    if (data.password && data.password.length < 8) {
+      setInvalid(true);
+    }
+    console.log("sendPostRequest is called!!!");
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      navigateToProfile();   
+    } 
+    catch (error) {
+      toast.error(getErrorMessage(error), {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+  const getErrorMessage = (error) => {
+    switch (error.code) {
+      case "auth/invalid-email":
+        return "Invalid email address.";
+      case "auth/user-disabled":
+        return "Your account has been disabled.";
+      case "auth/user-not-found":
+      case "auth/wrong-password":
+        return "Invalid email or password.";
+      default:
+        return "An error occurred while signing in. Please try again.";
+    }
+  };  
+
+  const setBack = () => {
+    setInvalid(false);
+    return;
+  };
+  if (invalid) {
+    setTimeout(setBack, 5000);
+  }
+
+  const showInvalid = () => {
+    return (
+      <div class="alert alert-danger" role="alert">
+        {msg}
+      </div>
+    );
+  };
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithRedirect(auth, provider);
+      navigateToProfile();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <>
-      <NewContainer>
+      
         <FormContainer>
           <SignInContainer>
-            <SignInForm>
+            <SignInForm onSubmit={sendPostRequest}>
               <SignInh1>Sign in</SignInh1>
               <RadioContainer>
                 <RadioInput
@@ -105,7 +143,9 @@ const SignIn = () => {
                 type="email"
                 placeholder="you@example.com"
                 id="email"
-                require
+                required
+                aria-required="true"
+              aria-label="Email"
               />
               <SignInLabel htmlFor="password">Password</SignInLabel>
               <PasswordContainer>
@@ -116,6 +156,8 @@ const SignIn = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="at least 8 characters"
                   required
+                  aria-required="true"
+                aria-label="Password"
                 />
                 <i
                   className="password-toggle-icon"
@@ -138,13 +180,11 @@ const SignIn = () => {
               </RememberMe>
 
               <SignInButton
-                disabled={submitBtnDisabled}
                 type="submit"
-                onClick={handleSubmission}
               >
                 Sign In
               </SignInButton>
-              <Error>{errMessage}</Error>
+              {/* {invalid && showInvalid()} */}
               <NavLink to="/signin/forgotPassword">
                 <ForgotPassword>Forgot password?</ForgotPassword>
               </NavLink>
@@ -152,6 +192,10 @@ const SignIn = () => {
                 <NewAccount>New to MilkHouse? Create an account</NewAccount>
               </NavLink>
             </SignInForm>
+            <div className='google-login-container' onClick={handleGoogleLogin}>
+            <button className='login-button'>Sign in with Google</button>
+            <img src={require('../../../assets/googleLogo.png')} style={{width:'2.5rem', position: 'absolute',left: '1rem',top: '0.375rem' }} alt='google' />
+          </div>
           </SignInContainer>
           <RightContainer>
             <RightHeading>Hello, Friend!</RightHeading>
@@ -159,7 +203,6 @@ const SignIn = () => {
             <Image src={Img} alt="Image Description" />
           </RightContainer>
         </FormContainer>
-      </NewContainer>
     </>
   );
 };

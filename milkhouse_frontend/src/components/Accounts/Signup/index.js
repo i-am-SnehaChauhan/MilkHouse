@@ -80,7 +80,6 @@ const SignUp = () => {
 
   return (
     <>
-      <Container>
         <FormContainer>
           <LeftContainer>
             <LeftHeading>Welcome!</LeftHeading>
@@ -197,7 +196,6 @@ const SignUp = () => {
             </SignUpForm>
           </SignUpContainer>
         </FormContainer>
-      </Container>
     </>
   );
 };
