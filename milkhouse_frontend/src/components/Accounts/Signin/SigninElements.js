@@ -319,7 +319,7 @@ export const PasswordContainer = styled.div`
 export const Image = styled.img`
 
   animation: moveUpDown 2s ease-in-out infinite;
-
+  width:80%;
   @keyframes moveUpDown {
     0% {
       transform: translateY(0);

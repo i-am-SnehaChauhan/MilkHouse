@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { signInWithEmailAndPassword, signInWithRedirect} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup} from "firebase/auth";
 import { auth, provider } from "../../../firebase";
 
 import {
@@ -99,7 +99,7 @@ const SignIn = () => {
   };
   const handleGoogleLogin = async () => {
     try {
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
       navigateToProfile();
     } catch (err) {
       console.log(err);

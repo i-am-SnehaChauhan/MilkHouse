@@ -1,23 +1,5 @@
 import styled from "styled-components";
 
-///////////////////////////// NEW UI ELEMENTS ////////////////////
-
-// export const Container = styled.div`
-//   width: 100%;
-//   height: fit-content;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   top: 0;
-//   z-index: 0;
-//   overflow: hidden;
-//   background: var(--bg-clr);
-// `;
-
 export const FormContainer = styled.div`
   background-color: #fff;
   position: relative;
@@ -52,7 +34,7 @@ export const LeftContainer = styled.div`
   align-items: center;
   background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   @media only screen and (max-width: 550px) {
-    width: 100%;
+    width: 0;
   }
 `;
 
@@ -181,13 +163,13 @@ export const SignUpButton = styled.button`
 export const Image = styled.img`
 
   animation: scale 2.5s ease-in-out infinite;
-
+  width:90%;
   @keyframes scale {
     0% {
       transform: scale(1);
     }
     50% {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     100% {
       transform: scale(1);
