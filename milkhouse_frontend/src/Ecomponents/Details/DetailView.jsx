@@ -38,8 +38,6 @@ const DetailView = () => {
       dispatch(getProductDetails(id));
   }, [dispatch, id, product, loading]);
 
-  console.log(product);
-
   return (
     <>
     

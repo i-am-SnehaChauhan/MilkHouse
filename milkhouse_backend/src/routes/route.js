@@ -33,9 +33,6 @@ router.post("/api/create-checkout-session", async (req, res) => {
     success_url: "https://milk-house.vercel.app/success",
     cancel_url: "https://milk-house.vercel.app/cancel",
   });
-  res.setHeader("Access-Control-Allow-Origin", "https://milk-house.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "POST");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.json({ id: session.id });
 });
 

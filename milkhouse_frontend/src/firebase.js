@@ -10,12 +10,6 @@ const firebaseConfig = {
   messagingSenderId: `${process.env.REACT_APP_messagingSenderId}`,
   appId: `${process.env.REACT_APP_appId}`,
 };
-console.log("apiKey:", process.env.REACT_APP_apiKey);
-console.log("authDomain:", process.env.REACT_APP_authDomain);
-console.log("projectId:", process.env.REACT_APP_projectId);
-console.log("storageBucket:", process.env.REACT_APP_storageBucket);
-console.log("messagingSenderId:", process.env.REACT_APP_messagingSenderId);
-console.log("appId:", process.env.REACT_APP_appId);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
