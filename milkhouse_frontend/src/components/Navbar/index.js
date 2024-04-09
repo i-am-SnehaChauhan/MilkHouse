@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import styles from './Navbar.module.css';
 import logo from "../../image/logo.png";
-
+import { auth } from "../../firebase";
+import PersonIcon from '@mui/icons-material/Person';
 
 function Navbar() {
 
@@ -59,10 +60,19 @@ function Navbar() {
             <li onClick={removeActive}>
               <a href='/donation' className={`${styles.navLink}`}>Donation</a>
             </li>
-            <li onClick={removeActive}>
-              <a href='/signin' className={`${styles.navLink}`}>Register</a>
-            </li>
-          </ul>
+           
+
+      {/* {auth.currentUser ? (
+        <li onClick={removeActive}>
+          <a href='/account' className={`${styles.navLink}`}>{PersonIcon} Account</a>
+        </li>
+      ) : (
+        <li onClick={removeActive}>
+          <a href='/signin' className={`${styles.navLink}`}>Register</a>
+        </li>
+      )} */}
+    </ul>
+        
 
 
           <div className={`${styles.hamburger} ${isActive ? styles.active : ''}`}  onClick={toggleActiveClass}>
