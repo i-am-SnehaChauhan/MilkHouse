@@ -251,7 +251,7 @@ const Checkout = () => {
       "Content-Type": "application/json",
     };
     const response = await fetch(
-      "http://localhost:2000/api/create-checkout-session",
+      "https://milhhouse.onrender.com/api/create-checkout-session",
       {
         method: "POST",
         headers: headers,
