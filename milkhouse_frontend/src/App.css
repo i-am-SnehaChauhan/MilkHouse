@@ -33,7 +33,7 @@
 
 .rwd-table tr:first-child {
   border-top: none;
-  background: #428bca;
+  background:  rgb(79, 40, 19);
   color: #fff;
 }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -81,9 +81,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -91,10 +88,10 @@ export default function Dashboard() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    
       <Box sx={{ display: 'flex'}}>
         <CssBaseline />
-        <AppBar position="absolute" open={open} sx={{background:"#c4b20a"}} >
+        <AppBar position="absolute" open={open} sx={{background:"linear-gradient(45deg, #2a1c1c 10%, rgb(162 91 54) 90%)"}} >
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer close
@@ -142,9 +139,8 @@ export default function Dashboard() {
               component="h2"
               sx={{
                 flexGrow: 1,
-                textAlign: 'center', // Center the text
-                color: '#c4b20a',     // Change the color to yellow
-                mt: 1,               // Add margin at the top for spacing
+                textAlign: 'center',
+                mt: 1,
               }}
             >
               MilkDelights
@@ -212,6 +208,6 @@ export default function Dashboard() {
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    
   );
 }

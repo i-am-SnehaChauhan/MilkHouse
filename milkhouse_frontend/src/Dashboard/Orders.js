@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { mainListItems, secondaryListItems } from './ListItems';
 function OrdersTable() {
   const [orders, setOrders] = useState([]);
 
@@ -9,7 +8,7 @@ function OrdersTable() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('https://milhhouse.onrender.com/orders');
+      const response = await fetch('https://milkhouse.onrender.com/orders');
       if (!response.ok) {
         throw new Error('Failed to fetch orders');
       }
