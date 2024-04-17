@@ -16,6 +16,7 @@ import NotFound from './pages/404';
 import Success from './pages/success';
 import Cancel from './pages/cancel';
 import OrderPage from './pages/order';
+import ProductPage from './pages/productstable';
 
 function App() {
   
@@ -35,6 +36,7 @@ function App() {
         <Route path='/checkout' element={<CheckoutPage/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/dashboard/orders' element={<OrderPage/>} />
+        <Route path='/dashboard/products' element={<ProductPage/>} />
         <Route path="*" element={<NotFound/>} />
         <Route path='/success' element={<Success/>} />
         <Route path='/cancel' element={<Cancel/>} />

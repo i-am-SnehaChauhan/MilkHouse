@@ -44,7 +44,7 @@
 }
 
 .rwd-table tr:nth-child(odd):not(:first-child) {
-  background-color: #ebf3f9;
+  background-color: #f9f2eb;
 }
 
 .rwd-table th {
@@ -83,7 +83,7 @@
 }
 
 .rwd-table tr {
-  border-color: #bfbfbf;
+  border-color: #e0dede;
 }
 
 .rwd-table th,
@@ -95,10 +95,10 @@
     border-top: none;
   }
 }
-@media screen and (min-width: 600px) {
-  .rwd-table tr:hover:not(:first-child) {
-    background-color: #d8e7f3;
-  }
+@media screen and (min-width: 1037px) {
+  /* .rwd-table tr:hover:not(:first-child) {
+    background-color: #f3e5d8;
+  } */
   .rwd-table td:before {
     display: none;
   }
