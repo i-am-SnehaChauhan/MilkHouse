@@ -92,12 +92,12 @@ export default function Dashboard() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex'}}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} sx={{background:"#c4b20a"}} >
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px', // keep right padding when drawer close
             }}
           >
             <IconButton
@@ -137,6 +137,18 @@ export default function Dashboard() {
               px: [1],
             }}
           >
+            <Typography
+              variant="h6"
+              component="h2"
+              sx={{
+                flexGrow: 1,
+                textAlign: 'center', // Center the text
+                color: '#c4b20a',     // Change the color to yellow
+                mt: 1,               // Add margin at the top for spacing
+              }}
+            >
+              MilkDelights
+            </Typography>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
@@ -161,7 +173,7 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4}}>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
