@@ -7,6 +7,8 @@ import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
+// import env from 'dotenv';
+// env.config();
 // require('dotenv').config();
 
 const statesIndia = [
@@ -236,7 +238,8 @@ const Checkout = () => {
   const MakePayment = async () => {
     console.log("payment executed");
     const stripe = await loadStripe(
-      "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+      // "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+      process.env.REACT_APP_STRIPE_KEY
     );
     const body = {
       products: cartItems,

@@ -40,7 +40,7 @@ function Navbar() {
           {/* logo */}
           
           <a href='/' className={`${styles.logo}`}>
-          <img className={styles.navimg} src={logo}></img>
+          <img className={styles.navimg} src={logo} alt="MilkDelights Logo"></img>
             MilkDelights</a>
 
 
@@ -60,6 +60,9 @@ function Navbar() {
             <li onClick={removeActive}>
               <a href='/donation' className={`${styles.navLink}`}>Donation</a>
             </li>
+            <li onClick={removeActive}>
+          <a href='/signin' className={`${styles.navLink}`}>Register</a>
+        </li>
            
 
       {/* {auth.currentUser ? (

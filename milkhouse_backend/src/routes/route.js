@@ -4,6 +4,7 @@ import {
   getProductById,
 } from "../controller/product-controller.js";
 import { signup } from "../controller/user-controller.js";
+import { getOrders } from "../controller/order-controller.js";
 import env from "dotenv";
 import Order from "../model/orderSchema.js";
 const router = express.Router();
@@ -13,6 +14,7 @@ env.config();
 const stripeInstance = stripe(process.env.STRIPE_SECRET);
 
 router.get("/products", getProducts);
+router.get("/orders", getOrders);
 router.get("/product/:id", getProductById);
 router.post("/signup", signup);
 router.post("/api/create-checkout-session", async (req, res) => {
