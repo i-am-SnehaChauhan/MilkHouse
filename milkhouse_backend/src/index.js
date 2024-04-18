@@ -1,7 +1,7 @@
 import express from 'express';
 import env from 'dotenv';
 import Connection from './database/db.js';
-import DefaultData from './default.js';
+// import DefaultData from './default.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import Routes from './routes/route.js';
@@ -21,7 +21,7 @@ app.listen(process.env.PORT, () => {
     }
 );
 
-DefaultData();
+// DefaultData();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
