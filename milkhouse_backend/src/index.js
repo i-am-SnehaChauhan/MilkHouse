@@ -23,6 +23,7 @@ app.listen(process.env.PORT, () => {
 
 // DefaultData();
 
+app.use(express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
-import { Box, Button, styled, Typography} from "@mui/material";
+import { Box, Button, styled, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
+// import env from 'dotenv';
+// env.config();
+// require('dotenv').config();
 
 const statesIndia = [
   "Andaman and Nicobar Islands",
@@ -78,8 +81,7 @@ const StyledSelect = Styled.select({
   backgroundColor: "#f8f9fa",
   color: "black",
   outline: "none",
-  fontFamily:'Roboto',
-  
+  fontFamily: "Roboto",
 });
 const TextInput = Styled.input`
   width: 70%;
@@ -87,7 +89,6 @@ const TextInput = Styled.input`
   border-radius: 5px;
   border: 1px solid #ccc;
   display:block;
-  /* background: #ffdfd0; */
   background: #f8f9fa;
   font-weight: 400;
   font-size: 1rem;
@@ -170,7 +171,7 @@ const Checkout = () => {
   const [msg, setMsg] = useState("");
   const [data, setData] = useState({});
   const { cartItems } = useSelector((state) => state.cart);
-  
+
   const [errors, setErrors] = useState({});
   const { loading, product } = useSelector((state) => state.getProductDetails);
 
@@ -186,8 +187,8 @@ const Checkout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoadingPayment(true); 
-    const { email, name, city, address } = data;
+    setLoadingPayment(true);
+    const { email, name, city, address, code, phone } = data;
     const errors = {};
 
     if (!email || !validateEmail(email)) {
@@ -202,26 +203,31 @@ const Checkout = () => {
     if (!address) {
       errors.address = "Please enter your address.";
     }
-  
+    if (!code) {
+      errors.code = "Please enter your Postal Code.";
+    }
+    if (!phone) {
+      errors.phone = "Please enter your Mobile Number.";
+    }
+
     setErrors(errors);
-  
+
     if (Object.keys(errors).length > 0) {
       setInvalid(true);
       setLoadingPayment(false);
       return;
     }
-  
+
     try {
       await MakePayment();
       console.log("Form submitted successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
-    }
-    finally {
+    } finally {
       setLoadingPayment(false); // Reset loading state when payment process is complete
     }
   };
-  
+
   const setBack = () => {
     setInvalid(false);
     return;
@@ -232,10 +238,17 @@ const Checkout = () => {
   const MakePayment = async () => {
     console.log("payment executed");
     const stripe = await loadStripe(
-      "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+      // "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+      process.env.REACT_APP_STRIPE_KEY
     );
     const body = {
       products: cartItems,
+      customerEmail: data.email,
+      customerName: data.name,
+      customerCity: data.city,
+      customerCode: data.code,
+      customerState: selectedState,
+      phoneNo: data.phone,
     };
     const headers = {
       "Content-Type": "application/json",
@@ -255,30 +268,31 @@ const Checkout = () => {
     if (result.error) {
       console.log(result.error);
     }
-    
   };
   const showInvalid = (fieldName) => {
     if (invalid && errors[fieldName]) {
       return (
-        <p style={{ color: 'red' }}>{errors[fieldName]}</p>
+        <p key={fieldName} style={{ color: "red" }}>
+          {errors[fieldName]}
+        </p>
       );
     }
-    return null; // Return null if the field is valid or not touched
+    return null;
   };
-  
+
   return (
     <>
       <Component container>
         <LeftComponent item lg={9} md={9} sm={12} xs={12}>
           <Header>
             <Typography style={{ fontWeight: 600, fontSize: 25 }}>
-              Billing Details
+              Shipping Details
             </Typography>
           </Header>
 
           {/* <h4 className="mb-3">Shipping Address</h4> */}
           <form
-           onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             className="d-flex gap-15 flex-wrap justify-content-between"
           >
             <div className="w-50">
@@ -290,12 +304,12 @@ const Checkout = () => {
                 </b>
               </label>
               <TextInput
-              onChange={(e) => setData({ ...data, name: e.target.value })}
+                onChange={(e) => setData({ ...data, name: e.target.value })}
                 type="text"
                 placeholder="Full Name"
                 required
               />
-               {invalid && showInvalid('name')}
+              {invalid && showInvalid("name")}
             </div>
             <div className="w-50">
               <label>
@@ -310,35 +324,48 @@ const Checkout = () => {
                 aria-label="Email"
                 required
               />
-              {invalid && showInvalid('email')}
+              {invalid && showInvalid("email")}
+              {/* {invalid && <p style={{ color: 'red' }}>{msg}</p>} */}
+            </div>
+            <div className="w-50">
+              <label>
+                <Fields>
+                  Phone Number<RequiredStar>*</RequiredStar>
+                </Fields>
+              </label>
+              <TextInput
+                type="integer"
+                placeholder="(+91)"
+                onChange={(e) => setData({ ...data, phone: e.target.value })}
+                aria-label="Mobile"
+                required
+              />
+              {invalid && showInvalid("phone")}
               {/* {invalid && <p style={{ color: 'red' }}>{msg}</p>} */}
             </div>
             <div className="w-100">
               <label>
                 <Fields>
-                  Address Details <RequiredStar>*</RequiredStar>
+                  Shipping Address <RequiredStar>*</RequiredStar>
                 </Fields>
               </label>
-              <TextInput
-                type="text"
-                placeholder="Address"
-              />
-               {invalid && showInvalid('address')}
+              <TextInput type="text" placeholder="Address" />
+              {invalid && showInvalid("address")}
             </div>
             <div className="w-100">
               <TextInput
-               onChange={(e) => setData({ ...data, address: e.target.value })}
+                onChange={(e) => setData({ ...data, address: e.target.value })}
                 type="text"
                 placeholder="Apartment, Suite ,etc"
               />
             </div>
             <div className="flex-grow-1">
               <TextInput
-               onChange={(e) => setData({ ...data, city: e.target.value })}
+                onChange={(e) => setData({ ...data, city: e.target.value })}
                 type="text"
                 placeholder="City"
               />
-              {invalid && showInvalid('city')}
+              {invalid && showInvalid("city")}
             </div>
             <div className="flex-grow-1">
               <StyledSelect
@@ -348,34 +375,38 @@ const Checkout = () => {
                 onChange={handleChange}
                 // style={{ margin: "7px" }}
               >
-                <option value="" selected disabled>
+                <option value="" disabled>
                   Select State
                 </option>
                 {statesIndia.map((state, index) => (
-          <option key={index} value={state}>
-            {state}
-           </option>
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
                 ))}
               </StyledSelect>
             </div>
             <div className="flex-grow-1">
               <TextInput
+                onChange={(e) => setData({ ...data, code: e.target.value })}
                 type="text"
-                placeholder="Zipcode"
+                placeholder="Postal code"
               />
-              {invalid && showInvalid("zipcode")}
+              {invalid && showInvalid("code")}
             </div>
           </form>
         </LeftComponent>
         <Grid item lg={3} md={3} sm={12} xs={12}>
           <TotalView cartItems={cartItems} />
           <BottomWrapper>
-            <StyledButton onClick={handleSubmit}variant="contained" type="submit"
-            disabled={loadingPayment}>
-            {loadingPayment ? "Processing..." : "Place Order"}
+            <StyledButton
+              onClick={handleSubmit}
+              variant="contained"
+              type="submit"
+              disabled={loadingPayment}
+            >
+              {loadingPayment ? "Processing..." : "Place Order"}
             </StyledButton>
           </BottomWrapper>
-          
         </Grid>
       </Component>
     </>

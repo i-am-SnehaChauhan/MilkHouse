@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Img from "../../../image/signup.png";
 import { NavLink } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { API } from '../../../service/api';
+// import firebase from 'firebase/app';
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../../firebase";
 
 import {
   Container,
@@ -34,7 +36,6 @@ const SignUp = () => {
     );
   };
   const paragraphStyles = {
-    fontFamily: "Poppins",
     fontStyle: "normal",
     fontWeight: 600,
     fontSize: "1rem",
@@ -57,9 +58,7 @@ const SignUp = () => {
   const handleSubmission = async() => {
     if (
       !data.name ||
-      !data.username ||
       !data.email ||
-      !data.contactNumber ||
       !data.password ||
       !data.confirmpassword
     ) {
@@ -73,14 +72,19 @@ const SignUp = () => {
     
     setErrMessage("");
 
-    await API.userSignup(data)
+      try {
+        await createUserWithEmailAndPassword(auth, data.email, data.password);
+
+      } catch (error) {
+        console.error('Error signing up:', error.message);
+      }
+    
   }
 
   // setSubmitBtnDisabled(true);
 
   return (
     <>
-      <Container>
         <FormContainer>
           <LeftContainer>
             <LeftHeading>Welcome!</LeftHeading>
@@ -99,37 +103,12 @@ const SignUp = () => {
                 placeholder="Full Name"
               ></FormInput>
               <FormInput
-                onChange={(e) => setData({ ...data, username: e.target.value })}
-                id="usernameInput"
-                type="text"
-                placeholder="Username"
-              ></FormInput>
-              <FormInput
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 id="emailInput"
                 type="email"
                 placeholder="Email"
               ></FormInput>
 
-              <PhoneContainer>
-                <FormInput
-                  onChange={(e) =>
-                    setData({ ...data, countryCode: e.target.value })
-                  }
-                  id="CountryCode"
-                  type="text"
-                  placeholder="+XXX"
-                ></FormInput>
-                <FormInput
-                  onChange={(e) =>
-                    setData({ ...data, contactNumber: e.target.value })
-                  }
-                  id="ContactNumber"
-                  type="text"
-                  placeholder="Phone Number"
-                  maxLength={10}
-                ></FormInput>
-              </PhoneContainer>
               <PasswordContainer>
                 <FormInput
                   onChange={(e) =>
@@ -197,7 +176,6 @@ const SignUp = () => {
             </SignUpForm>
           </SignUpContainer>
         </FormContainer>
-      </Container>
     </>
   );
 };
