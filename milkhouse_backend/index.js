@@ -27,9 +27,5 @@ app.use(express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-// app.use('/', Routes);
-
-app.use("/", (req, res)=>{
-    res.json({message: "Hello From Express App" });
-})
+app.use('/', Routes);
 
