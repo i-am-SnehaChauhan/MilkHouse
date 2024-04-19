@@ -44,8 +44,8 @@ const Banner = () => {
         slidesToSlide={1}
     >
         {
-            bannerData.map(data => (
-                <Image src={data.url} alt="banner-img" />
+            bannerData.map((data, index) => (
+                <Image key={index} src={data.url} alt="banner-img" />
             ))
         }
 
