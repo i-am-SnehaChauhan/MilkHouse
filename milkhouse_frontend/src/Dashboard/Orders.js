@@ -8,7 +8,8 @@ function OrdersTable() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('https://milkhouse.onrender.com/orders');
+      console.log(`${process.env.REACT_APP_backendUrl}/orders`);
+      const response = await fetch("https://milk-house-azure.vercel.app/orders");
       if (!response.ok) {
         throw new Error('Failed to fetch orders');
       }

@@ -8,7 +8,7 @@ function ProductsTable() {
 
   const fetchproducts = async () => {
     try {
-      const response = await fetch('https://milkhouse.onrender.com/products');
+      const response = await fetch('https://milk-house-azure.vercel.app/products');
       if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
