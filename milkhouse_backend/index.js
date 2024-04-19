@@ -1,10 +1,10 @@
 import express from 'express';
 import env from 'dotenv';
-import Connection from './database/db.js';
+import Connection from './src/database/db.js';
 // import DefaultData from './default.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import Routes from './routes/route.js';
+import Routes from './src/routes/route.js';
 
 
 const app = express();
