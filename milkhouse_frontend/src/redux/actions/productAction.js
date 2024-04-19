@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from '../constants/productsConstant';
-const URL = 'https://milhhouse.onrender.com';
+const URL = 'https://milk-house-azure.vercel.app';
 
 
 export const getProducts = () => async (dispatch) => {
