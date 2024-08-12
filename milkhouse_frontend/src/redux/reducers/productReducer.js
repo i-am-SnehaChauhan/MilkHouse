@@ -6,8 +6,8 @@ const initialState = {
   };
 export const getProductsReducer = (state = initialState,action) => {
     switch (action.type) {
-        // case actionTypes.GET_PRODUCT_REQUEST:
-        //     return {loading: true};
+        case actionTypes.GET_PRODUCTS_REQUEST:
+            return {loading: true};
         case actionTypes.GET_PRODUCTS_SUCCESS:
             return { ...state,
                 products: action.payload,

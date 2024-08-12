@@ -19,7 +19,11 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-  }, [dispatch, loading])
+  }, [dispatch])
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -27,8 +31,7 @@ const Home = () => {
         <Banner />
       </Component>
       <Navbar />
-      <Component>
-      {loading && <Loader/>}
+      <Component>    
         <MidSlide
           products={products}
           title='Deal of the Day'

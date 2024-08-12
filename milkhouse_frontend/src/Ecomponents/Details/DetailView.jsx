@@ -37,14 +37,18 @@ const DetailView = () => {
   useEffect(() => {
     if (product && id !== product.id)
       dispatch(getProductDetails(id));
-  }, [dispatch, id, product, loading]);
+  }, [dispatch, id, product]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
     
     <Component>
     <Header/>
-    {loading && <Loader/>}
+    {/* {loading && <Loader/>} */}
       <div   style={{"display":"flex", "flexWrap":"wrap", "justifyContent":"space-between"}}>
       {
          product && Object.keys(product).length &&
