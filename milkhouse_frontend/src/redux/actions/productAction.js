@@ -5,10 +5,11 @@ const URL = 'https://milk-house-azure.vercel.app';
 
 export const getProducts = () => async (dispatch) => {
     try {
-      let response = await axios.get(`${URL}/products`);
-        dispatch({type: actionTypes.GET_PRODUCTS_SUCCESS, payload: response.data});
+        dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST }); // Dispatch loading action
+        let response = await axios.get(`${URL}/products`);
+        dispatch({ type: actionTypes.GET_PRODUCTS_SUCCESS, payload: response.data });
     } catch (error) {
-        dispatch({type: actionTypes.GET_PRODUCTS_FAIL, payload: error.message});
+        dispatch({ type: actionTypes.GET_PRODUCTS_FAIL, payload: error.message });
     }
 }
 

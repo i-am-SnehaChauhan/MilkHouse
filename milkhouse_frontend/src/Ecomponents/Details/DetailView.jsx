@@ -6,6 +6,7 @@ import { Box, styled, Grid } from '@mui/material';
 import ActionItem from './ActionItem';
 import ProductDetail from './ProductDetail';
 import Header from '../Header/Header';
+import Loader from '../../templates/Loader';
 const Component = styled(Box)`
    background : #F2F2F2; 
 `;
@@ -43,6 +44,8 @@ const DetailView = () => {
     
     <Component>
     <Header/>
+    {loading && <Loader/>}
+      <div   style={{"display":"flex", "flexWrap":"wrap", "justifyContent":"space-between"}}>
       {
          product && Object.keys(product).length &&
         <Container container>
@@ -54,6 +57,7 @@ const DetailView = () => {
           </RightContainer>
         </Container>
       }
+      </div>
     </Component>
     </>
   );
