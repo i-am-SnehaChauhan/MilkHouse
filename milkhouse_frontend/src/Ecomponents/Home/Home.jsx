@@ -5,6 +5,7 @@ import Slide from './Slide';
 import { Box, styled } from '@mui/material';
 import { getProducts } from '../../redux/actions/productAction'
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../templates/Loader';
 import MidSlide from './MidSlide';
 
 const Component = styled(Box)`
@@ -13,12 +14,12 @@ const Component = styled(Box)`
 `
 const Home = () => {
 
-  const { products } = useSelector((state) => state.getProducts);
+  const { loading,products } = useSelector((state) => state.getProducts);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-  }, [dispatch])
+  }, [dispatch, loading])
 
   return (
     <>
@@ -27,6 +28,7 @@ const Home = () => {
       </Component>
       <Navbar />
       <Component>
+      {loading && <Loader/>}
         <MidSlide
           products={products}
           title='Deal of the Day'
