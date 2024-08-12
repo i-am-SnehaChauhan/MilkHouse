@@ -26,10 +26,6 @@ app.listen(process.env.PORT, () => {
 app.use(express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-const corsOptions = {
-    origin: ['http://localhost:3000'],
-  };
-  
-  app.use(cors(corsOptions));
+app.use(cors());
 app.use('/', Routes);
 
