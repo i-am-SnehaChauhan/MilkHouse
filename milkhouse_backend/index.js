@@ -30,6 +30,8 @@ app.use(express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://milk-house.vercel.app',
+}));
 app.use('/', Routes);
 
