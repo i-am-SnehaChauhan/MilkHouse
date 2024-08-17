@@ -5,6 +5,7 @@ import Connection from './src/database/db.js';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import Routes from './src/routes/route.js';
+import fileUpload from 'express-fileupload';
 
 
 const app = express();
@@ -22,10 +23,13 @@ app.listen(process.env.PORT, () => {
 );
 
 // DefaultData();
-
+app.use(fileUpload({
+    useTempFiles:true
+}));
 app.use(express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors());
 app.use('/', Routes);
 

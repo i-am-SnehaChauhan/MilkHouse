@@ -2,6 +2,7 @@ import express from "express";
 import {
   getProducts,
   getProductById,
+  addProduct,
 } from "../controller/product-controller.js";
 import { signup } from "../controller/user-controller.js";
 import { getOrders } from "../controller/order-controller.js";
@@ -16,6 +17,7 @@ const stripeInstance = stripe(process.env.STRIPE_SECRET);
 router.get("/products", getProducts);
 router.get("/orders", getOrders);
 router.get("/product/:id", getProductById);
+router.post("/addProduct", addProduct);
 router.post("/signup", signup);
 router.post("/api/create-checkout-session", async (req, res) => {
   const {

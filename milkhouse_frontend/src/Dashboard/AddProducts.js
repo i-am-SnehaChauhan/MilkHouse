@@ -1,9 +1,284 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Grid, Box, Button, styled, Typography } from "@mui/material";
+import Styled from "styled-components";
+import axios from "axios";
+
+const Component = styled(Grid)(({ theme }) => ({
+  padding: "30px 135px",
+  display: "flex",
+  [theme.breakpoints.down("sm")]: {
+    padding: "15px 0",
+  },
+}));
+
+const Header = styled(Box)`
+  margin-bottom: 3rem;
+`;
+
+const StyledButton = styled(Button)`
+  display: flex;
+  margin-left: auto;
+  background: #fb641b;
+  color: #fff;
+  border-radius: 2px;
+  width: 250px;
+  height: 51px;
+`;
+
+const TextInput = Styled.input`
+  width: 70%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+  background: #f8f9fa;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family:'Roboto';
+  line-height: 1rem;
+  color: black;
+  margin-bottom: 1rem;
+  outline: none;
+  
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:focus {
+    border: 1px solid rgb(133 44 2);
+  }
+`;
 
 const AddProducts = () => {
-  return (
-    <div>AddProducts</div>
-  )
-}
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [data, setData] = useState({
+    id: "",
+    image: null,
+    title: { shortTitle: "", longTitle: "" },
+    price: { mrp: "", cost: "", discount: "" },
+    quantity: "",
+    description: "",
+    tagline: "",
+  });
 
-export default AddProducts
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    setData((prevData) => {
+      const newData = { ...prevData };
+
+      if (name === "image" && files && files.length > 0) {
+        newData[name] = files[0];
+      } else {
+        const keys = name.split(".");
+        if (keys.length > 1) {
+          newData[keys[0]] = {
+            ...newData[keys[0]],
+            [keys[1]]: value,
+          };
+        } else {
+          newData[name] = value;
+        }
+      }
+      return newData;
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsButtonDisabled(true);
+
+    const formDataForBackend = new FormData();
+    formDataForBackend.append("id", data.id);
+    formDataForBackend.append("image", data.image);
+    formDataForBackend.append("shortTitle", data.title.shortTitle);
+    formDataForBackend.append("longTitle", data.title.longTitle);
+    formDataForBackend.append("mrp", data.price.mrp);
+    formDataForBackend.append("cost", data.price.cost);
+    formDataForBackend.append("discount", data.price.discount);
+    formDataForBackend.append("quantity", data.quantity);
+    formDataForBackend.append("description", data.description);
+    formDataForBackend.append("tagline", data.tagline);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:2000/addProduct",
+        formDataForBackend
+      );
+
+      setIsButtonDisabled(false);
+      console.log("Product Added:", response.data);
+      window.location.href = "/";
+    } catch (error) {
+      setIsButtonDisabled(false);
+      console.error("Error adding product:", error);
+    }
+  };
+
+  return (
+    <Component container>
+      <Header>
+        <Typography style={{ fontWeight: 600, fontSize: 25 }}>
+          Add Product
+        </Typography>
+      </Header>
+
+      <form
+        onSubmit={handleSubmit}
+        className="d-flex gap-15 flex-wrap justify-content-between"
+      >
+        <div className="w-50">
+          <label>
+            <b>Product ID</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Product ID"
+            name="id"
+            value={data.id}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Product Image</b>
+          </label>
+          <TextInput
+            type="file"
+            name="image"
+            label="image"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Short Title</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Short Title"
+            name="title.shortTitle"
+            value={data.title.shortTitle}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Long Title</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Long Title"
+            name="title.longTitle"
+            value={data.title.longTitle}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>MRP</b>
+          </label>
+          <TextInput
+            type="number"
+            placeholder="MRP"
+            name="price.mrp"
+            value={data.price.mrp}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Cost</b>
+          </label>
+          <TextInput
+            type="number"
+            placeholder="Cost"
+            name="price.cost"
+            value={data.price.cost}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Price Discount</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Price Discount"
+            name="price.discount"
+            value={data.price.discount}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Quantity</b>
+          </label>
+          <TextInput
+            type="number"
+            placeholder="Quantity"
+            name="quantity"
+            value={data.quantity}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-100">
+          <label>
+            <b>Description</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Description"
+            name="description"
+            value={data.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="w-50">
+          <label>
+            <b>Tagline</b>
+          </label>
+          <TextInput
+            type="text"
+            placeholder="Tagline"
+            name="tagline"
+            value={data.tagline}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+          <StyledButton
+            onClick={handleSubmit}
+            variant="contained"
+            type="submit"
+            disabled={isButtonDisabled}
+          >
+            Add Product
+          </StyledButton>
+        </div>
+      </form>
+    </Component>
+  );
+};
+
+export default AddProducts;
