@@ -102,7 +102,7 @@ const AddProducts = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:2000/addProduct",
+        "https://milk-house-azure.vercel.app/addProduct",
         formDataForBackend
       );
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../templates/Loader";
+import { FaTrash } from 'react-icons/fa';
 function ProductsTable() {
   const [products, setproducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,23 @@ function ProductsTable() {
     }
   };
 
+   const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`https://milk-house-azure.vercel.app/products/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete product");
+      }
+
+      // Update the UI by removing the deleted product
+      setproducts(products.filter(product => product._id !== id));
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -40,16 +58,24 @@ function ProductsTable() {
             <th>Product Name</th>
             <th>Price</th>
             <th>Discount</th>
+            <th>Action</th>
             {/* <th>Delivery Status</th> */}
           </tr>
           {products.map((product, index) => (
             <tr key={product._id}>
               <td data-th="S.No">{index + 1}</td>
-              <td data-th="Product ID">{product._id}</td>
+              <td data-th="Product ID">{product.id}</td>
               <td data-th="Product Name">{product.title.shortTitle}</td>
               <td data-th="Price">{product.price.mrp}</td>
               <td data-th="Discount">{product.price.discount}</td>
-              {/* <td data-th="Delivery Status">{product.delivery_status}</td> */}
+              <td data-th="Actions">
+                <button 
+                  onClick={() => handleDelete(product._id)}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                >
+                  <FaTrash style={{ color: 'red' }} /> {/* Trash icon */}
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
