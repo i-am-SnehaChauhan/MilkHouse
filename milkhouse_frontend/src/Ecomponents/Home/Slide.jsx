@@ -45,10 +45,13 @@ const Timer = styled(Box)`
 `;
 
 const ViewAllButton = styled(Button)`
-    margin-left: auto;
-    background-color: #000000;
-    border-radius: 2px;
-    font-size: 13px;
+      /* display: flex; */
+  margin-left: auto;
+  background: #fb641b;
+  color: #fff;
+  border-radius: 2px;
+  width: 150px;
+  height: 41px;
 `;
 
 const Image = styled('img')({
@@ -85,7 +88,7 @@ const Slide = ({ products, timer, title }) => {
                         </Timer>
                 }
                 <Link to="/dairy/products" style={{marginLeft:'20px'}}>
-                <ViewAllButton variant="contained" color="primary">View All</ViewAllButton></Link>
+                <ViewAllButton>View All</ViewAllButton></Link>
             </Deal>
             <Divider />
             <Carousel
@@ -99,7 +102,6 @@ const Slide = ({ products, timer, title }) => {
                 keyBoardControl={true}
                 showDots={false}
                 containerClass="carousel-container"
-                // removeArrowOnDeviceType={["tablet", "mobile"]}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
@@ -120,14 +122,5 @@ const Slide = ({ products, timer, title }) => {
     )
 }
 
-// const Slide = (props) => {
-//     return (
-//         <>
-//             {
-//                 props.multi === true && <MultiSlide {...props} />
-//             }
-//         </>
-//     )
-// }
 
 export default Slide;

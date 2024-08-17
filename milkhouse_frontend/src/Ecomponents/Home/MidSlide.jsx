@@ -20,7 +20,7 @@ const RightComponent = styled(Box)`
     text-align: center;
 `;
 
-const MidSlide = ({ products, title, timer }) => {
+const MidSlide = ({ products, title }) => {
     const addUrl = 'https://res.cloudinary.com/dx0dgujbj/image/upload/v1690316219/MilkHouse/BannerData/Banners-05_tou5hj.jpg'
   return (
     <Component>
@@ -28,7 +28,6 @@ const MidSlide = ({ products, title, timer }) => {
            <Slide 
             products={products}
             title={title}
-            timer = {timer}
            />
         </LeftComponent>
         <RightComponent>

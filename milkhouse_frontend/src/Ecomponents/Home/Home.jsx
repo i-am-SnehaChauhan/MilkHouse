@@ -35,28 +35,21 @@ const Home = () => {
         <MidSlide
           products={products}
           title='Deal of the Day'
-          timer={true}
         />
         <Slide
           products={products}
           title='Suggested Items'
-          timer={false}
         />
         <Slide
           products={products}
           title='Top Selection'
-          timer={false}
+
         />
         <Slide
           products={products}
           title='Recommended Items'
-          timer={false}
         />
       </Component>
-
-
-
-
 
     </>
   )
