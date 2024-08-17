@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Grid, Box, Button, styled, Typography } from "@mui/material";
 import Styled from "styled-components";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
 const Component = styled(Grid)(({ theme }) => ({
   padding: "30px 135px",
@@ -88,6 +90,27 @@ const AddProducts = () => {
     e.preventDefault();
     setIsButtonDisabled(true);
 
+    const requiredFields = [
+      data.id,
+      data.image,
+      data.title.shortTitle,
+      data.title.longTitle,
+      data.price.mrp,
+      data.price.cost,
+      data.price.discount,
+      data.quantity,
+      data.description,
+      data.tagline,
+    ];
+
+    const allFieldsFilled = requiredFields.every(field => field && (typeof field !== 'string' || field.trim() !== ''));
+
+    if (!allFieldsFilled) {
+      setIsButtonDisabled(false);
+      toast.error("Please fill out all required fields.");
+      return;
+    }
+
     const formDataForBackend = new FormData();
     formDataForBackend.append("id", data.id);
     formDataForBackend.append("image", data.image);
@@ -102,16 +125,20 @@ const AddProducts = () => {
 
     try {
       const response = await axios.post(
-        "https://milk-house-azure.vercel.app/addProduct",
+        "https://milkhouse.onrender.com/addProduct",
         formDataForBackend
       );
 
       setIsButtonDisabled(false);
       console.log("Product Added:", response.data);
-      window.location.href = "/";
+      toast.success("Product added successfully!");
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 2000);
     } catch (error) {
       setIsButtonDisabled(false);
       console.error("Error adding product:", error);
+      toast.error("Error adding product. Please try again.");
     }
   };
 
@@ -129,7 +156,7 @@ const AddProducts = () => {
       >
         <div className="w-50">
           <label>
-            <b>Product ID</b>
+            <b>Product ID<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -143,7 +170,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Product Image</b>
+            <b>Product Image<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="file"
@@ -156,7 +183,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Short Title</b>
+            <b>Short Title<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -170,7 +197,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Long Title</b>
+            <b>Long Title<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -184,7 +211,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>MRP</b>
+            <b>MRP<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="number"
@@ -198,7 +225,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Cost</b>
+            <b>Cost<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="number"
@@ -212,7 +239,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Price Discount</b>
+            <b>Price Discount<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -226,7 +253,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Quantity</b>
+            <b>Quantity<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="number"
@@ -240,7 +267,7 @@ const AddProducts = () => {
 
         <div className="w-100">
           <label>
-            <b>Description</b>
+            <b>Description<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -254,7 +281,7 @@ const AddProducts = () => {
 
         <div className="w-50">
           <label>
-            <b>Tagline</b>
+            <b>Tagline<span style={{ color: 'red' }}>*</span></b>
           </label>
           <TextInput
             type="text"
@@ -277,6 +304,7 @@ const AddProducts = () => {
           </StyledButton>
         </div>
       </form>
+      <ToastContainer />
     </Component>
   );
 };
