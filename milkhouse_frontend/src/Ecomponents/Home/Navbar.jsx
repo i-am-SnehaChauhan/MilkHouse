@@ -1,6 +1,7 @@
-import React from 'react';
-import { Box, Typography, styled, keyframes } from '@mui/material';
-import { navData } from '../../constants/data';
+import React from "react";
+import { Box, Typography, styled, keyframes } from "@mui/material";
+import { navData } from "../../constants/data";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const pulseAnimation = keyframes`
   0% {
@@ -38,6 +39,7 @@ const Container = styled(Box)`
 const Text = styled(Typography)`
   font-size: 14px;
   font-weight: 600;
+  color: black;
   font-family: inherit;
 `;
 
@@ -45,10 +47,12 @@ const Navbar = () => {
   return (
     <Component>
       {navData.map((data) => (
-        <Container key={data.text}>
-          <img src={data.url} alt="logo" style={{ width: 74, height: 74 }} />
-          <Text>{data.text}</Text>
-        </Container>
+        <Link to={data.link} key={data.text} style={{ textDecoration: "none" }}>
+          <Container>
+            <img src={data.url} alt="logo" style={{ width: 74, height: 74 }} />
+            <Text>{data.text}</Text>
+          </Container>
+        </Link>
       ))}
     </Component>
   );
