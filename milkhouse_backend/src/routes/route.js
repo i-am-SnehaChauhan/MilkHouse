@@ -11,6 +11,7 @@ import env from "dotenv";
 import Order from "../model/orderSchema.js";
 const router = express.Router();
 import stripe from "stripe";
+import admin from "../firebaseAdmin.js";
 env.config();
 
 const stripeInstance = stripe(process.env.STRIPE_SECRET);
@@ -19,11 +20,12 @@ router.get("/products", getProducts);
 router.get("/orders", getOrders);
 router.get("/product/:id", getProductById);
 router.post("/addProduct", addProduct);
-router.delete('/products/:id', deleteProduct);
+router.delete("/products/:id", deleteProduct);
 router.post("/signup", signup);
 router.post("/api/create-checkout-session", async (req, res) => {
   const {
-    products, customerEmail,
+    products,
+    customerEmail,
     customerName,
     customerCity,
     customerState,
@@ -153,5 +155,22 @@ router.post(
     res.send().end();
   }
 );
+
+router.get("/customers", async (req, res) => {
+  try {
+    const listUsersResult = await admin.auth().listUsers(1000); // Fetches up to 1000 users
+    const users = listUsersResult.users.map((userRecord) => {
+      return {
+        uid: userRecord.uid,
+        email: userRecord.email,
+        displayName: userRecord.displayName,
+        // add other fields you want to show
+      };
+    });
+    res.json(users);
+  } catch (error) {
+    res.status(500).send(`Error: ${error.message}`);
+  }
+});
 
 export default router;

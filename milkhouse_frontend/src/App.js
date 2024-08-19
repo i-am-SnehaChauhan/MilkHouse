@@ -18,6 +18,7 @@ import Cancel from "./pages/cancel";
 import OrderPage from "./pages/order";
 import ProductPage from "./pages/productstable";
 import Addproduct from "./pages/addproduct";
+import CustomerList from "./pages/customers";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/dashboard/orders" element={<OrderPage />} />
         <Route path="/dashboard/products" element={<ProductPage />} />
         <Route path="/dashboard/add-products" element={<Addproduct />} />
+        <Route path="/dashboard/customers" element={<CustomerList/>} />
         <Route path="*" element={<NotFound />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
