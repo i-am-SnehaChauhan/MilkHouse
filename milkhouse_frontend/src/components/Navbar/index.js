@@ -82,7 +82,7 @@ function Navbar() {
 
             {user ? (
               <li className={`${styles.navLink} ${styles.accountDropdown}`}>
-                <PersonIcon />
+                <PersonIcon style={{color:'white'}}/>
                 <span> Account </span>
                 <ul className={styles.dropdownMenu}>
                   <li>
