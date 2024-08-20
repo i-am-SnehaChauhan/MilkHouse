@@ -45,7 +45,7 @@ const SignIn = () => {
   const [invalid, setInvalid] = useState(false);
   const [errMessage, setErrMessage] = useState("");
   const navigateToProfile = () => {
-    navigate("/");
+    navigate("/dairy");
   };
   const sendPostRequest = async (e) => {
     if (data.password && data.password.length < 8) {

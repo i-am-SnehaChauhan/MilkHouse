@@ -97,7 +97,7 @@ const SignUp = () => {
         position: "top-center",
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/dairy");
       }, 2000);
     } catch (error) {
       toast.error(`${error.message}`, {

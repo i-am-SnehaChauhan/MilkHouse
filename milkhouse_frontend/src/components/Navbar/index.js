@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import logo from "../../image/logo.png";
 import { auth } from "../../firebase";
 import PersonIcon from "@mui/icons-material/Person";
+import { Typography } from "@mui/material";
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -83,7 +84,8 @@ function Navbar() {
             {user ? (
               <li className={`${styles.navLink} ${styles.accountDropdown}`}>
                 <PersonIcon style={{color:'white'}}/>
-                <span> Account </span>
+                <Typography style={{ color: 'white', fontSize: '18px', fontWeight: '600' }}>
+                  Account </Typography>
                 <ul className={styles.dropdownMenu}>
                   <li>
                     <a href="/profile">My Profile</a>
