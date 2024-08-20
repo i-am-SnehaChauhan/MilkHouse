@@ -2,5 +2,7 @@
 ## TODOs
 - making the `buy now` button functional
  - making the user profile page
-  - hamburger menu items not visible in mobile view
+  - improving UI of donation page
+  - implementing SMTP server in backend for contact us page
+  - permanent storage of cart items for the logged user i.e if the user is logged and add the items to the cart, it is added and shown but once the user logs out and logins again, the cart is reset to empty.
 
