@@ -6,7 +6,7 @@ export const FormContainer = styled.div`
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  height:90vh;
+  height: 90vh;
   display: flex;
   @media only screen and (max-width: 550px) {
     flex-direction: column;
@@ -75,17 +75,16 @@ export const SignUph1 = styled.h1`
   font-size: 2.3rem;
   line-height: 4rem;
   margin-bottom: 1rem;
-  color:#403126;
+  color: #403126;
   text-align: center;
 `;
 
 export const FormInput = styled.input`
   width: 70%;
-  padding: 0.5rem;
-  border-radius: 0;
+  padding: 0.7rem;
+  border-radius: 20px;
   border: None;
-  background:  rgb(255 179 104 / 57%);
-  /* font-family: "Poppins"; */
+  background: rgb(255 179 104 / 57%);
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -105,7 +104,7 @@ export const FormInput = styled.input`
   }
 
   &:focus {
-    border-radius: 0;
+    border-radius: 20px;
     border: 2px solid #ed730e;
   }
 `;
@@ -137,17 +136,19 @@ export const PasswordContainer = styled.div`
 `;
 
 export const SignUpButton = styled.button`
-  width: 9rem;
-  /* font-family: "Poppins"; */
+  width: 7.5rem;
   font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
-  border-radius: 50px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
   cursor: pointer;
   text-decoration: none;
+  margin-bottom: 1rem;
+  padding: 8px;
 
   &:hover {
     background: #f7bd00;
@@ -159,11 +160,9 @@ export const SignUpButton = styled.button`
   }
 `;
 
-
 export const Image = styled.img`
-
   animation: scale 2.5s ease-in-out infinite;
-  width:90%;
+  width: 90%;
   @keyframes scale {
     0% {
       transform: scale(1);
@@ -194,7 +193,7 @@ export const RadioInput = styled.input`
 
 export const RadioLabel = styled.label`
   margin-right: 20px;
-  margin-bottom:0px;
+  margin-bottom: 0px;
   cursor: pointer;
   font-size: 1rem;
 `;

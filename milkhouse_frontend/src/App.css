@@ -6,23 +6,39 @@
 }
 .google-login-container {
   display: flex;
-  width: 80%;
-  margin-top: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin-top: 3rem;
   position: relative;
+  height:16%;
 }
 .login-button {
   cursor: pointer;
   margin-bottom: 70px;
-  width: 100%;
+  width: 60%;
   border-radius: 0.75rem;
   border-width: 2px;
+  background-color: #fff;
+  border: 1px solid grey;
   font-weight: 600;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.login-button:hover {
+  background-color: #e8e6e6;
+}
+.login-button img {
+  width: 2.5rem;
+  /* position: absolute; */
+  /* left: 1rem;
+  top: 50%;
+  transform: translateY(-50%); */
 }
 .rwd-table {
   margin: auto;

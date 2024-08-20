@@ -84,10 +84,8 @@ export const FormLabel = styled.label`
 export const FormInput = styled.input`
   margin-bottom: 40px;
   padding: 10px;
-  border: none;
-  border-radius: 9px;
   font-size: 18px;
-  border: none;
+
   outline: none;
   background: #403126;
   :focus {
@@ -181,18 +179,19 @@ export const SignInForm = styled.form`
 `;
 
 export const SignInButton = styled.button`
-  width: 7rem;
+  width: 7.5rem;
   font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
-  border-radius: 50px;
-  background-color: ${props => props.disabled ? 'gray' : '#403126'};
+  border-radius: 30px;
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
   white-space: nowrap;
   color: #fff;
   margin-top: 0.8rem;
   cursor: pointer;
   text-decoration: none;
   margin-bottom: 1rem;
+  padding: 8px;
 
   &:hover {
     background:#f7bd00;
@@ -247,8 +246,8 @@ export const SignInLabel = styled.label`
 
 export const SignInInput = styled.input`
   width: 70%;
-  padding: 0.5rem;
-  border-radius: 0;
+  padding: 0.7rem;
+  border-radius: 20px;
   border: None;
   background: rgb(255 179 104 / 57%);
   /* font-family: "Poppins"; */
@@ -271,7 +270,7 @@ export const SignInInput = styled.input`
   }
 
   &:focus {
-    border-radius: 0;
+    border-radius: 20px;
     border: 2px solid #ed730e;
   }
 `;
@@ -298,6 +297,41 @@ export const ForgotPassword = styled.p`
   font-size: 1rem;
   line-height: 1rem;
   color: #1e1e1e;
+ text-align:right;
+`;
+
+export const FormFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 70%;
+`;
+
+ export const Separator = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+ 
+  width: 50%; /* Takes full width */
+  
+  &:before,
+  &:after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc; /* Line style */
+  }
+
+  &:before {
+    margin-right: 10px;
+  }
+
+  &:after {
+    margin-left: 10px;
+  }
+`;
+
+export const SeparatorText = styled.span`
+  font-size: 16px;
+  color: rgb(150 144 144); /* Gray text color */
 `;
 
 export const NewAccount = styled.p`
