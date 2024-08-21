@@ -50,6 +50,19 @@ const ViewAllButton = styled(Button)`
   border-radius: 2px;
   width: 150px;
   height: 41px;
+  &:hover {
+    background: #f66d29;
+  }
+
+  &:active {
+    background: #fb641b;
+    color: #fff;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Ensure text color is inherited */
 `;
 
 const Image = styled("img")({
@@ -90,9 +103,9 @@ const Slide = ({ products, timer, title }) => {
             <Countdown date={Date.now() + 5.04e7} renderer={renderer} />
           </Timer>
         )}
-        <Link to="/dairy/products" style={{ marginLeft: "20px" }}>
+        <StyledLink to="/dairy/products" style={{ marginLeft: "20px" }}>
           <ViewAllButton>View All</ViewAllButton>
-        </Link>
+        </StyledLink>
       </Deal>
       <Divider />
       <Carousel

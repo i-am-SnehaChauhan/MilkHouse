@@ -31,11 +31,13 @@ export const ProductView = () => {
   const uniqueProducts = Array.from(new Set(products.map(product => product.id)))
     .map(id => products.find(product => product.id === id));
 
+    if (loading) {
+      return <Loader />;
+    }
+
   return (
     <Container>
-      {loading ? (
-        <Loader />
-      ) : uniqueProducts.length === 0 ? (
+      { uniqueProducts.length === 0 ? (
         <p>No products available.</p>
       ) : (
         uniqueProducts.map(product => (
