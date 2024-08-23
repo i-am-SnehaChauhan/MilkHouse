@@ -86,7 +86,7 @@ function ProductsTable() {
             {products.map((product, index) => (
               <tr key={product._id}>
                 <td data-th="S.No">{index + 1}</td>
-                <td data-th="Product ID">{product.id}</td>
+                <td data-th="Product ID">{product._id}</td>
                 <td data-th="Product Name">{product.title.shortTitle}</td>
                 <td data-th="Price">{product.price.mrp}</td>
                 <td data-th="Discount">{product.price.discount}</td>

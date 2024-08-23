@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../../firebase";
+import { auth, provider, db } from "../../../firebase"; // Include db
+import { doc, setDoc, getDoc } from "firebase/firestore"; // Firestore methods
 
 import {
   FormContainer,
@@ -31,27 +32,27 @@ import {
   RadioInput,
   RadioLabel,
 } from "./SigninElements";
+
 const SignIn = () => {
   const navigate = useNavigate();
-  const Navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
   const handlePasswordToggle = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const [data, setData] = useState({});
-  const [msg, setMsg] = useState("");
   const [invalid, setInvalid] = useState(false);
-  const [errMessage, setErrMessage] = useState("");
+
   const navigateToProfile = () => {
     navigate("/dairy");
   };
+
   const sendPostRequest = async (e) => {
     if (data.password && data.password.length < 8) {
       setInvalid(true);
     }
-    console.log("sendPostRequest is called!!!");
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
@@ -85,25 +86,44 @@ const SignIn = () => {
 
   const setBack = () => {
     setInvalid(false);
-    return;
   };
   if (invalid) {
     setTimeout(setBack, 5000);
   }
 
-  const showInvalid = () => {
-    return (
-      <div class="alert alert-danger" role="alert">
-        {msg}
-      </div>
-    );
-  };
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Reference to the user's document in Firestore
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Check if the user document exists
+      if (!userSnap.exists()) {
+        // Create a new document if it doesn't exist
+        await setDoc(userRef, {
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          phone: "",
+          cart: [], // Initialize an empty cart
+        });
+      }
+
       navigateToProfile();
     } catch (err) {
       console.log(err);
+      toast.error("An error occurred while signing in with Google.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -112,7 +132,6 @@ const SignIn = () => {
       <FormContainer>
         <SignInContainer>
           <SignInForm onSubmit={sendPostRequest}>
-            {/* <SignInh1>Sign in</SignInh1> */}
             <RadioContainer>
               <RadioInput
                 type="radio"
@@ -135,7 +154,6 @@ const SignIn = () => {
               <RadioLabel htmlFor="admin">Admin</RadioLabel>
             </RadioContainer>
             <SignInLabel htmlFor="email">
-              {" "}
               {isAdmin ? "Admin Email" : "Email"}
             </SignInLabel>
             <SignInInput
@@ -173,16 +191,15 @@ const SignIn = () => {
               </i>
             </PasswordContainer>
             <FormFooter>
-            <NavLink to="/signin/forgotPassword">
-              <ForgotPassword>Forgot password?</ForgotPassword>
-            </NavLink>
+              <NavLink to="/signin/forgotPassword">
+                <ForgotPassword>Forgot password?</ForgotPassword>
+              </NavLink>
             </FormFooter>
-
             <SignInButton type="submit">Sign in</SignInButton>
           </SignInForm>
           <Separator>
-      <SeparatorText>or</SeparatorText>
-    </Separator>
+            <SeparatorText>or</SeparatorText>
+          </Separator>
           <div className="google-login-container" onClick={handleGoogleLogin}>
             <button className="login-button">
               <img

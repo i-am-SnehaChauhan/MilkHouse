@@ -3,10 +3,9 @@ import Img from "../../../image/signup.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import {
   Container,
   FormContainer,
@@ -23,6 +22,7 @@ import {
   Image,
   Error,
 } from "./SignupElements";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,6 +30,7 @@ const SignUp = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
     confirmpassword: "",
   });
@@ -57,9 +58,14 @@ const SignUp = () => {
     return passwordRegex.test(password);
   };
 
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(phone);
+  };
+
   const handleSubmission = async (e) => {
     e.preventDefault();
-    if (!data.name || !data.email || !data.password || !data.confirmpassword) {
+    if (!data.name || !data.email || !data.phone || !data.password || !data.confirmpassword) {
       toast.error("Please fill all the fields", {
         position: "top-center",
       });
@@ -68,6 +74,13 @@ const SignUp = () => {
 
     if (!validateEmail(data.email)) {
       toast.error("Please enter a valid email address", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    if (!validatePhoneNumber(data.phone)) {
+      toast.error("Please enter a valid 10-digit phone number", {
         position: "top-center",
       });
       return;
@@ -92,10 +105,22 @@ const SignUp = () => {
     setSubmitBtnDisabled(true);
 
     try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+
+      // Add user details to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        cartItems: [], // Initialize with an empty cart
+      });
+
       toast.success("Successfully signed up!", {
         position: "top-center",
       });
+
       setTimeout(() => {
         navigate("/dairy");
       }, 2000);
@@ -132,6 +157,13 @@ const SignUp = () => {
               id="emailInput"
               type="email"
               placeholder="Email"
+            />
+            <FormInput
+              value={data.phone}
+              onChange={(e) => setData({ ...data, phone: e.target.value })}
+              id="phoneInput"
+              type="text"
+              placeholder="Phone Number"
             />
             <PasswordContainer>
               <FormInput
