@@ -6,7 +6,6 @@ import SigninPage from "./pages/signin";
 import ContactPage from "./pages/contact";
 import DairyPage from "./pages/dairy";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import DonationPage from "./pages/donation";
 import DetailViewPage from "./pages/detailview";
 import CartPage from "./pages/cart";
 import ProductsPage from "./pages/products";
@@ -29,7 +28,6 @@ function App() {
         <Route exact path="/signup" element={<SignupPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/dairy" element={<DairyPage />} />
-        <Route path="/donation" element={<DonationPage />} />
         <Route path="/dairy/product/:id" element={<DetailViewPage />} />
         <Route
           path="/dairy/products/product/:id"
@@ -42,7 +40,7 @@ function App() {
         <Route path="/dashboard/orders" element={<OrderPage />} />
         <Route path="/dashboard/products" element={<ProductPage />} />
         <Route path="/dashboard/add-products" element={<Addproduct />} />
-        <Route path="/dashboard/customers" element={<CustomerList/>} />
+        <Route path="/dashboard/customers" element={<CustomerList />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />

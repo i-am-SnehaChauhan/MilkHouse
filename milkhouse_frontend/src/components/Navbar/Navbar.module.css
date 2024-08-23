@@ -114,3 +114,55 @@ a {
 .navMenu li:hover .navLink {
   color: #f7bd00;
 }
+
+.navLink {
+  position: relative;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.accountDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
+  color: white;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px;
+}
+
+.dropdownMenu.show {
+  display: block;
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 7px;
+}
+
+.dropdownCloseIcon {
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+.dropdownMenu li {
+  text-align: left;
+  cursor: pointer;
+}
