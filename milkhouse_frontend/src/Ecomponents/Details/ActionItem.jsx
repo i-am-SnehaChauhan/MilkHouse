@@ -54,7 +54,7 @@ export const ActionItem = ({ product }) => {
   const buyNow = () => {
     dispatch(getProductDetails(id));
     if (auth.currentUser) {
-      navigate("/checkout");
+      navigate("/checkout", { state: { product } });
     } else {
       navigate("/signin");
     }

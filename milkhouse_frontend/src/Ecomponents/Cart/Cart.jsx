@@ -7,6 +7,7 @@ import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import CartItem from "./CartItem";
 import TotalView from "./TotalView";
 import EmptyCart from "./EmptyCart";
+import Loader from "../../templates/Loader";
 
 const Component = styled(Grid)(({ theme }) => ({
   padding: "30px 135px",
@@ -47,6 +48,7 @@ const StyledButton = styled(Button)`
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,16 +58,23 @@ const Cart = () => {
         if (doc.exists()) {
           setCartItems(doc.data().cart || []);
         }
+        setLoading(false); 
       });
 
       return () => unsubscribe();
+    } else{
+      setLoading(false); 
     }
   }, []);
 
   const buyNow = async () => {
-    navigate("/checkout");
+    navigate("/checkout", { state: { cartItems } });
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+  
   return (
     <>
       {cartItems.length ? (
@@ -86,7 +95,7 @@ const Cart = () => {
             </BottomWrapper>
           </LeftComponent>
           <Grid item lg={3} md={3} sm={12} xs={12}>
-            <TotalView cartItems={cartItems} />
+            <TotalView items={cartItems} />
           </Grid>
         </Component>
       ) : (

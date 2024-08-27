@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import { Box, Button, styled, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
@@ -161,6 +161,7 @@ const Discount = styled(Typography)`
 `;
 const Checkout = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [selectedState, setSelectedState] = useState("");
   const handleChange = (event) => {
     setSelectedState(event.target.value); // Update the selected state when the user selects an option
@@ -170,8 +171,8 @@ const Checkout = () => {
   const [loadingPayment, setLoadingPayment] = useState(false);
   const [msg, setMsg] = useState("");
   const [data, setData] = useState({});
-  const { cartItems } = useSelector((state) => state.cart);
-
+  const { cartItems } = useSelector((state) => state.cart);       
+  const  item  = location.state.cartItems || location.state.product;
   const [errors, setErrors] = useState({});
   const { loading, product } = useSelector((state) => state.getProductDetails);
 
@@ -396,7 +397,7 @@ const Checkout = () => {
           </form>
         </LeftComponent>
         <Grid item lg={3} md={3} sm={12} xs={12}>
-          <TotalView cartItems={cartItems} />
+          <TotalView items ={item} />
           <BottomWrapper>
             <StyledButton
               onClick={handleSubmit}

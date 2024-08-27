@@ -43,20 +43,25 @@ const Discount = styled(Typography)`
 // },
 
 
-const TotalView = ({ cartItems }) => {
+const TotalView = ({ items }) => {
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0)
 
     useEffect(() => {
         totalAmount();
-    }, [cartItems]);
+    }, [items]);
     
     const totalAmount = () => {
         let price = 0, discount = 0;
-        cartItems.map(item => {
+        if (!Array.isArray(items)){
+            price = items.price.mrp
+            discount = (items.price.mrp - items.price.cost) 
+        }
+        else
+       { items.forEach(item => {
             price += item.price.mrp
             discount += (item.price.mrp - item.price.cost) 
-        })
+        })}
         setPrice(price);
         setDiscount(discount);
     }
@@ -67,7 +72,7 @@ const TotalView = ({ cartItems }) => {
                 <Heading>PRICE DETAILS</Heading>
             </Header>
             <Container>
-                <Typography>Price ({cartItems?.length} item)
+                <Typography>Price ({items?.length} item)
                     <Price component="span">₹{price}</Price>
                 </Typography>
                 <Typography>Discount

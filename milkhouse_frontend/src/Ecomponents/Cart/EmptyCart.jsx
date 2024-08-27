@@ -2,18 +2,21 @@ import { Typography, Box, styled } from "@mui/material";
 
 const Component = styled(Box)`
   width: 80%;
-  height: 80;
+  margin: auto;
   background: #fff;
-  // margin: 80px 140px;
-`;
-
-const Container = styled(Box)`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
   padding-top: 70px;
 `;
 
 const Image = styled("img")({
-  width: 500,
+  width: "100%",
+  maxWidth: 500,
+  height: "auto",
+  marginBottom: 20,
 });
 
 const EmptyCart = () => {
@@ -22,11 +25,9 @@ const EmptyCart = () => {
 
   return (
     <Component>
-      <Container>
-        <Image src={imgurl} />
-        <Typography>Your cart is empty!</Typography>
-        <Typography component="span">Add items to it now.</Typography>
-      </Container>
+      <Image src={imgurl} alt="Empty Cart" />
+      <Typography>Your cart is empty!</Typography>
+      <Typography component="span">Add items to it now.</Typography>
     </Component>
   );
 };

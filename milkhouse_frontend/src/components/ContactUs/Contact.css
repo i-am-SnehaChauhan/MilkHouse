@@ -31,7 +31,7 @@ section
     top: 40px;
     width: 350px;
     height: calc(100% - 80px);
-    background: #095a55;
+    background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
     z-index: 1;
     padding: 40px;
     display: flex;
@@ -209,7 +209,7 @@ section
 {
     position: relative;
     cursor: pointer;
-    background: #095a55;
+    background: linear-gradient(45deg, #000000 30%, rgb(162 91 54) 90%);
     border-radius: 20px;
     color: #fff;
     border: none;
