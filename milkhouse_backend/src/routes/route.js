@@ -33,12 +33,22 @@ router.post("/api/create-checkout-session", async (req, res) => {
     phoneNo,
   } = JSON.parse(req.body.toString());
   console.log(req.body.toString());
-  const productMetadata = products.map((product) => ({
-    id: product._id,
-    title: product.title.shortTitle,
-    quantity: product.quantity,
-    mrp: product.price.mrp,
-  }));
+  let productMetadata;
+  if (Array.isArray(products)) {
+    productMetadata = products.map((product) => ({
+      id: product._id,
+      title: product.title.shortTitle,
+      quantity: product.quantity,
+      mrp: product.price.mrp,
+    }));
+  } else {
+    productMetadata = {
+      id: products._id,
+      title: products.title.shortTitle,
+      quantity: products.quantity,
+      mrp: products.price.mrp,
+    };
+  }
   const customer = await stripeInstance.customers.create({
     metadata: {
       name: customerName,
@@ -50,17 +60,32 @@ router.post("/api/create-checkout-session", async (req, res) => {
       cart: JSON.stringify(productMetadata),
     },
   });
-  const lineItems = products.map((product) => ({
-    price_data: {
-      currency: "INR",
-      product_data: {
-        name: product.title.shortTitle,
-        images: [product.url],
-      },
-      unit_amount: product.price.cost * 100,
-    },
-    quantity: product.quantity,
-  }));
+  const lineItems = Array.isArray(products)
+    ? products.map((product) => ({
+        price_data: {
+          currency: "INR",
+          product_data: {
+            name: product.title.shortTitle,
+            images: [product.url],
+          },
+          unit_amount: product.price.cost * 100,
+        },
+        quantity: product.quantity,
+      }))
+    : [
+        {
+          price_data: {
+            currency: "INR",
+            product_data: {
+              name: products.title.shortTitle,
+              images: [products.url],
+            },
+            unit_amount: products.price.cost * 100,
+          },
+          quantity: products.quantity,
+        },
+      ];
+
   const session = await stripeInstance.checkout.sessions.create({
     payment_method_types: ["card"],
     customer: customer.id,

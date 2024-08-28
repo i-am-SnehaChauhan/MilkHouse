@@ -7,9 +7,6 @@ import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
-// import env from 'dotenv';
-// env.config();
-// require('dotenv').config();
 
 const statesIndia = [
   "Andaman and Nicobar Islands",
@@ -51,8 +48,8 @@ const statesIndia = [
   "West Bengal",
 ];
 const RequiredStar = styled(Typography)`
-  color: red; /* Adjust the color of the star */
-  margin-left: 3px; /* Add some spacing between the label text and the star */
+  color: red;
+  margin-left: 3px;
 `;
 const Component = styled(Grid)(({ theme }) => ({
   padding: "30px 135px",
@@ -71,7 +68,6 @@ const LeftComponent = styled(Grid)(({ theme }) => ({
 
 const Header = styled(Box)`
   margin-bottom: 3rem;
-  /* background: #fff; */
 `;
 const StyledSelect = Styled.select({
   width: "100%",
@@ -243,7 +239,7 @@ const Checkout = () => {
       process.env.REACT_APP_STRIPE_KEY
     );
     const body = {
-      products: cartItems,
+      products: item,
       customerEmail: data.email,
       customerName: data.name,
       customerCity: data.city,

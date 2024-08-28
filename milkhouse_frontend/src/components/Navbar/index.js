@@ -112,7 +112,7 @@ function Navbar() {
                     />
                   </div>
                   <li>
-                    <a href="/profile" className={`${styles.navLink}`}>
+                    <a href={user.email === 'john123@gmail.com' ? '/dashboard' : "/profile" }className={`${styles.navLink}`}>
                       Profile Settings
                     </a>
                   </li>

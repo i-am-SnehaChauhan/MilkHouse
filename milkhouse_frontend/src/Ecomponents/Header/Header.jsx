@@ -17,23 +17,19 @@ function Header() {
     },
   }));
 
-  // State to hold authentication status
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // Check if the user is authenticated
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsAuthenticated(!!user); // Set true if user exists, false otherwise
+      setUser(user);
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
-  // State to handle mobile menu toggle
   const [isActive, setIsActive] = useState(false);
 
-  // State to handle dropdown visibility
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleActiveClass = () => {
@@ -114,7 +110,7 @@ function Header() {
                 </Typography>
               </Container>
             </li>
-           {isAuthenticated ? (
+            {user ? (
               <li
                 className={`${styles.navLink} ${styles.accountDropdown}`}
                 onClick={toggleDropdown}
@@ -141,14 +137,23 @@ function Header() {
                     />
                   </div>
                   <li>
-                    <a href="/profile" className={`${styles.navLink}`}>
+                    <a
+                      href={
+                        user.email === "john123@gmail.com"
+                          ? "/dashboard"
+                          : "/profile"
+                      }
+                      className={`${styles.navLink}`}
+                    >
                       Profile Settings
                     </a>
                   </li>
-                  <li onClick={() => {
-                                            auth.signOut();
-                                            closeDropdown();
-                                        }}>
+                  <li
+                    onClick={() => {
+                      auth.signOut();
+                      closeDropdown();
+                    }}
+                  >
                     <a href="/dairy" className={`${styles.navLink}`}>
                       Logout
                     </a>

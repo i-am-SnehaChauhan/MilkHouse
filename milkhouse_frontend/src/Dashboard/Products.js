@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Loader from "../templates/Loader";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaTimes } from "react-icons/fa";
 
 function ProductsTable() {
   const [products, setProducts] = useState([]);
@@ -110,19 +110,31 @@ function ProductsTable() {
         {showConfirmation && (
           <div style={confirmationStyles.overlay}>
             <div style={confirmationStyles.popup}>
-              <h4>Are you to delete this product?</h4>
+              <div style={confirmationStyles.header}>
+            <FaTimes 
+                style={confirmationStyles.closeIcon}
+                onClick={closeConfirmation}
+              />
+              </div>
+              <h3 style={confirmationStyles.warning}>
+                Are you sure to delte this product?<br/> This action can't be undone.
+              </h3>
+              <div style={confirmationStyles.details}>
+                <span style={confirmationStyles.label}>Product ID:</span>{" "}
+                {productToDelete}
+              </div>
               <div style={confirmationStyles.actions}>
                 <button
                   onClick={handleDelete}
-                  style={confirmationStyles.buttonYes}
+                  style={confirmationStyles.buttonDelete}
                 >
-                  Yes
+                  Delete
                 </button>
                 <button
                   onClick={closeConfirmation}
-                  style={confirmationStyles.buttonNo}
+                  style={confirmationStyles.buttonCancel}
                 >
-                  No
+                  Cancel
                 </button>
               </div>
             </div>
@@ -141,7 +153,7 @@ const confirmationStyles = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -150,31 +162,56 @@ const confirmationStyles = {
   popup: {
     backgroundColor: "#fff",
     padding: "20px",
-    borderRadius: "5px",
-    width: "350px",
+    borderRadius: "10px",
+    width: "400px",
     textAlign: "center",
+  },
+  header: {
+    display:'flex',
+    justifyContent: "flex-end",
+    padding: "10px",
+  },
+  closeIcon: {
+    cursor: "pointer",
+    fontSize: "1.2rem",
+  },
+  warning: {
+    fontSize: "1rem",
+    color: "red",
+    marginBottom: "20px",
+  },
+  details: {
+    fontSize: "1.1rem",
+    marginBottom: "20px",
+  },
+  label: {
+    fontWeight: "bold",
   },
   actions: {
     display: "flex",
     justifyContent: "space-between",
     marginTop: "20px",
   },
-  buttonYes: {
-    backgroundColor: "green",
+  buttonDelete: {
+    backgroundColor: "#d32f2f",
     color: "#fff",
     border: "none",
     padding: "10px 20px",
     cursor: "pointer",
     borderRadius: "5px",
+    flex: 1,
+    marginRight: "10px",
   },
-  buttonNo: {
-    backgroundColor: "red",
+  buttonCancel: {
+    backgroundColor: "#4caf50",
     color: "#fff",
     border: "none",
     padding: "10px 20px",
     cursor: "pointer",
     borderRadius: "5px",
+    flex: 1,
   },
+
 };
 
 export default ProductsTable;
