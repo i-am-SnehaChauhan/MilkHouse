@@ -18,6 +18,7 @@ import OrderPage from "./pages/order";
 import ProductPage from "./pages/productstable";
 import Addproduct from "./pages/addproduct";
 import CustomerList from "./pages/customers";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

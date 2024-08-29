@@ -7,6 +7,7 @@ import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import TotalView from "../Cart/TotalView";
+import { auth } from "../../firebase";
 
 const statesIndia = [
   "Andaman and Nicobar Islands",
@@ -239,6 +240,7 @@ const Checkout = () => {
       process.env.REACT_APP_STRIPE_KEY
     );
     const body = {
+      uid: auth.currentUser.uid,
       products: item,
       customerEmail: data.email,
       customerName: data.name,

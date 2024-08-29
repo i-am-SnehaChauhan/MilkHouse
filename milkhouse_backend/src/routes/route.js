@@ -24,6 +24,7 @@ router.delete("/products/:id", deleteProduct);
 router.post("/signup", signup);
 router.post("/api/create-checkout-session", async (req, res) => {
   const {
+    uid,
     products,
     customerEmail,
     customerName,
@@ -33,24 +34,27 @@ router.post("/api/create-checkout-session", async (req, res) => {
     phoneNo,
   } = JSON.parse(req.body.toString());
   console.log(req.body.toString());
-  let productMetadata;
-  if (Array.isArray(products)) {
-    productMetadata = products.map((product) => ({
-      id: product._id,
-      title: product.title.shortTitle,
-      quantity: product.quantity,
-      mrp: product.price.mrp,
-    }));
-  } else {
-    productMetadata = {
-      id: products._id,
-      title: products.title.shortTitle,
-      quantity: products.quantity,
-      mrp: products.price.mrp,
-    };
-  }
+  const productMetadata = Array.isArray(products)
+    ? products.map((product) => ({
+        id: product._id,
+        title: product.title.shortTitle,
+        quantity: product.quantity,
+        mrp: product.price.mrp,
+        image: [product.url],
+      }))
+    : [
+        {
+          id: products._id,
+          title: products.title.shortTitle,
+          quantity: products.quantity,
+          mrp: products.price.mrp,
+          image: [products.url],
+        },
+      ];
+
   const customer = await stripeInstance.customers.create({
     metadata: {
+      uid: uid,
       name: customerName,
       email: customerEmail,
       c_city: customerCity,
@@ -100,13 +104,13 @@ router.post("/api/create-checkout-session", async (req, res) => {
 
 const createOrder = async (customer, data) => {
   const Items = JSON.parse(customer.metadata.cart);
-  const newOrder = new Order({
+  const orderDetails = {
     customerName: customer.metadata.name,
     customerId: data.customer,
     paymentIntentId: data.payment_intent,
     products: Items,
-    subtotal: data.amount_subtotal,
-    total: data.amount_total,
+    subtotal: data.amount_subtotal/100,
+    total: data.amount_total/100,
     shipping: {
       address: {
         city: customer.metadata.c_city,
@@ -116,13 +120,29 @@ const createOrder = async (customer, data) => {
       email: data.customer_details.email,
       name: data.customer_details.name,
       phone: customer.metadata.phoneno,
-      // Add other shipping details as needed
     },
     payment_status: data.payment_status,
-  });
+  };
+  const newOrder = new Order(orderDetails);
   try {
     const savedOrder = await newOrder.save();
     console.log("Processed Order:", savedOrder);
+    const db = admin.firestore();
+    const userRef = db.collection("users").doc(customer.metadata.uid);
+    console.log(userRef);
+    // Fetch the current document data
+    const doc = await userRef.get();
+    if (doc.exists) {
+      const data = doc.data();
+      const orders = data.orders || [];
+      orders.push(orderDetails);
+      await userRef.update({
+        orders: orders,
+      });
+    } else {
+      console.log("User document does not exist.");
+    }
+    console.log("Order saved in Firestore.");
   } catch (err) {
     console.log(err);
   }
@@ -158,13 +178,8 @@ router.post(
     } else {
       data = req.body.data.object;
       eventType = req.body.type;
-
-      // console.log("eventtype: ",eventType);
     }
     console.log("data: ", data);
-    // console.log("body: ",req.body);
-
-    //   // Handle the event
     if (eventType === "checkout.session.completed") {
       stripeInstance.customers
         .retrieve(data.customer)
@@ -176,7 +191,6 @@ router.post(
         .catch((err) => console.log(err.message));
     }
 
-    // Return a 200 response to acknowledge receipt of the event
     res.send().end();
   }
 );
@@ -189,7 +203,6 @@ router.get("/customers", async (req, res) => {
         uid: userRecord.uid,
         email: userRecord.email,
         displayName: userRecord.displayName,
-        // add other fields you want to show
       };
     });
     res.json(users);
