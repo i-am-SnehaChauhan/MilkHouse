@@ -168,8 +168,8 @@ const Checkout = () => {
   const [loadingPayment, setLoadingPayment] = useState(false);
   const [msg, setMsg] = useState("");
   const [data, setData] = useState({});
-  const { cartItems } = useSelector((state) => state.cart);       
-  const  item  = location.state.cartItems || location.state.product;
+  const { cartItems } = useSelector((state) => state.cart);
+  const item = location.state.cartItems || location.state.product;
   const [errors, setErrors] = useState({});
   const { loading, product } = useSelector((state) => state.getProductDetails);
 
@@ -395,7 +395,7 @@ const Checkout = () => {
           </form>
         </LeftComponent>
         <Grid item lg={3} md={3} sm={12} xs={12}>
-          <TotalView items ={item} />
+          <TotalView items={item} />
           <BottomWrapper>
             <StyledButton
               onClick={handleSubmit}

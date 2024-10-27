@@ -40,7 +40,7 @@ function OrdersTable() {
             <th>Customer Name</th>
             <th>Products</th>
             <th>Total</th>
-            <th>Delivery Status</th>
+            <th>Order Date(YYYY-MM-DD)</th>
           </tr>
           {orders.map((order, index) => (
             <tr key={order._id}>
@@ -57,7 +57,7 @@ function OrdersTable() {
                 </ul>
               </td>
               <td data-th="Total">{order.total}</td>
-              <td data-th="Delivery Status">{order.delivery_status}</td>
+              <td data-th="Order Date">{order.createdAt ? new Date(order.createdAt).toLocaleDateString("en-CA") : "1"}</td>
             </tr>
           ))}
         </tbody>
