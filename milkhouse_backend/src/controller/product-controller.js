@@ -5,6 +5,54 @@ cloudinary.v2.config({
     api_key:"621242358315299",
     api_secret:"iN9F4OJ5nuSlOs5nOtGk2K_7Wj0"
 });
+
+// Submit product for approval
+import Product from './path/to/ProductModel';  // Ensure you are importing Product correctly
+
+export const submitForApproval = async (req, res) => {
+  try {
+    const productData = {
+      ...req.body,
+      status: "Pending",  // Ensure status matches schema default 'Pending' value
+    };
+
+    // Log product data to verify before saving
+    console.log("Product data to save:", productData);
+
+    const newProduct = new Product(productData);
+    await newProduct.save();
+
+    res.status(201).json({ message: "Product submitted for approval." });
+  } catch (error) {
+    console.error("Error in submitForApproval:", error);  // Log the exact error message
+    res.status(500).json({ error: "Error submitting product for approval." });
+  }
+};
+
+
+// Approve product
+export const approveProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Products.findByIdAndUpdate(id, { status: "approved" });
+    res.status(200).json({ message: "Product approved successfully." });
+  } catch (error) {
+    res.status(500).json({ error: "Error approving product." });
+  }
+};
+
+// Reject product
+export const rejectProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Products.findByIdAndDelete(id);
+    res.status(200).json({ message: "Product rejected and removed." });
+  } catch (error) {
+    res.status(500).json({ error: "Error rejecting product." });
+  }
+};
+
+
 export const getProducts = async(request,response) => {
      try {
        const products = await Products.find({});

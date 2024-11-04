@@ -4,6 +4,10 @@ import {
   getProductById,
   addProduct,
   deleteProduct,
+  // submitProductForApproval,
+  approveProduct,
+  rejectProduct,
+  submitForApproval
 } from "../controller/product-controller.js";
 import { signup } from "../controller/user-controller.js";
 import { getOrders } from "../controller/order-controller.js";
@@ -19,9 +23,16 @@ const stripeInstance = stripe(process.env.STRIPE_SECRET);
 router.get("/products", getProducts);
 router.get("/orders", getOrders);
 router.get("/product/:id", getProductById);
-router.post("/addProduct", addProduct);
+// router.post("/addProduct", addProduct);
+router.post("/submitForApproval", submitForApproval);
 router.delete("/products/:id", deleteProduct);
 router.post("/signup", signup);
+
+// router.post("/submitProductForApproval", submitProductForApproval);
+router.post("/admin/approveProduct/:id", approveProduct);
+router.post("/admin/rejectProduct/:id", rejectProduct);
+
+
 router.post("/api/create-checkout-session", async (req, res) => {
   const {
     uid,

@@ -19,7 +19,7 @@ import ProductPage from "./pages/productstable";
 import Addproduct from "./pages/addproduct";
 import CustomerList from "./pages/customers";
 import Profile from "./pages/profile";
-
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 function App() {
   return (
     <Router>
@@ -46,6 +46,7 @@ function App() {
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
