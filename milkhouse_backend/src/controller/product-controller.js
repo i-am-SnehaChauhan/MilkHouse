@@ -7,7 +7,7 @@ cloudinary.v2.config({
 });
 
 // Submit product for approval
-import Product from './path/to/ProductModel';  // Ensure you are importing Product correctly
+import Product from '../model/productSchema.js';
 
 export const submitForApproval = async (req, res) => {
   try {
