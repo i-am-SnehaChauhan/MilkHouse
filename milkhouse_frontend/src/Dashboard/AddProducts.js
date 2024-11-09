@@ -89,7 +89,7 @@ const AddProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsButtonDisabled(true);
-
+  
     const requiredFields = [
       data.id,
       data.image,
@@ -102,45 +102,47 @@ const AddProducts = () => {
       data.description,
       data.tagline,
     ];
-
+  
     const allFieldsFilled = requiredFields.every(field => field && (typeof field !== 'string' || field.trim() !== ''));
-
+  
     if (!allFieldsFilled) {
       setIsButtonDisabled(false);
       toast.error("Please fill out all required fields.");
       return;
     }
-
+  
     const formDataForBackend = new FormData();
     formDataForBackend.append("id", data.id);
-    formDataForBackend.append("image", data.image);
-    formDataForBackend.append("shortTitle", data.title.shortTitle);
-    formDataForBackend.append("longTitle", data.title.longTitle);
-    formDataForBackend.append("mrp", data.price.mrp);
-    formDataForBackend.append("cost", data.price.cost);
-    formDataForBackend.append("discount", data.price.discount);
+    formDataForBackend.append("image", data.image); 
+    formDataForBackend.append("title.shortTitle", data.title.shortTitle);
+    formDataForBackend.append("title.longTitle", data.title.longTitle);
+    formDataForBackend.append("price.mrp", data.price.mrp);
+    formDataForBackend.append("price.cost", data.price.cost);
+    formDataForBackend.append("price.discount", data.price.discount);
     formDataForBackend.append("quantity", data.quantity);
     formDataForBackend.append("description", data.description);
     formDataForBackend.append("tagline", data.tagline);
-
+  
     try {
       const response = await axios.post(
-        "https://milkhouse.onrender.com/addProduct",
-        formDataForBackend
+        "https://localhost:2000/submitForApproval",
+        formDataForBackend,
+        { headers: { "Content-Type": "multipart/form-data" }}  
       );
-
+      console.log("payload", response);
       setIsButtonDisabled(false);
-      console.log("Product Added:", response.data);
-      toast.success("Product added successfully!");
+      toast.success("Product submitted for approval!");
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 2000);
     } catch (error) {
+      console.error("Submission error:", error);  
       setIsButtonDisabled(false);
-      console.error("Error adding product:", error);
-      toast.error("Error adding product. Please try again.");
+      toast.error("Error submitting product for approval. Please try again.");
     }
   };
+  
+  
 
   return (
     <Component container>
@@ -300,7 +302,7 @@ const AddProducts = () => {
             type="submit"
             disabled={isButtonDisabled}
           >
-            Add Product
+            Send for approval
           </StyledButton>
         </div>
       </form>

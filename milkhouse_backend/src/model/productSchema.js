@@ -1,16 +1,26 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-    id: String,
-    url: String,
-    detailUrl: String,
-    title: Object,
-    price: Object,
-    quantity: Number,
-    description: String,
-    tagline: String
+  id: String,
+  image: String,
+  title: {
+    shortTitle: String,
+    longTitle: String,
+  },
+  price: {
+    mrp: Number,
+    cost: Number,
+    discount: String,
+  },
+  quantity: Number,
+  description: String,
+  tagline: String,
+  status: {
+    type: String,
+    default: "Pending", // Default status when submitted
+    enum: ["Pending", "Approved", "Rejected"],
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
-
 export default Product;

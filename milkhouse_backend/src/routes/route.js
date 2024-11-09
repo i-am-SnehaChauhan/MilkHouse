@@ -4,6 +4,10 @@ import {
   getProductById,
   addProduct,
   deleteProduct,
+  // submitProductForApproval,
+  approveProduct,
+  rejectProduct,
+  submitForApproval
 } from "../controller/product-controller.js";
 import { signup } from "../controller/user-controller.js";
 import { getOrders } from "../controller/order-controller.js";
@@ -20,9 +24,46 @@ const stripeInstance = stripe(process.env.STRIPE_SECRET);
 router.get("/products", getProducts);
 router.get("/orders", getOrders);
 router.get("/product/:id", getProductById);
-router.post("/addProduct", addProduct);
+// router.post("/addProduct", addProduct);
+router.post("/submitForApproval", submitForApproval);
 router.delete("/products/:id", deleteProduct);
 router.post("/signup", signup);
+
+// router.post("/submitProductForApproval", submitProductForApproval);
+router.post("/admin/approveProduct/:id", approveProduct);
+router.post("/admin/rejectProduct/:id", rejectProduct);
+
+
+router.post("/api/create-checkout-session", async (req, res) => {
+  const {
+    uid,
+    products,
+    customerEmail,
+    customerName,
+    customerCity,
+    customerState,
+    customerCode,
+    phoneNo,
+  } = JSON.parse(req.body.toString());
+  console.log(req.body.toString());
+  const productMetadata = Array.isArray(products)
+    ? products.map((product) => ({
+        id: product._id,
+        title: product.title.shortTitle,
+        quantity: product.quantity,
+        mrp: product.price.mrp,
+        image: [product.url],
+      }))
+    : [
+        {
+          id: products._id,
+          title: products.title.shortTitle,
+          quantity: products.quantity,
+          mrp: products.price.mrp,
+          image: [products.url],
+        },
+      ];
+
 router.post("/create-order", createOrder);
 router.post("/verify-order", verifyOrder);
 router.post("/addorder", addOrder);
@@ -55,6 +96,7 @@ router.post("/addorder", addOrder);
 //           image: [products.url],
 //         },
 //       ];
+
 
 //   const customer = await stripeInstance.customers.create({
 //     metadata: {
