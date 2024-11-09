@@ -235,10 +235,10 @@ const Checkout = () => {
   }
   const MakePayment = async () => {
     console.log("payment executed");
-    const stripe = await loadStripe(
-      // "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
-      process.env.REACT_APP_STRIPE_KEY
-    );
+    // const stripe = await loadStripe(
+    //   // "pk_test_51OkLbxSDZIOeZTA8ipwbbaBAzbsFZf3EXJDgd3zy0gbrG5ck9eUIcJHj4DrG8WOwkQ6edbOyMmgsn2mrapGp5y2700fQGx7acg"
+    //   process.env.REACT_APP_STRIPE_KEY
+    // );
     const body = {
       uid: auth.currentUser.uid,
       products: item,
@@ -252,21 +252,76 @@ const Checkout = () => {
     const headers = {
       "Content-Type": "application/json",
     };
+    const amount = Array.isArray(item)
+      ? item.reduce((sum, product) => sum + product.price.cost, 0)
+      : item.price.cost;
     const response = await fetch(
-      "https://milk-house-azure.vercel.app/api/create-checkout-session",
+      "https://milk-house-azure.vercel.app/create-order",
       {
         method: "POST",
         headers: headers,
-        body: JSON.stringify(body),
+        body: JSON.stringify({ amount: (amount + 40) * 100 }),
+        // headers: headers,
+        // body: JSON.stringify(body),
       }
     );
+    //   const response = await fetch(
+    //     "https://milk-house-azure.vercel.app/api/create-checkout-session",
+    //     {
+    //       method: "POST",
+    //       headers: headers,
+    //       body: JSON.stringify(body),
+    //     }
+    //   );
     const session = await response.json();
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-    if (result.error) {
-      console.log(result.error);
-    }
+    console.log(session);
+
+    const paymentData = {
+      key: "rzp_test_KWc7Xxii90tYNd",
+      currency: "INR",
+      order_id: session.id,
+
+      handler: async function (response) {
+        // verify payment
+        const res = await fetch(
+          "https://milk-house-azure.vercel.app/verify-order",
+          {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({
+              orderId: response.razorpay_order_id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpaySignature: response.razorpay_signature,
+            }),
+          }
+        );
+
+        const data = await res.json();
+        console.log(data);
+        if (data.isOk) {
+          // do whatever page transition you want here as payment was successful
+          const response = await fetch(
+            "https://milk-house-azure.vercel.app/addorder",
+            {
+              method: "POST",
+              headers: headers,
+              body: JSON.stringify(body),
+            }
+          );
+          window.location.href = "https://milk-house.vercel.app/success";
+        } else {
+          alert("Payment failed");
+        }
+      },
+    };
+    const payment = new window.Razorpay(paymentData);
+    payment.open();
+    //   const result = stripe.redirectToCheckout({
+    //     sessionId: session.id,
+    //   });
+    //   if (result.error) {
+    //     console.log(result.error);
+    //   }
   };
   const showInvalid = (fieldName) => {
     if (invalid && errors[fieldName]) {
