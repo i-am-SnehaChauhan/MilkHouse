@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  id: String,
   image: String,
   title: {
     shortTitle: String,

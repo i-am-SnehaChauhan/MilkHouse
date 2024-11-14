@@ -7,6 +7,7 @@ import {
   deleteProduct,
   // submitProductForApproval,
   approveProduct,
+  getPendingProducts,
   rejectProduct,
   submitForApproval
 } from "../controller/product-controller.js";
@@ -31,6 +32,7 @@ router.delete("/products/:id", deleteProduct);
 router.post("/signup", signup);
 
 // router.post("/submitProductForApproval", submitProductForApproval);
+router.get("/pendingProducts", getPendingProducts);
 router.post("/admin/approveProduct/:id", approveProduct);
 router.post("/admin/rejectProduct/:id", rejectProduct);
 
