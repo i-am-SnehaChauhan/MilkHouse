@@ -39,8 +39,8 @@ const AdminDashboard = () => {
     <div>
       <h1>Admin Dashboard</h1>
       {pendingProducts.map(product => (
-        <div key={product._id}>
-          <p>{product.title.shortTitle}</p>
+        <div key={product?._id}>
+          <p>{product?.title?.shortTitle}</p>
           <Button onClick={() => handleApprove(product._id)} color="primary" variant="contained">Approve</Button>
           <Button onClick={() => handleReject(product._id)} color="secondary" variant="contained">Reject</Button>
         </div>
