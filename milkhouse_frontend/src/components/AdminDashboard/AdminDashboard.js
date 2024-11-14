@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { Button } from "@mui/material";
 
 const AdminDashboard = () => {
@@ -8,8 +8,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchPendingProducts = async () => {
       try {
-        const response = await axios.get("https://localhost:2000/pendingProducts");
+        const response = await axios.get("/pendingProducts");
         setPendingProducts(response.data);
+        console.log("Pending products:", response.data);
       } catch (error) {
         console.error("Error fetching pending products:", error);
       }
@@ -19,7 +20,7 @@ const AdminDashboard = () => {
 
   const handleApprove = async (productId) => {
     try {
-      await axios.post(`https://localhost:2000/admin/approveProduct/${productId}`);
+      await axios.post(`/admin/approveProduct/${productId}`);
       setPendingProducts(prev => prev.filter(product => product._id !== productId));
     } catch (error) {
       console.error("Error approving product:", error);
