@@ -16,7 +16,7 @@ const About = () => {
           <Subtitle>
                 <Heading>Welcome to MilkHouse Farm</Heading>
                 <TextWrapper>MilkHouse is pleased to welcome you. Here you will find a variety of healthy and fresh dairy
-products that our farmers and cows proudly made on our farm.</TextWrapper>
+products directly from our farm.</TextWrapper>
 </Subtitle>
         <ServicesP>
             <ServicesContainer>
@@ -24,9 +24,9 @@ products that our farmers and cows proudly made on our farm.</TextWrapper>
                 <ServicesIcon src={Icon1}>
                 </ServicesIcon>
                 <InfoRow>
-                  <ServicesH1>E-Cattle Cart</ServicesH1>
+                  <ServicesH1>Serves Dual Purpose</ServicesH1>
                   <ServicesH2>
-                  Manage your livestock effectively which provides you all info at one place.
+                  A unified platform that simplifies dairy shopping for customers while providing dairy owners with tools to manage and grow their business.
                   </ServicesH2>
                 </InfoRow>
               </ServicesCard>
@@ -38,9 +38,9 @@ products that our farmers and cows proudly made on our farm.</TextWrapper>
                 </ServicesIcon>
 
                 <InfoRow>
-                  <ServicesH1>Milk Testing</ServicesH1>
+                  <ServicesH1>Customer Support</ServicesH1>
                   <ServicesH2>
-                  Get your milk tested with the latest technologies and monitor from anywhere.
+                  Dedicated support for customer inquiries and feedback.
                   </ServicesH2>
                 </InfoRow>
               </ServicesCard>
@@ -50,9 +50,9 @@ products that our farmers and cows proudly made on our farm.</TextWrapper>
                 <ServicesIcon src={Icon3}>
                 </ServicesIcon>
                 <InfoRow>
-                  <ServicesH1>Shopping</ServicesH1>
+                  <ServicesH1>E- Shopping</ServicesH1>
                   <ServicesH2>
-                  Buy our fresh products directly from our dairy and Experience Health Benifits.
+                  Buy our fresh products directly from our dairy and Experience health benefits.
                   </ServicesH2>
                 </InfoRow>
               </ServicesCard>
