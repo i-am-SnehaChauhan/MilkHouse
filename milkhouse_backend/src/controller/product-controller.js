@@ -10,6 +10,7 @@ cloudinary.v2.config({
 import Product from '../model/productSchema.js';
 
 export const submitForApproval = async (req, res) => {
+  console.log("Request body:", req.body);
   try {
     const productData = {
       ...req.body,
