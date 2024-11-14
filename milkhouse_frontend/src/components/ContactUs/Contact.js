@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import './Contact.css';
 import phone from '../../image/call.png';
 import mail from '../../image/mail.png';
 import location from '../../image/location.png';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("formdata", formData);
+    try {
+      await axios.post('http://localhost:2000/send-email', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      toast.success('Message sent successfully!');
+    } catch (error) {
+      console.error(error);
+      toast.error('Error sending message. Please try again later.');
+    }
+  };
+
   return (
     <section>
       <div className="container">
@@ -17,11 +48,9 @@ const Contact = () => {
                   <img src={location} alt="Location" />
                 </span>
                 <span>
-                Indira Gandhi Delhi Technical University,
-
-
+                  Indira Gandhi Delhi Technical University,
                   <br />
-                  Kashmere Gate,New Delhi,
+                  Kashmere Gate, New Delhi,
                   <br />
                   110006
                 </span>
@@ -31,7 +60,7 @@ const Contact = () => {
                   <img src={mail} alt="Email" />
                 </span>
                 <span>
-                  <a href="mailto:nassosanagn@gmail.com">agrotechiam354@gmail.com</a>
+                  <a href="mailto:agrotechiam354@gmail.com">agrotechiam354@gmail.com</a>
                 </span>
               </li>
               <li>
@@ -42,35 +71,34 @@ const Contact = () => {
               </li>
             </ul>
           </div>
-          
         </div>
         <div className="contactForm">
           <h2>Send a Message</h2>
-          <div className="formBox">
+          <form onSubmit={handleSubmit} className="formBox">
             <div className="inputBox w50">
-              <input type="text" name="" required />
+              <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
               <span>First Name</span>
             </div>
             <div className="inputBox w50">
-              <input type="text" required />
+              <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
               <span>Last Name</span>
             </div>
             <div className="inputBox w50">
-              <input type="email" required />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required />
               <span>Email Address</span>
             </div>
             <div className="inputBox w50">
-              <input type="text" required />
+              <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
               <span>Mobile Number</span>
             </div>
             <div className="inputBox w100">
-              <textarea required />
+              <textarea name="message" value={formData.message} onChange={handleChange} required />
               <span>Write your message here...</span>
             </div>
             <div className="inputBox w100">
               <input type="submit" value="Send" />
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
