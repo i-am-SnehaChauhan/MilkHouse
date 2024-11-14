@@ -91,7 +91,6 @@ const AddProducts = () => {
     setIsButtonDisabled(true);
   
     const requiredFields = [
-      data.id,
       data.image,
       data.title.shortTitle,
       data.title.longTitle,
@@ -114,15 +113,14 @@ const AddProducts = () => {
     }
   
     const formDataForBackend = new FormData();
-    formDataForBackend.append("id", data.id);
     formDataForBackend.append("image", data.image); // Ensure this is a valid file object
   
     // Flatten the nested objects into FormData
-    formDataForBackend.append("titleShortTitle", data.title.shortTitle);
-    formDataForBackend.append("titleLongTitle", data.title.longTitle);
-    formDataForBackend.append("priceMrp", data.price.mrp);
-    formDataForBackend.append("priceCost", data.price.cost);
-    formDataForBackend.append("priceDiscount", data.price.discount);
+    formDataForBackend.append("title.shortTitle", data.title.shortTitle);
+    formDataForBackend.append("title.longTitle", data.title.longTitle);
+    formDataForBackend.append("title.mrp", data.price.mrp);
+    formDataForBackend.append("title.cost", data.price.cost);
+    formDataForBackend.append("title.discount", data.price.discount);
     formDataForBackend.append("quantity", data.quantity);
     formDataForBackend.append("description", data.description);
     formDataForBackend.append("tagline", data.tagline);
@@ -162,7 +160,7 @@ const AddProducts = () => {
         onSubmit={handleSubmit}
         className="d-flex gap-15 flex-wrap justify-content-between"
       >
-        <div className="w-50">
+        {/* <div className="w-50">
           <label>
             <b>Product ID<span style={{ color: 'red' }}>*</span></b>
           </label>
@@ -174,7 +172,7 @@ const AddProducts = () => {
             onChange={handleChange}
             required
           />
-        </div>
+        </div> */}
 
         <div className="w-50">
           <label>

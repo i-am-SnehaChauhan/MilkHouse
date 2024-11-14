@@ -9,26 +9,58 @@ cloudinary.v2.config({
 // Submit product for approval
 import Product from '../model/productSchema.js';
 
+// Submit a product for approval
 export const submitForApproval = async (req, res) => {
   console.log("Request body:", req.body);
+  const { body, file } = req;
+
   try {
     const productData = {
-      ...req.body,
-      status: "Pending",  // Ensure status matches schema default 'Pending' value
+      image: file?.path || body.image, // Handle image upload, if any
+      title: {
+        shortTitle: body["title.shortTitle"],
+        longTitle: body["title.longTitle"],
+      },
+      price: {
+        mrp: parseFloat(body["title.mrp"]),
+        cost: parseFloat(body["title.cost"]),
+        discount: body["title.discount"],
+      },
+      quantity: parseInt(body.quantity, 10),  // Ensure quantity is an integer
+      description: body.description,
+      tagline: body.tagline,
+      status: "Pending", // Default status
     };
 
-    // Log product data to verify before saving
+    // Log the productData for verification
     console.log("Product data to save:", productData);
 
     const newProduct = new Product(productData);
     await newProduct.save();
 
-    res.status(201).json({ message: "Product submitted for approval." });
+    res.status(201).json({ message: "Product submitted for approval.", product: newProduct });
   } catch (error) {
-    console.error("Error in submitForApproval:", error);  // Log the exact error message
+    console.error("Error in submitForApproval:", error); // Log the exact error message
     res.status(500).json({ error: "Error submitting product for approval." });
   }
 };
+
+// Fetch all pending products
+export const getPendingProducts = async (req, res) => {
+  try {
+    const pendingProducts = await Product.find({ status: "Pending" });
+
+    if (pendingProducts.length === 0) {
+      return res.status(404).json({ message: "No pending products found." });
+    }
+
+    res.status(200).json(pendingProducts); // Return the complete data
+  } catch (error) {
+    console.error("Error in getPendingProducts:", error);
+    res.status(500).json({ error: "Error fetching pending products." });
+  }
+};
+
 
 
 // Approve product
