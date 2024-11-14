@@ -44,7 +44,7 @@ const Footer = () => {
       <ListItemIcon>
         <Mail style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
       </ListItemIcon>
-      <ListItemText primary="agrotechiam354@gmail.com" />
+      <ListItemText primary="milkdelights080@gmail.com" />
     </ListItem>
   </FooterLinkItems>
 </FooterLinkItems>
@@ -63,11 +63,11 @@ const Footer = () => {
         <ListItemText primary="Services" />
       </FooterLink>
     </ListItem>
-    <ListItem>
+    {/* <ListItem>
       <FooterLink to="/develop" className="footer-link">
         <ListItemText primary="Destinations" />
       </FooterLink>
-    </ListItem>
+    </ListItem> */}
     <ListItem>
       <FooterLink to="/donate" className="footer-link">
         <ListItemText primary="Support and Donate" />
@@ -83,11 +83,11 @@ const Footer = () => {
       <ListItemText primary="Monday - Friday" />
     </ListItem>
     <ListItem>
-      <ListItemText primary="Saturday" />
+      <ListItemText primary="10 AM - 5 PM" />
     </ListItem>
-    <ListItem>
+    {/* <ListItem>
       <ListItemText primary="Sunday" />
-    </ListItem>
+    </ListItem> */}
   </FooterLinkItems>
 </FooterLinkItems>
            

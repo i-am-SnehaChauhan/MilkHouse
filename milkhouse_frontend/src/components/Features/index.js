@@ -38,9 +38,9 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon2} />
             </FeaturesCard>
-            <FeaturesH2>E-Cattle Cart</FeaturesH2>
+            <FeaturesH2>Customer Support</FeaturesH2>
             <div className="text">
-            Cattle Cart ensures the well-being of dairy animals while streamlining record-keeping and enhancing operational efficiency.
+            Dedicated support for customer inquiries and feedback.
 
             </div>
           </FeaturesP>
@@ -72,9 +72,9 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon5} />
             </FeaturesCard>
-            <FeaturesH2>Healthy A-two Milk</FeaturesH2>
+            <FeaturesH2>Healthy A2 Milk</FeaturesH2>
             <div className="text">
-            Nurture your well-being with our A-2 milk, a wholesome and naturally healthier choice that offers enhanced digestibility and potential benefits and nourishing lifestyle.
+            Nurture your well-being with A-2 milk—wholesome, easy to digest, and packed with natural benefits for a healthier lifestyle.
             </div>
           </FeaturesP>
         </div>
@@ -83,9 +83,9 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon6} />
             </FeaturesCard>
-            <FeaturesH2>Nutritious Fooder</FeaturesH2>
+            <FeaturesH2>Connecting Customers and Dairy Owners</FeaturesH2>
             <div className="text">
-            Nourished livestock with our high-quality and nutritionally dense fodder and carefully selected ingredients and meticulous production process result in a well-balanced feed.
+            A unified platform that simplifies dairy shopping for customers while providing dairy owners with tools to manage and grow their business.
             </div>
           </FeaturesP>
         </div>
