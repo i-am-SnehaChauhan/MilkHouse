@@ -28,6 +28,8 @@
     "express-validator": "^7.0.1",
     "firebase-admin": "^12.3.1",
     "mongoose": "^7.3.1",
+    "nodemailer": "^6.9.16",
+    "razorpay": "^2.9.5",
     "stripe": "^14.24.0"
   },
   "devDependencies": {
