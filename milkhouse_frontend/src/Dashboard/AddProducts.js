@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, Box, Button, styled, Typography } from "@mui/material";
 import Styled from "styled-components";
-import axios from "axios";
+import axios from "../utils/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
@@ -103,7 +103,9 @@ const AddProducts = () => {
       data.tagline,
     ];
   
-    const allFieldsFilled = requiredFields.every(field => field && (typeof field !== 'string' || field.trim() !== ''));
+    const allFieldsFilled = requiredFields.every(
+      (field) => field && (typeof field !== "string" || field.trim() !== "")
+    );
   
     if (!allFieldsFilled) {
       setIsButtonDisabled(false);
@@ -113,34 +115,38 @@ const AddProducts = () => {
   
     const formDataForBackend = new FormData();
     formDataForBackend.append("id", data.id);
-    formDataForBackend.append("image", data.image); 
-    formDataForBackend.append("title.shortTitle", data.title.shortTitle);
-    formDataForBackend.append("title.longTitle", data.title.longTitle);
-    formDataForBackend.append("price.mrp", data.price.mrp);
-    formDataForBackend.append("price.cost", data.price.cost);
-    formDataForBackend.append("price.discount", data.price.discount);
+    formDataForBackend.append("image", data.image); // Ensure this is a valid file object
+  
+    // Flatten the nested objects into FormData
+    formDataForBackend.append("titleShortTitle", data.title.shortTitle);
+    formDataForBackend.append("titleLongTitle", data.title.longTitle);
+    formDataForBackend.append("priceMrp", data.price.mrp);
+    formDataForBackend.append("priceCost", data.price.cost);
+    formDataForBackend.append("priceDiscount", data.price.discount);
     formDataForBackend.append("quantity", data.quantity);
     formDataForBackend.append("description", data.description);
     formDataForBackend.append("tagline", data.tagline);
   
     try {
       const response = await axios.post(
-        "https://localhost:2000/submitForApproval",
+        "/submitForApproval",
         formDataForBackend,
-        { headers: { "Content-Type": "multipart/form-data" }}  
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
       );
-      console.log("payload", response);
       setIsButtonDisabled(false);
       toast.success("Product submitted for approval!");
       setTimeout(() => {
         window.location.href = "/dashboard";
       }, 2000);
     } catch (error) {
-      console.error("Submission error:", error);  
       setIsButtonDisabled(false);
       toast.error("Error submitting product for approval. Please try again.");
     }
   };
+  
+  
   
   
 
