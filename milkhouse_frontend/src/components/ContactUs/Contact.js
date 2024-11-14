@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Contact.css';
 import phone from '../../image/call.png';
 import mail from '../../image/mail.png';
 import location from '../../image/location.png';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "../../utils/axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const Contact = () => {
     e.preventDefault();
     console.log("formdata", formData);
     try {
-      await axios.post('https://milk-house-azure.vercel.app/send-email', formData, {
+      await axios.post('/send-email', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
