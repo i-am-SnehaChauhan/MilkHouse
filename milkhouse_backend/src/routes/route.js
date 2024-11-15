@@ -73,10 +73,9 @@ router.post("/addorder", addOrder);
 
 
 router.post('/send-email', async (req, res) => {
-  const { firstName, lastName, email, mobile, message } = req.body;
-  console.log(req.body);
+  const { firstName, lastName, email, mobile, message } = JSON.parse(req.body.toString());
+  console.log("backend form", { firstName, lastName, email, mobile, message });
 
-  // Configure Nodemailer transport using SMTP details from the environment variables
   const transporter = nodemailer.createTransport({
     service: process.env.SMTP_SERVICE,
     auth: {
@@ -87,7 +86,7 @@ router.post('/send-email', async (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: process.env.SMTP_USER, // Where you want to receive the emails
+    to: process.env.SMTP_USER, 
     subject: `New message from ${firstName} ${lastName}`,
     text: `
       Name: ${firstName} ${lastName}

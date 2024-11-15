@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Contact.css';
 import phone from '../../image/call.png';
 import mail from '../../image/mail.png';
 import location from '../../image/location.png';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "../../utils/axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const Contact = () => {
     e.preventDefault();
     console.log("formdata", formData);
     try {
-      await axios.post('http://localhost:2000/send-email', formData, {
+      await axios.post('/send-email', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -60,14 +60,14 @@ const Contact = () => {
                   <img src={mail} alt="Email" />
                 </span>
                 <span>
-                  <a href="mailto:agrotechiam354@gmail.com">agrotechiam354@gmail.com</a>
+                  <a href="mailto:agrotechiam354@gmail.com">milkdelights080@gmail.com</a>
                 </span>
               </li>
               <li>
                 <span>
                   <img src={phone} alt="Phone" />
                 </span>
-                <span>**********</span>
+                <span>9958614380</span>
               </li>
             </ul>
           </div>
