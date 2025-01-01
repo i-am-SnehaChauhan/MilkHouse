@@ -5,6 +5,7 @@ import { auth } from "../../firebase";
 import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography, Avatar } from "@mui/material";
+import LanguageSwitcher from '../LanguageSwitcher';
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -130,6 +131,9 @@ function Navbar() {
                 </a>
               </li>
             )}
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
 
           <div
