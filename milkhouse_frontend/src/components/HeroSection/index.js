@@ -65,7 +65,7 @@ const HeroSection = () => {
                     primary="true"
                     dark="true"
                   >
-                    Get Started {hover ? <ArrowForward /> : <ArrowRight />}
+                    {t('getStarted')} {hover ? <ArrowForward /> : <ArrowRight />}
                   </Button>
                 </HeroBtnWrapper>
               </HeroContent>

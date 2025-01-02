@@ -1,4 +1,11 @@
 {
-    "welcome": "WELCOME TO MILKDELIGHTS\nPure Milk, Pure Delight: Savor the Freshness!"
+    "welcome": "WELCOME TO MILKDELIGHTS\nPure Milk, Pure Delight: Savor the Freshness!",
+    "getStarted": "Get Started",
+    "milkDelights": "MilkDelights",
+  "home": "Home",
+  "about": "About",
+  "features": "Features",
+  "contact": "Contact",
+  "account": "Account"
   }
   

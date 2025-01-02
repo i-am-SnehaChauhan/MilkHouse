@@ -6,8 +6,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography, Avatar } from "@mui/material";
 import LanguageSwitcher from '../LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 function Navbar() {
+  const { t } = useTranslation();
   const [isActive, setIsActive] = useState(false);
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -61,28 +63,28 @@ function Navbar() {
         <nav className={`${styles.navbar}`}>
           <a href="/" className={`${styles.logo}`}>
             <img className={styles.navimg} src={logo} alt="MilkDelights Logo" />
-            MilkDelights
+            {t('milkDelights')}
           </a>
 
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ""}`}>
             <li onClick={removeActive}>
               <a href="/" className={`${styles.navLink}`}>
-                Home
+              {t('home')}
               </a>
             </li>
             <li onClick={() => scrollToSection("aboutSection")}>
               <a href="#" className={`${styles.navLink}`}>
-                About
+              {t('about')}
               </a>
             </li>
             <li onClick={() => scrollToSection("featureSection")}>
               <a href="#" className={`${styles.navLink}`}>
-                Features
+              {t('features')}
               </a>
             </li>
             <li onClick={removeActive}>
               <a href="/contact" className={`${styles.navLink}`}>
-                Contact
+              {t('contact')}
               </a>
             </li>
 
@@ -99,7 +101,7 @@ function Navbar() {
                     fontWeight: "600",
                   }}
                 >
-                  Account
+                  {t('account')}
                 </Typography>
                 <ul
                   className={`${styles.dropdownMenu} ${
