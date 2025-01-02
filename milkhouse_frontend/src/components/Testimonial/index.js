@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 import {
   Wrapper,
   Container,
@@ -15,6 +16,8 @@ import {
 } from "./TestimonialCSS";
 
 const Testimonial = () => {
+  const { t } = useTranslation();  // Initialize translation hook
+
   return (
     <Wrapper>
       <Container>
@@ -28,9 +31,27 @@ const Testimonial = () => {
             slidesToShow={1}
             slidesToScroll={1}
           >
-            <Card img="https://www.tutorialrepublic.com/examples/images/clients/1.jpg" />
-            <Card img="https://www.tutorialrepublic.com/examples/images/clients/2.jpg" />
-            <Card img="https://www.tutorialrepublic.com/examples/images/clients/3.jpg" />
+            <Card
+              img="https://www.tutorialrepublic.com/examples/images/clients/1.jpg"
+              heading={t("testimonial.heading")}
+              content={t("testimonial.sampleContent")}
+              name={t("testimonial.name")}
+              position={t("testimonial.position")}
+            />
+            <Card
+              img="https://www.tutorialrepublic.com/examples/images/clients/2.jpg"
+              heading={t("testimonial.heading")}
+              content={t("testimonial.sampleContent")}
+              name={t("testimonial.name")}
+              position={t("testimonial.position")}
+            />
+            <Card
+              img="https://www.tutorialrepublic.com/examples/images/clients/3.jpg"
+              heading={t("testimonial.heading")}
+              content={t("testimonial.sampleContent")}
+              name={t("testimonial.name")}
+              position={t("testimonial.position")}
+            />
           </Slider>
         </ContainerSlider>
       </Container>
@@ -38,11 +59,10 @@ const Testimonial = () => {
   );
 };
 
-const Card = ({ img }) => {
+const Card = ({ img, heading, content, name, position }) => {
   return (
     <AvatarComponent>
-      <AvatarHeading>What our Client says ___</AvatarHeading>
-
+      <AvatarHeading>{heading}</AvatarHeading>
       <Avatar
         imgProps={{ style: { borderRadius: "50%" } }}
         src={img}
@@ -53,16 +73,9 @@ const Card = ({ img }) => {
           padding: 7,
         }}
       />
-
-      <AvatarContent>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem
-        tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec
-        turpis vel, semper malesuada ante. Idac bibendum scelerisque non non
-        purus. Suspendisse varius nibh non aliquet.
-      </AvatarContent>
-
+      <AvatarContent>{content}</AvatarContent>
       <AvatarChar>
-        <AvatarTitle>PAULA WILSON</AvatarTitle>, Dairy Analyst
+        <AvatarTitle>{name}</AvatarTitle>, {position}
       </AvatarChar>
     </AvatarComponent>
   );

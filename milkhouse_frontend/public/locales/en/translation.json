@@ -6,6 +6,49 @@
   "about": "About",
   "features": "Features",
   "contact": "Contact",
-  "account": "Account"
+  "account": "Account",
+
+  "sections": {
+    "ourOffice": "Our Office",
+    "quickLinks": "Quick Links",
+    "businessHours": "Business Hours"
+  },
+  "content": {
+    "address": "IGDTUW, Kashmere Gate, ND-India",
+    "phone": "Phone",
+    "phoneNumber": "+012 345 67890",
+    "email": "Email",
+    "emailAddress": "milkdelights080@gmail.com",
+    "contact": "Contact",
+    "services": "Services",
+    "supportAndDonate": "Support and Donate",
+    "mondayToFriday": "Monday - Friday",
+    "timing": "10 AM - 5 PM",
+    "brandName": "MilkDelights"
+  },
+  "footer": {
+    "rights": "MilkDelights © 2025 All rights reserved."
+  },
+  "testimonial": {
+    "heading": "What our Client says ___",
+    "sampleContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.",
+    "name": "PAULA WILSON",
+    "position": "Dairy Analyst"
+  },
+  "features_section": {
+    "title": "Features",
+    "modernDairy": "Modern Dairy",
+    "modernDairyDesc": "By providing a comprehensive range of services, our platform aims to streamline operations, enhance productivity, and drive sustainable growth for farmers and stakeholders.",
+    "customerSupport": "Customer Support",
+    "customerSupportDesc": "Dedicated support for customer inquiries and feedback.",
+    "homeDelivery": "Home Delivery Services",
+    "homeDeliveryDesc": "We understand the importance of timely delivery, and our dedicated team ensures that your cart reaches you promptly.",
+    "bestQualityProducts": "Best Quality Products",
+    "bestQualityProductsDesc": "Our dairy products are carefully crafted using premium ingredients and state-of-the-art production techniques.",
+    "healthyA2Milk": "Healthy A2 Milk",
+    "healthyA2MilkDesc": "Nurture your well-being with A-2 milk—wholesome, easy to digest, and packed with natural benefits for a healthier lifestyle.",
+    "connectingDairyOwners": "Connecting Customers and Dairy Owners",
+    "connectingDairyOwnersDesc": "A unified platform that simplifies dairy shopping for customers while providing dairy owners with tools to manage and grow their business."
+  }
   }
   

@@ -6,7 +6,50 @@
   "about": "के बारे में",
   "features": "विशेषताएँ",
   "contact": "संपर्क करें",
-  "account": "खाता"
+  "account": "खाता",
+
+  "sections": {
+    "ourOffice": "हमारा कार्यालय",
+    "quickLinks": "त्वरित लिंक",
+    "businessHours": "कारोबारी घंटे"
+  },
+  "content": {
+    "address": "आईजीडीटीयूडब्ल्यू, कश्मीरी गेट, एनडी-इंडिया",
+    "phone": "फ़ोन",
+    "phoneNumber": "+०१२ ३४५ ६७८९०",
+    "email": "ईमेल",
+    "emailAddress": "milkdelights080@gmail.com",
+    "contact": "संपर्क करें",
+    "services": "सेवाएं",
+    "supportAndDonate": "समर्थन और दान करें",
+    "mondayToFriday": "सोमवार - शुक्रवार",
+    "timing": "सुबह 10 बजे से शाम 5 बजे तक",
+    "brandName": "मिल्क डिलाइट्स"
+  },
+  "footer": {
+    "rights": "मिल्कडिलाइट्स © 2025 सभी अधिकार सुरक्षित।"
+  },
+  "testimonial": {
+    "heading": "हमारा ग्राहक क्या कहता है ___",
+    "sampleContent": "लोरम इप्सम डोलर sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.",
+    "name": "पॉला विल्सन",
+    "position": "डेयरी विश्लेषक"
+  },
+  "features_section": {
+    "title": "विशेषताएँ",
+    "modernDairy": "आधुनिक डेयरी",
+    "modernDairyDesc": "सेवाओं की एक व्यापक श्रृंखला प्रदान करके, हमारा मंच संचालन को सुव्यवस्थित करने, उत्पादकता बढ़ाने और किसानों और हितधारकों के लिए सतत विकास को बढ़ावा देने का लक्ष्य रखता है।",
+    "customerSupport": "ग्राहक समर्थन",
+    "customerSupportDesc": "ग्राहक पूछताछ और प्रतिक्रिया के लिए समर्पित समर्थन।",
+    "homeDelivery": "होम डिलीवरी सेवाएँ",
+    "homeDeliveryDesc": "हम समय पर डिलीवरी के महत्व को समझते हैं, और हमारी समर्पित टीम यह सुनिश्चित करती है कि आपकी कार्ट जल्दी पहुंचे।",
+    "bestQualityProducts": "सर्वश्रेष्ठ गुणवत्ता उत्पाद",
+    "bestQualityProductsDesc": "हमारे डेयरी उत्पाद प्रीमियम सामग्री और अत्याधुनिक उत्पादन तकनीकों का उपयोग करके सावधानीपूर्वक तैयार किए जाते हैं।",
+    "healthyA2Milk": "स्वस्थ A2 दूध",
+    "healthyA2MilkDesc": "A-2 दूध के साथ अपनी भलाई को पोषित करें - यह पौष्टिक, आसानी से पचने वाला और एक स्वस्थ जीवन शैली के लिए प्राकृतिक लाभों से भरपूर है।",
+    "connectingDairyOwners": "ग्राहकों और डेयरी मालिकों को जोड़ना",
+    "connectingDairyOwnersDesc": "एक एकीकृत मंच जो ग्राहकों के लिए डेयरी शॉपिंग को सरल बनाता है, जबकि डेयरी मालिकों को अपने व्यवसाय को प्रबंधित करने और बढ़ाने के लिए उपकरण प्रदान करता है।"
+  }
 
   }
   
