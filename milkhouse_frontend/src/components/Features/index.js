@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Container,
   Containertitle,
@@ -16,21 +17,19 @@ import Icon5 from "../../image/a2-milk.jpg";
 import Icon6 from "../../image/fodder.jpg";
 
 const Features = () => {
+  const { t } = useTranslation();  // Initialize translation hook
+
   return (
     <Container id="featureSection">
-        <Containertitle>
-            Features
-        </Containertitle>
+      <Containertitle>{t("features_section.title")}</Containertitle>
       <div className="row">
-      <div className="col-lg-4 col-md-6 service-block-one">
+        <div className="col-lg-4 col-md-6 service-block-one">
           <FeaturesP>
             <FeaturesCard>
               <FeaturesIcon src={Icon1} />
             </FeaturesCard>
-            <FeaturesH2>Modern dairy</FeaturesH2>
-            <div className="text">
-            By providing a comprehensive range of services, our platform aims to streamline operations, enhance productivity, and drive sustainable growth for farmers and stakeholders.
-            </div>
+            <FeaturesH2>{t("features_section.modernDairy")}</FeaturesH2>
+            <div className="text">{t("features_section.modernDairyDesc")}</div>
           </FeaturesP>
         </div>
         <div className="col-lg-4 col-md-6 service-block-one">
@@ -38,11 +37,8 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon2} />
             </FeaturesCard>
-            <FeaturesH2>Customer Support</FeaturesH2>
-            <div className="text">
-            Dedicated support for customer inquiries and feedback.
-
-            </div>
+            <FeaturesH2>{t("features_section.customerSupport")}</FeaturesH2>
+            <div className="text">{t("features_section.customerSupportDesc")}</div>
           </FeaturesP>
         </div>
         <div className="col-lg-4 col-md-6 service-block-one">
@@ -50,10 +46,8 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon3} />
             </FeaturesCard>
-            <FeaturesH2>Home Delivery Services</FeaturesH2>
-            <div className="text">
-            We understand the importance of timely delivery, and our dedicated team ensures that your cart reaches you promptly.
-            </div>
+            <FeaturesH2>{t("features_section.homeDelivery")}</FeaturesH2>
+            <div className="text">{t("features_section.homeDeliveryDesc")}</div>
           </FeaturesP>
         </div>
         <div className="col-lg-4 col-md-6 service-block-one">
@@ -61,10 +55,8 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon4} />
             </FeaturesCard>
-            <FeaturesH2>Best Quality Products</FeaturesH2>
-            <div className="text">
-            Our dairy products are carefully crafted using premium ingredients and state-of-the-art production techniques.  
-            </div>
+            <FeaturesH2>{t("features_section.bestQualityProducts")}</FeaturesH2>
+            <div className="text">{t("features_section.bestQualityProductsDesc")}</div>
           </FeaturesP>
         </div>
         <div className="col-lg-4 col-md-6 service-block-one">
@@ -72,10 +64,8 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon5} />
             </FeaturesCard>
-            <FeaturesH2>Healthy A2 Milk</FeaturesH2>
-            <div className="text">
-            Nurture your well-being with A-2 milk—wholesome, easy to digest, and packed with natural benefits for a healthier lifestyle.
-            </div>
+            <FeaturesH2>{t("features_section.healthyA2Milk")}</FeaturesH2>
+            <div className="text">{t("features_section.healthyA2MilkDesc")}</div>
           </FeaturesP>
         </div>
         <div className="col-lg-4 col-md-6 service-block-one">
@@ -83,10 +73,8 @@ const Features = () => {
             <FeaturesCard>
               <FeaturesIcon src={Icon6} />
             </FeaturesCard>
-            <FeaturesH2>Connecting Customers and Dairy Owners</FeaturesH2>
-            <div className="text">
-            A unified platform that simplifies dairy shopping for customers while providing dairy owners with tools to manage and grow their business.
-            </div>
+            <FeaturesH2>{t("features_section.connectingDairyOwners")}</FeaturesH2>
+            <div className="text">{t("features_section.connectingDairyOwnersDesc")}</div>
           </FeaturesP>
         </div>
       </div>

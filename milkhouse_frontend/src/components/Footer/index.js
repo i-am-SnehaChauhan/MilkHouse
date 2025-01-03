@@ -1,7 +1,7 @@
 import React from "react";
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import logo from "../../image/logo.png";
-import { LocationOn, Phone, Mail, Twitter, Facebook, YouTube, LinkedIn, Email } from '@mui/icons-material';
+import { LocationOn, Phone, Mail } from '@mui/icons-material';
 import {
   FooterContainer,
   FooterWrap,
@@ -12,93 +12,97 @@ import {
   FooterLogo,
   FooterLink,
   SocialLogo,
-  WebsiteRights, 
+  WebsiteRights,
 } from "./FooterElements";
+
+import { useTranslation } from 'react-i18next';
+
 const Footer = () => {
   const handleClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  const { t } = useTranslation();
 
   return (
     <FooterContainer>
       <FooterWrap>
         <FooterLinksContainer>
           <FooterLinksWrapper>
-          
+            {/* Our Office Section */}
             <FooterLinkItems>
-  <FooterLinkTitle>Our Office</FooterLinkTitle>
-  <FooterLinkItems>
-  <ListItem>
-      <ListItemIcon>
-        <LocationOn style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
-      </ListItemIcon>
-      <ListItemText primary="IGDTUW, Kashmere Gate, ND-India" />
-    </ListItem>
-    <ListItem>
-      <ListItemIcon>
-        <Phone style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
-      </ListItemIcon>
-      <ListItemText primary="+012 345 67890" />
-    </ListItem>
-    <ListItem>
-      <ListItemIcon>
-        <Mail style={{ marginRight: '0.5rem',color:' #f7bd00' }} />
-      </ListItemIcon>
-      <ListItemText primary="milkdelights080@gmail.com" />
-    </ListItem>
-  </FooterLinkItems>
-</FooterLinkItems>
-            
-           
-<FooterLinkItems>
-  <FooterLinkTitle>Quick Links</FooterLinkTitle>
-  <FooterLinkItems>
-  <ListItem>
-      <FooterLink to="/contact">
-        <ListItemText primary="Contact" />
-      </FooterLink>
-    </ListItem>
-    <ListItem>
-      <FooterLink onClick={handleClick}className="footer-link">
-        <ListItemText primary="Services" />
-      </FooterLink>
-    </ListItem>
-    {/* <ListItem>
-      <FooterLink to="/develop" className="footer-link">
-        <ListItemText primary="Destinations" />
-      </FooterLink>
-    </ListItem> */}
-    <ListItem>
-      <FooterLink to="/donate" className="footer-link">
-        <ListItemText primary="Support and Donate" />
-      </FooterLink>
-    </ListItem>
-  </FooterLinkItems>
-</FooterLinkItems>
-           
+              <FooterLinkTitle>{t('sections.ourOffice')}</FooterLinkTitle>
+              <FooterLinkItems>
+                <ListItem>
+                  <ListItemIcon>
+                    <LocationOn style={{ marginRight: '0.5rem', color: '#f7bd00' }} />
+                  </ListItemIcon>
+                  <ListItemText primary={t('content.address')} />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <Phone style={{ marginRight: '0.5rem', color: '#f7bd00' }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={`${t('content.phone')}: ${t('content.phoneNumber')}`}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <Mail style={{ marginRight: '0.5rem', color: '#f7bd00' }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={`${t('content.email')}: ${t('content.emailAddress')}`}
+                  />
+                </ListItem>
+              </FooterLinkItems>
+            </FooterLinkItems>
+
+            {/* Quick Links Section */}
             <FooterLinkItems>
-  <FooterLinkTitle>Business Hours</FooterLinkTitle>
-  <FooterLinkItems>
-    <ListItem>
-      <ListItemText primary="Monday - Friday" />
-    </ListItem>
-    <ListItem>
-      <ListItemText primary="10 AM - 5 PM" />
-    </ListItem>
-    {/* <ListItem>
-      <ListItemText primary="Sunday" />
-    </ListItem> */}
-  </FooterLinkItems>
-</FooterLinkItems>
-           
+              <FooterLinkTitle>{t('sections.quickLinks')}</FooterLinkTitle>
+              <FooterLinkItems>
+                <ListItem>
+                  <FooterLink to="/contact">
+                    <ListItemText primary={t('content.contact')} />
+                  </FooterLink>
+                </ListItem>
+                <ListItem>
+                  <FooterLink onClick={handleClick} className="footer-link">
+                    <ListItemText primary={t('content.services')} />
+                  </FooterLink>
+                </ListItem>
+                <ListItem>
+                  <FooterLink to="/donate" className="footer-link">
+                    <ListItemText primary={t('content.supportAndDonate')} />
+                  </FooterLink>
+                </ListItem>
+              </FooterLinkItems>
+            </FooterLinkItems>
+
+            {/* Business Hours Section */}
+            <FooterLinkItems>
+              <FooterLinkTitle>{t('sections.businessHours')}</FooterLinkTitle>
+              <FooterLinkItems>
+                <ListItem>
+                  <ListItemText primary={t('content.mondayToFriday')} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={t('content.timing')} />
+                </ListItem>
+              </FooterLinkItems>
+            </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
-            <FooterLinkItems className="socials">
-            <FooterLogo src={logo}/> <SocialLogo onClick={handleClick}>MilkDelights</SocialLogo>
-            </FooterLinkItems>
-            <WebsiteRights>
-              MilkDelights © {new Date().getFullYear()}&nbsp;All rights reserved.
-            </WebsiteRights>
+
+        {/* Socials and Rights */}
+        <FooterLinkItems className="socials">
+          <FooterLogo src={logo} />
+          <SocialLogo onClick={handleClick}>{t('content.brandName')}</SocialLogo>
+        </FooterLinkItems>
+        <WebsiteRights>
+          {t('footer.rights')}
+        </WebsiteRights>
       </FooterWrap>
     </FooterContainer>
   );
