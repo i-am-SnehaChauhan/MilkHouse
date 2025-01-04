@@ -41,6 +41,7 @@ function OrdersTable() {
             <th>Products</th>
             <th>Total</th>
             <th>Order Date(YYYY-MM-DD)</th>
+            <th>Status</th>
           </tr>
           {orders.map((order, index) => (
             <tr key={order._id}>
@@ -58,6 +59,7 @@ function OrdersTable() {
               </td>
               <td data-th="Total">{order.total}</td>
               <td data-th="Order Date">{order.createdAt ? new Date(order.createdAt).toLocaleDateString("en-CA") : "1"}</td>
+              <td data-th="Status">Pending</td>
             </tr>
           ))}
         </tbody>
