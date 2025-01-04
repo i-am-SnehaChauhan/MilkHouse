@@ -9,7 +9,8 @@ import {
   approveProduct,
   getPendingProducts,
   rejectProduct,
-  submitForApproval
+  submitForApproval,
+  editProduct
 } from "../controller/product-controller.js";
 import { signup } from "../controller/user-controller.js";
 import { getOrders } from "../controller/order-controller.js";
@@ -295,5 +296,7 @@ router.post('/send-email', async (req, res) => {
 //     res.status(500).send(`Error: ${error.message}`);
 //   }
 // });
+
+router.put('/product/:id', editProduct);
 
 export default router;

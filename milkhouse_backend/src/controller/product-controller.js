@@ -182,3 +182,26 @@ export const deleteProduct = async (req, res) => {
       res.status(500).json({ message: "Internal Server Error" });
     }
   };
+
+export const editProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+    console.log("updates", JSON.parse(updates));
+
+    const updatedProduct = await Products.findByIdAndUpdate(
+      id,
+      { $set: JSON.parse(updates) },
+      { new: true } // This option returns the updated document
+    );
+
+    if (!updatedProduct) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    console.error('Error updating product:', error);
+    res.status(500).json({ message: 'Error updating product', error: error.message });
+  }
+};
