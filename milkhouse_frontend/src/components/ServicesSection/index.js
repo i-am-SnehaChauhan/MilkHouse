@@ -17,7 +17,7 @@ const url2 =
 const url3 =
   "https://res.cloudinary.com/dv6yivx37/image/upload/v1690473090/milkhouse/pnvx5ybehzvjwyr3syqq.png";
 const Icon4 =
-  "https://res.cloudinary.com/dv6yivx37/image/upload/v1690473256/milkhouse/hqhvzef2yeayc862wnsa.png";
+  "https://res.cloudinary.com/dengnzxkd/image/upload/f_auto,q_auto/v1/Milkdelights_Images/cowimage";
 const Services = () => {
   return (
     <ServicesContainer>
