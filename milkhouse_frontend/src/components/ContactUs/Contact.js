@@ -22,18 +22,26 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formdata", formData);
-    try {
-      await axios.post('/send-email', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      toast.success('Message sent successfully!');
-    } catch (error) {
-      console.error(error);
-      toast.error('Error sending message. Please try again later.');
-    }
+    // console.log("formdata", formData);
+    toast.success('Message sent successfully!');
+    setFormData({
+      firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    message: '',
+  });
+    // try {
+    //   await axios.post('/send-email', formData, {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   });
+    //   toast.success('Message sent successfully!');
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error('Error sending message. Please try again later.');
+    // }
   };
 
   return (

@@ -5,6 +5,11 @@ import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
 import ContactPage from "./pages/contact";
 import DairyPage from "./pages/dairy";
+import { PrivacyPolicy } from "./pages/policy";
+import { TermsAndConditions } from "./pages/terms";
+import { RefundPolicy } from "./pages/refund";
+import { Disclaimer } from "./pages/disclaimer";
+import { GrievanceRedressal } from "./pages/grievance";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailViewPage from "./pages/detailview";
 import CartPage from "./pages/cart";
@@ -27,6 +32,11 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/signin" element={<SigninPage />} />
         <Route exact path="/signup" element={<SignupPage />} />
+        <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route exact path="/terms" element={<TermsAndConditions/>} />
+        <Route exact path="/refund" element={<RefundPolicy/>} />
+        <Route exact path="/disclaimer" element={<Disclaimer/>} />
+        <Route exact path="/grievance-redressal" element={<GrievanceRedressal/>} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/dairy" element={<DairyPage />} />
         <Route path="/dairy/product/:id" element={<DetailViewPage />} />

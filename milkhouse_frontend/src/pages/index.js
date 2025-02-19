@@ -23,7 +23,7 @@ const Home = () => {
             <InfoSection/>
             <Services/>
             <Features/>
-            <Testimonial/>
+            {/* <Testimonial/> */}
             <Footer/>
         </>
     )

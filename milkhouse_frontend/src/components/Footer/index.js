@@ -44,7 +44,7 @@ const Footer = () => {
                     <Phone style={{ marginRight: '0.5rem', color: '#f7bd00' }} />
                   </ListItemIcon>
                   <ListItemText
-                    primary={`${t('content.phone')}: ${t('content.phoneNumber')}`}
+                    primary={`${t('content.phone')}: +91 9958614380`}
                   />
                 </ListItem>
                 <ListItem>
@@ -63,18 +63,28 @@ const Footer = () => {
               <FooterLinkTitle>{t('sections.quickLinks')}</FooterLinkTitle>
               <FooterLinkItems>
                 <ListItem>
-                  <FooterLink to="/contact">
-                    <ListItemText primary={t('content.contact')} />
+                  <FooterLink to="/disclaimer">
+                    <ListItemText primary="Disclaimer" />
                   </FooterLink>
                 </ListItem>
                 <ListItem>
-                  <FooterLink onClick={handleClick} className="footer-link">
-                    <ListItemText primary={t('content.services')} />
+                  <FooterLink to="/terms"  className="footer-link">
+                    <ListItemText primary="Terms & Conditions" />
                   </FooterLink>
                 </ListItem>
                 <ListItem>
-                  <FooterLink to="/donate" className="footer-link">
-                    <ListItemText primary={t('content.supportAndDonate')} />
+                  <FooterLink to="/privacy-policy" className="footer-link">
+                    <ListItemText primary="Privacy policy" />
+                  </FooterLink>
+                </ListItem>
+                {/* <ListItem>
+                  <FooterLink to="/refund" className="footer-link">
+                    <ListItemText primary="Refund & Cancellation Policy" />
+                  </FooterLink>
+                </ListItem> */}
+                <ListItem>
+                  <FooterLink to="/grievance-redressal" className="footer-link">
+                    <ListItemText primary="Grievance Redressal" />
                   </FooterLink>
                 </ListItem>
               </FooterLinkItems>
