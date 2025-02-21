@@ -10,6 +10,7 @@ import { TermsAndConditions } from "./pages/terms";
 import { RefundPolicy } from "./pages/refund";
 import { Disclaimer } from "./pages/disclaimer";
 import { GrievanceRedressal } from "./pages/grievance";
+import { ShippingPolicy } from "./pages/shipping";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailViewPage from "./pages/detailview";
 import CartPage from "./pages/cart";
@@ -34,7 +35,8 @@ function App() {
         <Route exact path="/signup" element={<SignupPage />} />
         <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route exact path="/terms" element={<TermsAndConditions/>} />
-        <Route exact path="/refund" element={<RefundPolicy/>} />
+        <Route exact path="/refund-and-cancellation" element={<RefundPolicy/>} />
+        <Route exact path="/shipping-and-delivery" element={<ShippingPolicy/>} />
         <Route exact path="/disclaimer" element={<Disclaimer/>} />
         <Route exact path="/grievance-redressal" element={<GrievanceRedressal/>} />
         <Route path="/contact" element={<ContactPage />} />

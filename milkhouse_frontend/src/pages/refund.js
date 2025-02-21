@@ -1,95 +1,66 @@
-// import React from 'react';
-// import { Container, Typography, Paper } from '@mui/material';
+import React from 'react';
+import { Container, Typography, Paper } from '@mui/material';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
-// export function RefundPolicy() {
-//     return (
-//         <Container component="main" maxWidth="md" sx={{ mt: 5 }}>
-//             <Paper elevation={3} sx={{ padding: 3 }}>
-//                 <Typography variant="h4" align="center" gutterBottom>
-//                 Order Cancellation and Return Policy
-//                 </Typography>
-//                 <Typography variant="h5" sx={{ mt: 4 }}>
-//                     Cancellation Policy
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
+export function RefundPolicy() {
+    return (
+        <>
+        <Navbar/>
+        <Container component="main" maxWidth="md" sx={{ mt: 5 }}>
+            <Paper elevation={3} sx={{ padding: 3 }}>
+                <Typography variant="h4" align="center" gutterBottom>
+                Order Cancellation and Return Policy
+                </Typography>
+                <Typography variant="h5" sx={{ mt: 4 }}>
+                Order Cancellation
+                </Typography>
+                <Typography variant="body1" paragraph>
 
-// The customer can choose to cancel an order any time before it's dispatched. The order cannot be canceled once it’s out for delivery. However, the customer may choose to reject it at the doorstep.
+                - Customers can cancel their orders before the shipment process begins. <br/>
+                - To request a cancellation, contact our customer support at milkdelights080@gmail.com with your order details. <br/>
+                - If the order has already been dispatched, cancellation requests will not be accepted. <br/>
 
-// The time window for cancellation varies based on different categories and the order cannot be canceled once the specified time has passed.
-
-// In some cases, the customer may not be allowed to cancel the order for free, post the specified time and a cancellation fee will be charged. The details about the time window mentioned on the product page or order confirmation page will be considered final.
-
-// In case of any cancellation from the seller due to unforeseen circumstances, a full refund will be initiated for prepaid orders.
-
-// MilkDelights  reserves the right to accept the cancellation of any order. MilkDelights also reserves the right to waive off or modify the time window or cancellation fee from time to time.
-//                 </Typography>
-//                 <Typography variant="h5" sx={{ mt: 4 }}>
-//                     POLICY A
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Policy A applies to all Mission1Success courses under the categories of Digital Marketing, Data Science, Python.
-//                 </Typography>
-//                 <Typography variant="h6" sx={{ mt: 2 }}>
-//                     Cancellations prior to the course
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     In case you're unable to attend the course and want a refund prior to the course commencement date, we will refund the full amount to you.
-//                 </Typography>
-//                 <Typography variant="h6" sx={{ mt: 2 }}>
-//                     Withdrawals during the Course
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     If you don't see the tremendous value you expected in our product, and you wish to withdraw within the first 2 Classes, we will proceed with a 100% refund – no questions asked. However, once you have attended more than 2 days of the course, you will not be eligible for any refund.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     No Admission transfer from one learner to the other.
-//                 </Typography>
-//                 <Typography variant="h6" sx={{ mt: 2 }}>
-//                     Transfers to another batch
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     You are free to change your batch at any point of time before the commencement of the course, at no extra charge. If for any reason you are unable to continue or complete the course, we would be happy to accommodate you in a different batch of the same course, at no additional cost.
-//                 </Typography>
-//                 <Typography variant="h5" sx={{ mt: 4 }}>
-//                     POLICY B
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Policy B applies to all Self-Paced Programs (E-Learning Programs) of Mission1Success. Cancellations would be permitted as per – 
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     If you wish to extend access to an e-learning program by a month, please write to us at helpmission1success@gmail.com and we will be happy to extend the program for a maximum period of one month. For extension beyond a month, you would need to pay 50% of the course price.
-//                 </Typography>
-//                 <Typography variant="h6" sx={{ mt: 2 }}>
-//                     NOTE:
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     All cancellation, rescheduling and substitution requests must be notified to us by email at helpmission1success@gmail.com.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     You are not eligible for refunds if you have accessed and downloaded the course material.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     All refunds will be credited back to your account within 10-15 business days of the refund request.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Refunds or credits for rescheduling the training cannot be issued for non-attendance.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Mission1Success may modify its refund policy at any time without notice, provided however that the refund policy in effect at the time of any transaction shall apply to such purchase despite any subsequent change in such policy.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     If you do not notify in writing about your cancellation or reschedule, or do not attend the training, you would not be offered a refund, nor the option to reschedule.
-//                 </Typography>
-//                 <Typography variant="h5" sx={{ mt: 4 }}>
-//                     Cancellations or rescheduling by Digital Nest
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Mission1Success reserves the right to cancel or reschedule a course at any time, including but not limited to, insufficient registrations, trainer unavailability, or if the trainer could not attend due to unforeseen circumstances.
-//                 </Typography>
-//                 <Typography variant="body1" paragraph>
-//                     Mission1Success is not liable for any direct, indirect, consequential, or special damages that may be incurred due to a cancellation of a scheduled class.
-//                 </Typography>
-//             </Paper>
-//         </Container>
-//     );
-// }
+                </Typography>
+                <Typography variant="h5" sx={{ mt: 4 }}>
+                    Return Policy
+                </Typography>
+                <Typography variant="body1" paragraph>
+                - Due to the perishable nature of dairy products, returns are only accepted in cases where: <br/>
+                &nbsp;&nbsp;&nbsp;- The product is damaged during transit. <br/>
+                &nbsp;&nbsp;&nbsp;- The wrong product has been delivered. <br/>
+                &nbsp;&nbsp;&nbsp;- The product is expired at the time of delivery. <br/>
+                - Customers must report any such issues within 24 hours of delivery with supporting images. <br/>
+                - Once the return request is approved, the product must be returned in its original packaging. 
+                </Typography>
+                <Typography variant="h6" sx={{ mt: 2 }}>
+                    Refund Policy
+                </Typography>
+                <Typography variant="body1" paragraph>
+                - If a refund request is approved, the amount will be processed within 7-10 business days to the original payment method. <br/>
+                - Refunds will only be granted under the following circumstances: <br/>
+                &nbsp;&nbsp;&nbsp;- Canceled orders before shipment. <br/>
+                &nbsp;&nbsp;&nbsp;- Approved returns due to damaged, incorrect, or expired products. <br/>
+                &nbsp;&nbsp;&nbsp;- Failed transactions where the amount was deducted but the order was not confirmed. <br/>
+                - MilkDelights reserves the right to deny refund requests that do not meet the conditions mentioned. <br/>
+                </Typography>
+                <Typography variant="h6" sx={{ mt: 2 }}>
+                   Exchange Policy
+                </Typography>
+                <Typography variant="body1" paragraph>
+                We do not offer exchanges for any products. However, customers may request a refund or replacement for eligible items as per the return policy.
+                </Typography>
+                <Typography variant="h5" sx={{ mt: 4 }}>
+                    Contact Us
+                </Typography>
+                <Typography variant="body1" paragraph>
+                For any refund, cancellation, or return-related queries, please reach out to us at<br/>
+                    MilkDelights Support Team Email: milkdelights080@gmail.com <br/>
+                    Phone: +91 9958614380
+                </Typography>
+            </Paper>
+        </Container>
+        <Footer/>
+        </>
+    );
+}

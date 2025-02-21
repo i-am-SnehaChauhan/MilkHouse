@@ -77,11 +77,16 @@ const Footer = () => {
                     <ListItemText primary="Privacy policy" />
                   </FooterLink>
                 </ListItem>
-                {/* <ListItem>
-                  <FooterLink to="/refund" className="footer-link">
+                <ListItem>
+                  <FooterLink to="/shipping-and-delivery" className="footer-link">
+                    <ListItemText primary="Shipping and Delivery" />
+                  </FooterLink>
+                </ListItem>
+                <ListItem>
+                  <FooterLink to="/refund-and-cancellation" className="footer-link">
                     <ListItemText primary="Refund & Cancellation Policy" />
                   </FooterLink>
-                </ListItem> */}
+                </ListItem>
                 <ListItem>
                   <FooterLink to="/grievance-redressal" className="footer-link">
                     <ListItemText primary="Grievance Redressal" />
