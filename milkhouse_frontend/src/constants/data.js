@@ -1,11 +1,12 @@
 export const navData = [
   {
-    url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688703545/MilkHouse/Navbar_data/Milk_dra20z.png",
-    text: "Quality Milk",
+    url: "https://static.vecteezy.com/system/resources/thumbnails/048/559/726/small/splashing-milk-into-glass-against-transparent-background-png.png",
+    text: "Butter Milk",
+    link: "product/product2",
   },
   {
-    url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688704437/MilkHouse/Navbar_data/cheese-clipart-design-illustration-free-png_f0639g.webp",
-    text: "Cheese",
+    url: "https://static.vecteezy.com/system/resources/thumbnails/044/013/356/small_2x/premium-ghee-packaging-on-transparent-background-png.png",
+    text: "Ghee",
     link: "product/product4",
   },
   {
@@ -14,14 +15,14 @@ export const navData = [
     link: "product/product6",
   },
   {
-    url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688704651/MilkHouse/Navbar_data/ice-cream-ice-cream-scoops-on-bowl-removebg-preview_n4t7yn.png",
-    text: "Ice Cream",
-    link: "product/product5",
+    url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688703545/MilkHouse/Navbar_data/Milk_dra20z.png",
+    text: "A2 Milk",
+    link: "product/product1",
   },
   {
-    url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688705179/MilkHouse/Navbar_data/pngtree-hand-drawn-delicious-yogurt-illustration-image_2300120-removebg-preview_ieffgm.png",
+    url: "https://pngimg.com/d/yogurt_PNG15206.png",
     text: "Yogurt",
-    link: "product/product2",
+    link: "product/product5",
   },
   {
     url: "https://res.cloudinary.com/dx0dgujbj/image/upload/v1688705486/MilkHouse/Navbar_data/png-transparent-milk-malai-cream-paneer-ghee-milk-food-cheese-cream-cheese-thumbnail-removebg-preview_opkamh.png",
