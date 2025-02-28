@@ -57,7 +57,7 @@ const ProductDetail = ({ product }) => {
         </Box>
         &nbsp;&nbsp;&nbsp;
         <Box component="span" style={{ color: "#388E3C" }}>
-          {product.price.discount}
+          {product.price.discount} off
         </Box>
       </Typography>
       <Typography style={{ marginTop: 20, fontSize: 14, fontWeight: 600 }}>
