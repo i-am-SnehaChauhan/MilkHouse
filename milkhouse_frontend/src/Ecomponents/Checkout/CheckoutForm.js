@@ -277,7 +277,7 @@ const Checkout = () => {
     console.log(session);
 
     const paymentData = {
-      key: "rzp_test_KWc7Xxii90tYNd",
+      key: "rzp_live_OtMj4vjVpeRjg8",
       currency: "INR",
       order_id: session.id,
 
