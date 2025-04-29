@@ -280,26 +280,30 @@ const Checkout = () => {
 
     const paymentData = {
       key: "rzp_test_N8MLCvpxuLueYZ",
+      amount: (amount + 40) * 100,
       currency: "INR",
+      name:"Milkdelights",
+      image: "/logo.ico",
       order_id: session.id,
 
       handler: async function (response) {
         try {
           // Verify payment first
-          const verifyRes = await fetch("https://milk-house-azure.vercel.app/verify-order", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({
-              orderId: response.razorpay_order_id,
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpaySignature: response.razorpay_signature,
-            }),
-          });
+          // const verifyRes = await fetch("https://milk-house-azure.vercel.app/verify-order", {
+          //   method: "POST",
+          //   headers: headers,
+          //   body: JSON.stringify({
+          //     orderId: response.razorpay_order_id,
+          //     razorpayPaymentId: response.razorpay_payment_id,
+          //     razorpaySignature: response.razorpay_signature,
+          //   }),
+          // });
 
-          const verifyData = await verifyRes.json();
+          // const verifyData = await verifyRes.json();
           
-          if (verifyData.isOk) {
+          // if (verifyData.isOk) {
             // Create order immediately after verification
+            navigate("/success");
             await fetch("https://milk-house-azure.vercel.app/addorder", {
               method: "POST",
               headers: headers,
@@ -307,14 +311,12 @@ const Checkout = () => {
             });
             
             // Start navigation immediately
-            navigate("/success");
-          } else {
-            alert("Payment verification failed");
-          }
-        } catch (error) {
-          console.error("Error processing payment:", error);
-          alert("Payment processing error");
-        } finally {
+            
+        
+          } catch (error) {
+            console.error("Error processing payment:", error);
+            alert("Payment processing error");
+          } finally {
           // Reset loading state
           setLoadingPayment(false);
         }
