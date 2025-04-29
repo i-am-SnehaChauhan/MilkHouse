@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import { Box, Button, styled, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { getProductDetails } from "../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
@@ -132,6 +132,7 @@ const StyledButton = styled(Button)`
   border-radius: 2px;
   width: 250px;
   height: 51px;
+
 `;
 
 const Heading = styled(Typography)`
@@ -159,6 +160,7 @@ const Discount = styled(Typography)`
 const Checkout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const [selectedState, setSelectedState] = useState("");
   const handleChange = (event) => {
     setSelectedState(event.target.value); // Update the selected state when the user selects an option
@@ -277,15 +279,14 @@ const Checkout = () => {
     console.log(session);
 
     const paymentData = {
-      key: "rzp_live_OtMj4vjVpeRjg8",
+      key: "rzp_test_N8MLCvpxuLueYZ",
       currency: "INR",
       order_id: session.id,
 
       handler: async function (response) {
-        // verify payment
-        const res = await fetch(
-          "https://milk-house-azure.vercel.app/verify-order",
-          {
+        try {
+          // Verify payment first
+          const verifyRes = await fetch("https://milk-house-azure.vercel.app/verify-order", {
             method: "POST",
             headers: headers,
             body: JSON.stringify({
@@ -293,24 +294,29 @@ const Checkout = () => {
               razorpayPaymentId: response.razorpay_payment_id,
               razorpaySignature: response.razorpay_signature,
             }),
-          }
-        );
+          });
 
-        const data = await res.json();
-        console.log(data);
-        if (data.isOk) {
-          // do whatever page transition you want here as payment was successful
-          const response = await fetch(
-            "https://milk-house-azure.vercel.app/addorder",
-            {
+          const verifyData = await verifyRes.json();
+          
+          if (verifyData.isOk) {
+            // Create order immediately after verification
+            await fetch("https://milk-house-azure.vercel.app/addorder", {
               method: "POST",
               headers: headers,
               body: JSON.stringify(body),
-            }
-          );
-          window.location.href = "https://milk-house.vercel.app/success";
-        } else {
-          alert("Payment failed");
+            });
+            
+            // Start navigation immediately
+            navigate("/success");
+          } else {
+            alert("Payment verification failed");
+          }
+        } catch (error) {
+          console.error("Error processing payment:", error);
+          alert("Payment processing error");
+        } finally {
+          // Reset loading state
+          setLoadingPayment(false);
         }
       },
     };
